@@ -1,232 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <!-- Meta Tags for Character Encoding and Viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>هوشمند نما - مرجع دوره افزایش سطح سواد رسانه و آشنایی با امنیت بالا | جشنواره خوارزمی</title>
     
-    <!-- Primary Meta Tags -->
-    <title>Hoshmand - Professional Web Solutions</title>
-    <meta name="title" content="Hoshmand - Professional Web Solutions">
-    <meta name="description" content="Hoshmand offers cutting-edge web development, design, and digital solutions. Transform your online presence with our expert team.">
-    <meta name="keywords" content="web development, web design, digital solutions, web services, professional development">
-    <meta name="author" content="Hoshmand Team">
-    <meta name="language" content="English">
+    <meta name="description" content="هوشمند نما: مرجع تخصصی دوره‌های آموزش سواد رسانه‌ای، امنیت سایبری، و حریم خصوصی برای دانش‌آموزان و نوجوانان. آماده‌سازی کامل برای موفقیت در جشنواره خوارزمی با محتوای به‌روز و کاربردی.">
+    <meta name="keywords" content="سواد رسانه,امنیت سایبری,امنیت اطلاعات,حریم خصوصی,جشنواره خوارزمی,نوجوان,آموزش آنلاین,هوشمند نما,فیشینگ,اخبار جعلی">
+    <meta name="author" content="هوشمند نما">
+    <meta name="robots" content="index, follow">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://hoshmand-web.github.io/">
+    <meta name="theme-color" content="#2563eb">
+
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     
-    <!-- Search Engine Optimization -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    
-    <!-- Open Graph / Facebook Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hoshmand-web.github.io/">
-    <meta property="og:title" content="Hoshmand - Professional Web Solutions">
-    <meta property="og:description" content="Hoshmand offers cutting-edge web development, design, and digital solutions. Transform your online presence with our expert team.">
-    <meta property="og:image" content="https://hoshmand-web.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Hoshmand">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Meta Tags -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://hoshmand-web.github.io/">
-    <meta property="twitter:title" content="Hoshmand - Professional Web Solutions">
-    <meta property="twitter:description" content="Hoshmand offers cutting-edge web development, design, and digital solutions. Transform your online presence with our expert team.">
-    <meta property="twitter:image" content="https://hoshmand-web.github.io/og-image.jpg">
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#007bff">
-    <meta name="msapplication-TileColor" content="#007bff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Hoshmand">
-    
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Hoshmand",
-      "url": "https://hoshmand-web.github.io/",
-      "logo": "https://hoshmand-web.github.io/logo.png",
-      "description": "Professional web development and design services",
-      "sameAs": [
-        "https://www.facebook.com/hoshmand",
-        "https://www.twitter.com/hoshmand",
-        "https://www.linkedin.com/company/hoshmand"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "email": "contact@hoshmand.com"
-      }
-    }
-    </script>
-    
-    <!-- Website Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://hoshmand-web.github.io/",
-      "name": "Hoshmand - Professional Web Solutions",
-      "description": "Transform your online presence with cutting-edge web development and design services",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://hoshmand-web.github.io/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Preconnect to External Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .hero {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero-banner {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            background: #f3f4f6;
+            aspect-ratio: 2 / 1; 
+        }
+        
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .hero p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border: none;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            background: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 5px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+        }
+
+        .stat-num {
+            font-weight: 800;
+            color: var(--primary);
+            direction: ltr;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 10px;
+        }
+        .section-title h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .cat-card {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            transition: 0.3s;
+        }
+        
+        .cat-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .cat-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            color: var(--primary);
+        }
+        svg { width: 100%; height: 100%; }
+
+        .cat-title {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .features-section {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-list {
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .feature-item:last-child { border: none; }
+
+        .check-icon {
+            background: var(--primary);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-align: right;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .testimonial-section {
+            padding: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+        .testimonial-section::-webkit-scrollbar { display: none; }
+
+        .quote-card {
+            display: inline-block;
+            width: 85%;
+            max-width: 350px;
+            white-space: normal;
+            border: 1px solid var(--primary-light);
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin-left: 15px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+    </style>
 </head>
 <body>
-    <!-- Skip to Main Content Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Header with Semantic HTML -->
-    <header role="banner">
-        <nav role="navigation" aria-label="Main Navigation">
-            <a href="#" class="logo">Hoshmand</a>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <!-- Main Content -->
-    <main id="main-content" role="main">
-        <!-- Hero Section -->
-        <section id="home" aria-labelledby="hero-heading">
-            <h1 id="hero-heading">Transform Your Digital Presence</h1>
-            <p>Professional web development and design solutions tailored to your needs</p>
-            <a href="#contact" class="cta-button" role="button" tabindex="0">Get Started</a>
-        </section>
-        
-        <!-- About Section -->
-        <section id="about" aria-labelledby="about-heading">
-            <h2 id="about-heading">About Hoshmand</h2>
-            <article>
-                <p>We are a dedicated team of web professionals committed to delivering exceptional digital solutions. With years of experience, we transform ideas into powerful web experiences.</p>
-            </article>
-        </section>
-        
-        <!-- Services Section -->
-        <section id="services" aria-labelledby="services-heading">
-            <h2 id="services-heading">Our Services</h2>
-            <article>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>Web Development</h3>
-                        <p>Custom web applications built with modern technologies and best practices</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Web Design</h3>
-                        <p>Beautiful, responsive designs that captivate your audience</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Digital Strategy</h3>
-                        <p>Comprehensive digital strategies to achieve your business goals</p>
-                    </div>
-                </div>
-            </article>
-        </section>
-        
-        <!-- Portfolio Section -->
-        <section id="portfolio" aria-labelledby="portfolio-heading">
-            <h2 id="portfolio-heading">Our Portfolio</h2>
-            <article>
-                <div class="portfolio-grid">
-                    <figure>
-                        <img src="project1.jpg" alt="Project 1 - Website Redesign" loading="lazy">
-                        <figcaption>Website Redesign Project</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="project2.jpg" alt="Project 2 - Mobile App Development" loading="lazy">
-                        <figcaption>Mobile App Development</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="project3.jpg" alt="Project 3 - E-Commerce Platform" loading="lazy">
-                        <figcaption>E-Commerce Platform</figcaption>
-                    </figure>
-                </div>
-            </article>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" aria-labelledby="contact-heading">
-            <h2 id="contact-heading">Get In Touch</h2>
-            <form method="POST" action="/contact" aria-label="Contact Form">
-                <fieldset>
-                    <legend>Contact Information</legend>
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" required aria-required="true"></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </fieldset>
-            </form>
-        </section>
-    </main>
-    
-    <!-- Footer with Semantic HTML -->
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <section aria-labelledby="footer-about">
-                <h3 id="footer-about">About</h3>
-                <p>Hoshmand - Professional web solutions for your business</p>
-            </section>
-            <section aria-labelledby="footer-links">
-                <h3 id="footer-links">Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </section>
-            <section aria-labelledby="footer-social">
-                <h3 id="footer-social">Follow Us</h3>
-                <ul>
-                    <li><a href="https://facebook.com/hoshmand" rel="external noopener">Facebook</a></li>
-                    <li><a href="https://twitter.com/hoshmand" rel="external noopener">Twitter</a></li>
-                    <li><a href="https://linkedin.com/company/hoshmand" rel="external noopener">LinkedIn</a></li>
-                </ul>
-            </section>
+
+    <header>
+        <div class="icon-btn" style="border:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         </div>
-        <p>&copy; 2025 Hoshmand. All rights reserved.</p>
-    </footer>
-    
-    <!-- Analytics and Scripts -->
-    <script src="main.js" defer></script>
+        <div class="logo">
+            هوشمند نما
+        </div>
+        <div class="header-left">
+            <div class="icon-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="icon-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-banner">
+            <img src="https://git-line.ir/1765693698885.jpg" alt="بنر آموزش سواد رسانه و امنیت دیجیتال برای جشنواره خوارزمی">
+        </div>
+        <h1>امنیت و سواد رسانه<br>برای نسل هوشمند فردا!</h1>
+        <p>به سادگی در دنیای دیجیتال هوشمندانه و امن حرکت کن. تمامی مهارت‌های لازم برای حضور فعال و مسئولانه در فضای مجازی.</p>
+        
+        <div class="action-buttons">
+            <a href="videos.html" class="btn btn-primary">
+                مشاهده دوره‌ها 
+                <span>←</span>
+            </a>
+            <button class="btn btn-secondary">شروع آزمون سنجش سواد</button>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span class="stat-num">60+</span>
+                <span class="stat-label"> دوره های آموزشی</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <span class="stat-num">نیم ساعت</span>
+                <span class="stat-label"> مدت زمان دوره</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <span class="stat-num">۱۲۰K+</span>
+                <span class="stat-label">دانش‌آموز</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-title">
+        <h2>در چه زمینه‌ای هوشمند می‌شوی؟</h2>
+        <p>مسیرهای کلیدی سواد رسانه و امنیت سایبری</p>
+    </div>
+
+    <div class="categories-grid">
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="cat-title">امنیت و حریم خصوصی</div>
+        </div>
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 9.5a5.5 5.5 0 0 0-9.6 4.3M12 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M21 15a4 4 0 0 0-4-4H7"/></svg>
+            </div>
+            <div class="cat-title">سواد رسانه‌ای پیشرفته</div>
+        </div>
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.12 12.12"/><path d="M12 12V22"/></svg>
+            </div>
+            <div class="cat-title">شناخت فیشینگ و کلاهبرداری</div>
+        </div>
+        <div class="cat-card">
+            <div class="cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="cat-title">استفاده صحیح از ابزارهای هوش مصنوعی</div>
+        </div>
+    </div>
+
+    <section class="features-section">
+        <div class="section-title" style="text-align: right;">
+            <h2 style="font-size: 1.5rem;">از شروع تا موفقیت در جشنواره<br>کنار هم پیش میریم!</h2>
+            <p style="margin-top: 10px;">تمام محتوا بر اساس نیازهای روز جامعه و محورهای جشنواره تنظیم شده.</p>
+        </div>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <span class="feature-text">متناسب‌سازی محتوا با محور **هوش مصنوعی و برنامه‌نویسی** جشنواره خوارزمی</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-text">ارائه راهکارهای عملی برای **امنیت حساب‌های کاربری** و جلوگیری از سرقت اطلاعات</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-text">تسلط بر مهارت **تفکر انتقادی** و تشخیص سریع اخبار جعلی و فریب رسانه‌ای</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-text">یادگیری از طریق **شبیه‌سازی حملات فیشینگ و دیپ‌فیک** برای تجربه عمیق</span>
+                <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="videos.html" class="btn btn-primary">مشاهده دوره‌ها ←</a>
+            <button class="btn btn-secondary">چکیده دوره‌ها</button>
+        </div>
+    </section>
+
+    <div class="section-title">
+        <h2>نظر کارشناسان حوزه رسانه و امنیت</h2>
+    </div>
+    <div class="testimonial-section">
+        <div class="quote-card">
+            <span class="quote-icon">❝</span>
+            <p class="quote-text">
+                امنیت در فضای مجازی یک مهارت ضروریه، نه یک انتخاب. این دوره‌ها نوجوانان ما را با زبان ساده و جذاب، برای چالش‌های دنیای دیجیتال آماده می‌کنه. یک مرجع کامل برای سواد رسانه‌ای.
+            </p>
+            <span class="quote-author">دکتر سمیرا نادری (کارشناس سواد رسانه)</span>
+        </div>
+        <div class="quote-card">
+            <span class="quote-icon">❝</span>
+            <p class="quote-text">
+                بسیاری از آسیب‌های امنیتی از ناآگاهی شروع میشه. هوشمند نما با رویکرد پروژه محور، دانش‌آموزان رو طوری تربیت می‌کنه که خودشون بتونن خطرات رو شناسایی و از اطلاعاتشون محافظت کنن.
+            </p>
+            <span class="quote-author">مهندس علی حسینی (متخصص امنیت سایبری)</span>
+        </div>
+    </div>
+
 </body>
 </html>
