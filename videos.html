@@ -36,11 +36,11 @@
         }
 
         body.dark-mode {
-            --primary: #fcd34d;
-            --primary-light: #2d3748;
+            --primary: #2563eb;           /* رنگ اصلی همچنان آبی */
+            --primary-light: #1e40af;     /* آبی تیره‌تر برای پس‌زمینه‌های روشن */
             --text-dark: #f3f4f6;
-            --text-gray: #9ca3af;
-            --bg: #000000;
+            --text-gray: #d1d5db;
+            --bg: #111827;                /* خاکستری-آبی تیره (نه سیاه خالص) */
             --border: #374151;
         }
 
@@ -221,7 +221,7 @@
 
         .video-item.active {
             border-color: var(--primary);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
         }
 
         .video-header {
@@ -482,7 +482,7 @@
                 body.classList.add('dark-mode');
                 moon.style.display = 'none';
                 sun.style.display = 'block';
-                themeColorMeta.setAttribute('content', '#fcd34d');
+                themeColorMeta.setAttribute('content', '#1e40af'); /* آبی تیره برای نوار مرورگر */
             } else {
                 body.classList.remove('dark-mode');
                 moon.style.display = 'block';
