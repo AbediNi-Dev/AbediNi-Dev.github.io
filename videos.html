@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سرفصل‌های دوره سواد رسانه و امنیت | هوشمند نما</title>
     
-    <meta name="description" content="فهرست کامل ۱۸ درس کاربردی آموزش سواد رسانه‌ای و امنیت سایبری در ۳ فاز تخصصی.">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="فهرست کامل ۱۸ درس کاربردی آموزش سواد رسانه‌ای و امنیت سایبری در ۳ فاز تخصصی برای نوجوانان و دانش‌آموزان.">
+    <meta name="keywords" content="سرفصل دوره سواد رسانه‌ای, آموزش امنیت سایبری, هوشمند نما, جشنواره خوارزمی, درس‌های دیجیتال">
+    <meta name="author" content="امیرمهدی عابدینی">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abedini-dev.github.io/videos.html">
+
+    <meta property="og:title" content="سرفصل‌های آموزشی هوشمند نما">
+    <meta property="og:description" content="۱۸ جلسه تخصصی سواد رسانه و امنیت سایبری در سه فاز کاربردی">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://git-line.ir/1765693698885.jpg">
+
+    <meta name="theme-color" id="themeColor" content="#2563eb">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     
@@ -16,9 +30,18 @@
             --primary-light: #eff6ff;
             --text-dark: #1f2937;
             --text-gray: #6b7280;
-            --bg-white: #ffffff;
+            --bg: #ffffff;
             --border: #e5e7eb;
             --radius: 16px;
+        }
+
+        body.dark-mode {
+            --primary: #fcd34d;
+            --primary-light: #fffbeb;
+            --text-dark: #f3f4f6;
+            --text-gray: #9ca3af;
+            --bg: #000000;
+            --border: #374151;
         }
 
         * {
@@ -30,18 +53,20 @@
         }
 
         body {
-            background-color: var(--bg-white);
+            background-color: var(--bg);
             color: var(--text-dark);
             line-height: 1.6;
             padding-bottom: 40px;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         header {
-            background: #fff;
+            background: var(--bg);
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border);
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         .header-top {
@@ -56,6 +81,8 @@
             display: none;
             animation: slideDown 0.3s ease-out;
             position: relative;
+            background: var(--bg);
+            transition: background-color 0.4s ease;
         }
 
         .search-wrapper {
@@ -77,6 +104,8 @@
             outline: none;
             font-size: 0.9rem;
             background: var(--primary-light);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
         .close-search {
@@ -94,6 +123,7 @@
             cursor: pointer;
             font-size: 18px;
             line-height: 1;
+            transition: background 0.3s ease;
         }
 
         .icon-btn {
@@ -105,14 +135,20 @@
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            background: #fff;
+            background: var(--bg);
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle svg {
+            transition: transform 0.4s ease;
         }
 
         .logo {
             font-weight: 900;
             font-size: 1.5rem;
             color: var(--primary);
+            transition: color 0.4s ease;
         }
 
         .main-container {
@@ -134,11 +170,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         .page-header {
             text-align: center;
             margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: var(--text-gray);
         }
 
         .phase-title {
@@ -150,15 +197,16 @@
             border-right: 4px solid var(--primary);
             background-color: var(--primary-light);
             border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .video-item {
-            background: #fff;
+            background: var(--bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             margin-bottom: 12px;
             overflow: hidden;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .video-header {
@@ -184,22 +232,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        .video-text h3 { font-size: 0.95rem; font-weight: 700; }
-        .video-text span { font-size: 0.75rem; color: var(--text-gray); }
+        .video-text h3 { 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+        .video-text span { 
+            font-size: 0.75rem; 
+            color: var(--text-gray); 
+            transition: color 0.3s ease;
+        }
 
         .video-summary {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background-color: #f9fafb;
+            background-color: var(--primary-light);
+            transition: background-color 0.3s ease;
         }
 
         .summary-inner {
             padding: 15px;
             font-size: 0.9rem;
             border-top: 1px solid var(--border);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
         .action-btn {
@@ -212,6 +273,7 @@
             font-weight: bold;
             text-decoration: none;
             font-size: 0.85rem;
+            transition: background 0.3s ease;
         }
 
         .no-result {
@@ -219,19 +281,25 @@
             padding: 40px;
             color: var(--text-gray);
             display: none;
+            transition: color 0.3s ease;
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="header-top">
             <a href="index.html" class="icon-btn" style="border:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </a>
             <div class="logo">هوشمند نما</div>
-            <div class="icon-btn" onclick="toggleSearch()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div class="header-top-right">
+                <div class="icon-btn" onclick="toggleSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <div class="icon-btn theme-toggle" id="themeToggle" aria-label="تغییر تم">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </div>
             </div>
         </div>
         <div class="search-container" id="searchBox">
@@ -244,7 +312,7 @@
 
     <main class="main-container">
         <div class="hero-banner">
-            <img src="https://git-line.ir/1765693698885.jpg" alt="دوره سواد رسانه">
+            <img src="https://git-line.ir/1765693698885.jpg" alt="دوره سواد رسانه و امنیت سایبری هوشمند نما" loading="lazy">
         </div>
 
         <div class="page-header">
@@ -378,6 +446,38 @@
                 content.style.maxHeight = content.scrollHeight + "px";
             }
         }
+
+        const body = document.body;
+        const toggle = document.getElementById('themeToggle');
+        const moon = toggle.querySelector('.moon-icon');
+        const sun = toggle.querySelector('.sun-icon');
+        const themeColorMeta = document.getElementById('themeColor');
+
+        const applyTheme = (isDark) => {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                moon.style.display = 'none';
+                sun.style.display = 'block';
+                themeColorMeta.setAttribute('content', '#fcd34d');
+            } else {
+                body.classList.remove('dark-mode');
+                moon.style.display = 'block';
+                sun.style.display = 'none';
+                themeColorMeta.setAttribute('content', '#2563eb');
+            }
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+        applyTheme(initialDark);
+
+        toggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
     </script>
 </body>
 </html>
