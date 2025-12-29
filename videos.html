@@ -36,11 +36,11 @@
         }
 
         body.dark-mode {
-            --primary: #2563eb;           /* رنگ اصلی همچنان آبی */
-            --primary-light: #1e40af;     /* آبی تیره‌تر برای پس‌زمینه‌های روشن */
+            --primary: #fcd34d;           /* زرد در دارک مود */
+            --primary-light: #991b1b;    /* قرمز تیره برای پس‌زمینه‌های روشن */
             --text-dark: #f3f4f6;
-            --text-gray: #d1d5db;
-            --bg: #111827;                /* خاکستری-آبی تیره (نه سیاه خالص) */
+            --text-gray: #9ca3af;
+            --bg: #000000;               /* سیاه خالص */
             --border: #374151;
         }
 
@@ -147,7 +147,20 @@
 
         .icon-btn svg {
             stroke: var(--primary);
+            fill: none;
             transition: stroke 0.3s ease;
+        }
+
+        /* آیکون ماه در تم روشن: پر شده با آبی و دور آبی */
+        .moon-icon {
+            fill: var(--primary);
+            stroke: var(--primary);
+        }
+
+        /* آیکون خورشید در دارک: پر شده با زرد و دور زرد */
+        .sun-icon {
+            fill: var(--primary);
+            stroke: var(--primary);
         }
 
         .theme-toggle svg {
@@ -482,7 +495,7 @@
                 body.classList.add('dark-mode');
                 moon.style.display = 'none';
                 sun.style.display = 'block';
-                themeColorMeta.setAttribute('content', '#1e40af'); /* آبی تیره برای نوار مرورگر */
+                themeColorMeta.setAttribute('content', '#fcd34d');
             } else {
                 body.classList.remove('dark-mode');
                 moon.style.display = 'block';
