@@ -31,11 +31,12 @@
             --text-gray: #6b7280;
             --bg: #ffffff;
             --border: #e5e7eb;
+            --radius: 16px;
         }
 
         body.dark-mode {
             --primary: #fcd34d;
-            --primary-light: #fffbeb;
+            --primary-light: #422006;
             --text-dark: #f3f4f6;
             --text-gray: #9ca3af;
             --bg: #000000;
@@ -47,6 +48,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -59,6 +61,9 @@
             flex-direction: column;
             transition: background-color 0.4s ease, color 0.4s ease;
         }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
         header {
             display: flex;
@@ -73,12 +78,9 @@
             transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
-        .logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-            letter-spacing: -1px;
-            transition: color 0.4s ease;
+        .header-left {
+            display: flex;
+            gap: 15px;
         }
 
         .icon-btn {
@@ -92,11 +94,24 @@
             color: var(--primary);
             background: var(--bg);
             cursor: pointer;
-            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .theme-toggle svg {
-            transition: transform 0.4s ease;
+        .icon-btn svg {
+            stroke: var(--primary);
+            transition: stroke 0.3s ease;
+        }
+
+        .moon-icon { fill: var(--primary); stroke: var(--primary); }
+        .sun-icon { fill: var(--primary); stroke: var(--primary); }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+            text-align: center;
+            transition: color 0.4s ease;
         }
 
         .hero {
@@ -110,6 +125,8 @@
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 20px;
+            position: relative;
+            background: #f3f4f6;
         }
 
         .hero-banner img {
@@ -148,14 +165,14 @@
             justify-content: center;
             gap: 8px;
             cursor: pointer;
+            transition: 0.2s;
             white-space: nowrap;
             min-width: 150px;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .btn-primary {
             background-color: var(--primary);
-            color: #ffffff;
+            color: white;
             border: none;
             flex: 1 1 60%;
         }
@@ -184,22 +201,25 @@
         }
 
         .stat-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            background: var(--bg);
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--bg);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
-            margin: 0 auto 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            transition: color 0.3s ease, background-color 0.3s ease;
+            margin: 0 auto 5px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
         }
 
         .stat-num {
             font-weight: 800;
             color: var(--primary);
+            direction: ltr;
             display: block;
             transition: color 0.3s ease;
         }
@@ -214,13 +234,11 @@
             text-align: center;
             margin: 40px 0 10px;
         }
-
         .section-title h2 {
             font-size: 1.3rem;
             font-weight: 800;
             margin-bottom: 5px;
         }
-
         .section-title p {
             color: var(--text-gray);
             font-size: 0.9rem;
@@ -239,7 +257,7 @@
             padding: 20px;
             text-align: center;
             background: var(--bg);
-            transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .cat-card:hover {
@@ -254,14 +272,7 @@
             color: var(--primary);
             transition: color 0.3s ease;
         }
-
-        svg {
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
+        svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; }
 
         .cat-title {
             font-weight: bold;
@@ -288,13 +299,11 @@
             transition: border-color 0.3s ease;
         }
 
-        .feature-item:last-child {
-            border: none;
-        }
+        .feature-item:last-child { border: none; }
 
         .check-icon {
             background: var(--primary);
-            color: #ffffff;
+            color: white;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -304,7 +313,7 @@
             justify-content: center;
             flex-shrink: 0;
             margin-top: 4px;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .feature-text {
@@ -317,26 +326,26 @@
 
         .testimonial-section {
             padding: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
             display: flex;
             gap: 15px;
-            overflow-x: auto;
-            scrollbar-width: none;
         }
-
-        .testimonial-section::-webkit-scrollbar {
-            display: none;
-        }
+        .testimonial-section::-webkit-scrollbar { display: none; }
 
         .quote-card {
             flex: 0 0 85%;
             max-width: 350px;
+            white-space: normal;
             border: 1px solid var(--primary-light);
             background: var(--bg);
             border-radius: 20px;
             padding: 25px;
             position: relative;
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .quote-icon {
@@ -346,6 +355,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
+            font-family: serif;
             transition: color 0.3s ease;
         }
 
@@ -369,22 +379,41 @@
             padding: 20px;
             text-align: center;
             border-top: 1px solid var(--border);
-            color: var(--text-gray);
             font-size: 0.85rem;
-            transition: color 0.3s ease, border-color 0.3s ease;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
         }
 
         @media (min-width: 768px) {
-            .action-buttons { flex-wrap: nowrap; }
-            .btn { flex: 1; }
-            .categories-grid { grid-template-columns: 1fr 1fr; }
-            .quote-card { flex: 0 0 40%; }
-            .testimonial-section { overflow-x: hidden; justify-content: center; }
+            .action-buttons {
+                flex-wrap: nowrap;
+            }
+            .btn {
+                flex: 1;
+            }
+            .stats-row {
+                justify-content: space-between;
+                gap: 0;
+            }
+            .categories-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .testimonial-section {
+                overflow-x: hidden;
+                justify-content: center;
+            }
+            .quote-card {
+                flex: 0 0 40%;
+            }
         }
 
         @media (min-width: 1024px) {
-            .hero { padding: 40px; }
-            .categories-grid { grid-template-columns: repeat(4, 1fr); }
+            .hero {
+                padding: 40px;
+            }
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
     </style>
 </head>
@@ -395,7 +424,7 @@
     </div>
     <div class="logo">هوشمند نما</div>
     <div class="header-left">
-        <div class="icon-btn theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <div class="icon-btn theme-toggle" id="themeToggle">
             <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </div>
@@ -405,14 +434,14 @@
 <main>
     <section class="hero">
         <div class="hero-banner">
-            <img src="https://lh3.googleusercontent.com/d/16VU6m-APrS_4me0LJ4JRgoSUrGQqZPow" alt="دوره تخصصی ارتقای سواد رسانه‌ای و امنیت سایبری هوشمند نما" loading="lazy">
+            <img src="https://lh3.googleusercontent.com/d/16VU6m-APrS_4me0LJ4JRgoSUrGQqZPow" alt="دوره تخصصی ارتقای سواد رسانه‌ای" loading="lazy">
         </div>
         <h1>امنیت دیجیتال و سواد رسانه‌ای<br>پیش‌نیاز نسل هوشمند</h1>
         <p>توسعه مهارت‌های تفکر انتقادی و صیانت از حریم خصوصی در فضای مجازی با استانداردهای نوین آموزشی.</p>
         
         <div class="action-buttons">
             <a href="videos.html" class="btn btn-primary">مشاهده دوره‌های آموزشی <span>←</span></a>
-            <button class="btn btn-secondary">سنجش سطح دانش</button>
+            <a href="question.html" class="btn btn-secondary">سنجش سطح دانش</a>
         </div>
 
         <div class="stats-row">
@@ -497,7 +526,7 @@
 
         <div class="action-buttons">
             <a href="videos.html" class="btn btn-primary">ورود به پنل دوره‌ها ←</a>
-            <button class="btn btn-secondary">مطالعه چکیده راهبردی دوره</button>
+            <a href="question.html" class="btn btn-secondary">سنجش سطح دانش</a>
         </div>
     </section>
 
@@ -536,29 +565,19 @@
             body.classList.add('dark-mode');
             moon.style.display = 'none';
             sun.style.display = 'block';
-            themeColorMeta.setAttribute('content', '#fcd34d');
+            themeColorMeta.content = '#fcd34d';
         } else {
             body.classList.remove('dark-mode');
             moon.style.display = 'block';
             sun.style.display = 'none';
-            themeColorMeta.setAttribute('content', '#2563eb');
+            themeColorMeta.content = '#2563eb';
         }
     };
 
-    const savedTheme = localStorage.getItem('theme');
+    const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-
+    const initialDark = saved === 'dark' || (!saved && prefersDark);
     applyTheme(initialDark);
-    if (savedTheme === null && prefersDark) localStorage.setItem('theme', 'dark');
-    if (savedTheme === 'dark') localStorage.setItem('theme', 'dark');
-    if (savedTheme === 'light') localStorage.setItem('theme', 'light');
 
     toggle.addEventListener('click', () => {
-        const isDark = !body.classList.contains('dark-mode');
-        applyTheme(isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-</script>
-</body>
-</html>
+        const isDark = !body.classList.conta
