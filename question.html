@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سنجش سطح دانش | هوشمند نما</title>
+    
+    <meta name="description" content="آزمون آنلاین سنجش سواد رسانه‌ای و امنیت سایبری با ۱۰ سوال تصادفی از ۵۰ سوال تخصصی.">
+    <meta name="author" content="امیرمهدی عابدینی">
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" id="themeColor" content="#2563eb">
+
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg: #ffffff;
+            --border: #e5e7eb;
+            --radius: 16px;
+        }
+
+        body.dark-mode {
+            --primary: #fcd34d;
+            --primary-light: #422006;
+            --text-dark: #f3f4f6;
+            --text-gray: #9ca3af;
+            --bg: #000000;
+            --border: #374151;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        header {
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn svg {
+            stroke: var(--primary);
+            transition: stroke 0.3s ease;
+        }
+
+        .moon-icon { fill: var(--primary); stroke: var(--primary); }
+        .sun-icon { fill: var(--primary); stroke: var(--primary); }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: color 0.4s ease;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin: 40px 0;
+        }
+
+        .intro h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            padding: 14px 40px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .quiz-content {
+            display: none;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 8px;
+            background: var(--primary-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .question-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 14px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .option.selected {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s ease;
+        }
+
+        .next-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: var(--text-gray);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="icon-btn" style="border:none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </a>
+            <div class="logo">هوشمند نما</div>
+            <div class="header-right">
+                <div class="icon-btn theme-toggle" id="themeToggle">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="intro" id="intro">
+            <h1>سنجش سطح دانش</h1>
+            <p>این آزمون شامل ۱۰ سوال تصادفی از ۵۰ سوال تخصصی است که بر اساس موضوعات شایع در جامعه و چالش‌های روزمره دیجیتال طراحی شده‌اند. هدف این آزمون، ارزیابی سطح دانش فعلی شما قبل و بعد از مشاهده دوره آموزشی است.<br><br>
+            اگر به برخی سوالات پاسخ نمی‌دانید یا در دوره به آن‌ها پرداخته نشده، کاملاً طبیعی است. این آزمون برای شناسایی نقاط قوت و زمینه‌های نیازمند یادگیری بیشتر طراحی شده است.</p>
+            <button class="start-btn" onclick="startQuiz()">شروع آزمون</button>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <div class="quiz-header">
+                <h1>سنجش سطح دانش</h1>
+                <p>۱۰ سوال تصادفی از ۵۰ سوال تخصصی</p>
+            </div>
+
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+            <div id="quiz"></div>
+
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>سوال بعدی</button>
+
+            <div class="result" id="result">
+                <h2>امتیاز شما</h2>
+                <div class="score" id="score">۰٪</div>
+                <div class="result-message" id="message"></div>
+                <button class="next-btn" onclick="location.reload()">شروع مجدد آزمون</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            { q: "رسانه چیست؟", options: ["ابزار انتقال پیام", "فقط تلویزیون و رادیو", "فقط اینترنت", "هیچ‌کدام"], a: 0 },
+            { q: "پیام پنهان در رسانه‌ها معمولاً چه هدفی دارد؟", options: ["اطلاع‌رسانی خالص", "تأثیر بر نظر مخاطب", "سرگرمی صرف", "آموزش مستقیم"], a: 1 },
+            { q: "تیتر زرد چه ویژگی دارد؟", options: ["دقیق و علمی", "جذاب و اغراق‌آمیز", "کوتاه و ساده", "بدون عکس"], a: 1 },
+            { q: "الگوریتم شبکه‌های اجتماعی بر اساس چه چیزی محتوا پیشنهاد می‌دهد؟", options: ["علاقه کاربر", "زمان انتشار", "تعداد لایک کلی", "نام نویسنده"], a: 0 },
+            { q: "برای تشخیص سریع خبر جعلی ابتدا چه باید کرد؟", options: ["بازنشر آن", "بررسی منبع و تاریخ", "خواندن کامل", "لایک کردن"], a: 1 },
+            { q: "جستجوی معکوس تصویر برای چه استفاده می‌شود؟", options: ["ویرایش عکس", "پیدا کردن منبع اصلی", "ساخت فیلتر", "دانلود سریع"], a: 1 },
+            { q: "ردپای دیجیتال چیست؟", options: ["اثر انگشت", "اطلاعات باقی‌مانده از فعالیت آنلاین", "رمز عبور", "آدرس IP"], a: 1 },
+            { q: "رمز عبور قوی باید شامل چه باشد؟", options: ["فقط اعداد", "ترکیب حروف بزرگ، کوچک، عدد و علامت", "نام خانوادگی", "تاریخ تولد"], a: 1 },
+            { q: "احراز هویت دو مرحله‌ای چه لایه‌ای اضافه می‌کند؟", options: ["فقط رمز", "کد پیامکی یا اپلیکیشن", "فقط اثر انگشت", "هیچ"], a: 1 },
+            { q: "لینک آلوده معمولاً چه نشانه‌ای دارد؟", options: ["آدرس کوتاه‌شده مشکوک", "حتماً HTTPS", "نام دامنه آشنا", "هیچ"], a: 0 },
+            { q: "مجوزهای اپلیکیشن‌ها باید چه باشند؟", options: ["همه چیز مجاز", "فقط ضروری برای عملکرد", "هرچه بیشتر بهتر", "بدون مجوز"], a: 1 },
+            { q: "وای‌فای عمومی چه خطری دارد؟", options: ["سرعت بالا", "شنود اطلاعات", "باتری کم", "هیچ"], a: 1 },
+            { q: "دیپ‌فیک چیست؟", options: ["عکس واقعی", "جعل ویدئو با هوش مصنوعی", "فیلتر اینستاگرام", "ویرایش ساده"], a: 1 },
+            { q: "برای تشخیص تصویر تولید شده توسط AI به چه توجه کنیم؟", options: ["رنگ‌ها", "جزئیات غیرطبیعی دست و چشم", "اندازه فایل", "تاریخ"], a: 1 },
+            { q: "تفکر انتقادی در فضای مجازی یعنی چه؟", options: ["باور همه چیز", "پرسش قبل از پذیرش", "بازنشر سریع", "لایک همه"], a: 1 },
+            { q: "در برابر آزار سایبری چه کنیم؟", options: ["پاسخ دهیم", "بلاک و گزارش", "نادیده بگیریم", "عکس بفرستیم"], a: 1 },
+            { q: "حق کپی‌رایت یعنی چه؟", options: ["همه چیز آزاد است", "مالکیت معنوی اثر", "فقط برای کتاب", "هیچ"], a: 1 },
+            { q: "شهروند دیجیتال مسئول کیست؟", options: ["فقط دولت", "هر کاربری که آنلاین است", "فقط برنامه‌نویسان", "هیچ‌کس"], a: 1 },
+            { q: "چگونه از فیشینگ جلوگیری کنیم؟", options: ["کلیک روی همه لینک‌ها", "بررسی آدرس فرستنده و لینک", "دانلود همه فایل‌ها", "هیچ"], a: 1 },
+            { q: "اخبار جعلی معمولاً چه هدفی دارند؟", options: ["اطلاع‌رسانی", "گمراه کردن و تأثیرگذاری", "سرگرمی", "آموزش"], a: 1 },
+            { q: "چرا نباید رمز عبور را در چند مکان استفاده کنیم؟", options: ["مهم نیست", "اگر یکی هک شود همه حساب‌ها در خطرند", "سخت است به خاطر سپردن", "هیچ"], a: 1 },
+            { q: "VPN چه کمکی می‌کند؟", options: ["سرعت اینترنت را کم می‌کند", "مخفی کردن IP و رمزنگاری ارتباط", "دانلود سریع‌تر", "هیچ"], a: 1 },
+            { q: "چگونه از دیپ‌فیک محافظت کنیم؟", options: ["باور همه ویدئوها", "بررسی منبع و نشانه‌های غیرطبیعی", "بازنشر سریع", "هیچ"], a: 1 },
+            { q: "الگوریتم اینستاگرام بر اساس چه چیزی پست نشان می‌دهد؟", options: ["زمان انتشار", "تعامل کاربر با محتوا", "تعداد فالوور", "نام کاربری"], a: 1 },
+            { q: "کلیک‌بیت چیست؟", options: ["تبلیغ واقعی", "عنوان فریبنده برای جذب کلیک", "لینک امن", "هیچ"], a: 1 },
+            { q: "چرا نباید اطلاعات شخصی را در کامنت عمومی بنویسیم؟", options: ["مهم نیست", "ممکن است سوءاستفاده شود", "همه می‌بینند", "هیچ"], a: 1 },
+            { q: "تشخیص منبع معتبر خبر شامل چه چیزی است؟", options: ["تعداد لایک", "نام سایت شناخته‌شده و تاریخ", "عکس جذاب", "هیچ"], a: 1 },
+            { q: "رمز عبور مدیر (Admin) پیش‌فرض خطرناک است چون؟", options: ["همه می‌دانند", "هکرها اول آن را امتحان می‌کنند", "کوتاه است", "هیچ"], a: 1 },
+            { q: "چگونه از مهندسی اجتماعی دفاع کنیم؟", options: ["اطلاعات را به همه بدهیم", "به درخواست‌های ناگهانی مشکوک باشیم", "همه پیام‌ها را باز کنیم", "هیچ"], a: 1 },
+            { q: "حریم خصوصی در اپلیکیشن‌ها یعنی چه؟", options: ["همه دسترسی‌ها مجاز", "کنترل کاربر بر اطلاعات شخصی", "بدون محدودیت", "هیچ"], a: 1 },
+            { q: "چرا نباید روی لینک‌های ناشناس کلیک کنیم؟", options: ["ممکن است بدافزار باشد", "سرعت کم می‌شود", "اینترنت تمام می‌شود", "هیچ"], a: 0 },
+            { q: "هوش مصنوعی در ساخت محتوای جعلی چه نقشی دارد؟", options: ["نمی‌تواند", "تولید متن، تصویر و ویدئوی جعلی", "فقط ترجمه", "هیچ"], a: 1 },
+            { q: "چگونه محتوای تولید شده توسط AI را تشخیص دهیم؟", options: ["نمی‌شود", "توجه به اشتباهات جزئی مانند دست‌ها", "رنگ‌ها", "هیچ"], a: 1 },
+            { q: "بازنشر خبر بدون بررسی چه مشکلی ایجاد می‌کند؟", options: ["هیچ", "گسترش شایعه و اطلاعات غلط", "لایک بیشتر", "فالوور بیشتر"], a: 1 },
+            { q: "چرا باید تنظیمات حریم خصوصی را چک کنیم؟", options: ["مهم نیست", "کنترل اینکه چه کسی اطلاعات ما را ببیند", "زیبا می‌شود", "هیچ"], a: 1 },
+            { q: "فیشینگ معمولاً از چه طریقی انجام می‌شود؟", options: ["پیام مستقیم", "ایمیل یا پیام جعلی بانک/شرکت", "تماس تلفنی واقعی", "هیچ"], a: 1 },
+            { q: "چگونه از حساب‌هایمان در برابر هک محافظت کنیم؟", options: ["رمز ساده", "استفاده از رمز قوی و 2FA", "اشتراک رمز با دوستان", "هیچ"], a: 1 },
+            { q: "اخبار جعلی در انتخابات چه تأثیری دارد؟", options: ["هیچ", "تغییر نظر عمومی", "سرگرمی", "آموزش"], a: 1 },
+            { q: "چرا نباید عکس‌های شخصی را عمومی بگذاریم؟", options: ["مهم نیست", "ممکن است سوءاستفاده شود", "لایک بیشتر می‌گیریم", "هیچ"], a: 1 },
+            { q: "دیپ‌فیک ویدئوی افراد معروف چه خطری دارد؟", options: ["سرگرمی", "گمراه کردن و تخریب اعتبار", "آموزش", "هیچ"], a: 1 },
+            { q: "چگونه از آزار آنلاین دفاع کنیم؟", options: ["پاسخ تند", "بلاک، گزارش و ذخیره مدرک", "نادیده گرفتن کامل", "هیچ"], a: 1 },
+            { q: "حقوق دیجیتال شامل چه چیزی است؟", options: ["هیچ", "حریم خصوصی و امنیت آنلاین", "فقط سرعت اینترنت", "دانلود رایگان"], a: 1 },
+            { q: "چرا باید از منبع خبری معتبر استفاده کنیم؟", options: ["همه یکی است", "دریافت اطلاعات دقیق و بی‌طرف", "عکس بیشتر دارد", "هیچ"], a: 1 },
+            { q: "به‌روزرسانی نرم‌افزارها چه کمکی می‌کند؟", options: ["کند می‌شود", "رفع حفره‌های امنیتی", "فضای بیشتر می‌گیرد", "هیچ"], a: 1 },
+            { q: "چگونه محتوای جعلی را گزارش کنیم؟", options: ["نادیده بگیریم", "دکمه گزارش در پلتفرم", "بازنشر کنیم", "هیچ"], a: 1 },
+            { q: "شهروندی دیجیتال یعنی چه؟", options: ["استفاده بی‌حد", "رفتار مسئولانه در فضای مجازی", "فقط بازی آنلاین", "هیچ"], a: 1 },
+            { q: "چرا نباید اطلاعات بانکی را در چت بدهیم؟", options: ["امن است", "خطر کلاهبرداری", "سریع‌تر است", "هیچ"], a: 1 },
+            { q: "تفکر انتقادی یعنی چه؟", options: ["باور همه چیز", "تحلیل و ارزیابی قبل از پذیرش", "بازنشر سریع", "هیچ"], a: 1 },
+            { q: "چگونه از شایعه جلوگیری کنیم؟", options: ["بازنشر کنیم", "بررسی قبل از اشتراک‌گذاری", "لایک کنیم", "هیچ"], a: 1 },
+            { q: "نقش ما در فضای مجازی چیست؟", options: ["مصرف‌کننده صرف", "تولیدکننده مسئول محتوا", "فقط تماشا", "هیچ"], a: 1 }
+        ];
+
+        let selectedQuestions = [];
+        let current = 0;
+        let score = 0;
+
+        function startQuiz() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('quizContent').style.display = 'block';
+            selectedQuestions = [...questions].sort(() => 0.5 - Math.random()).slice(0, 10);
+            current = 0;
+            score = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = selectedQuestions[current];
+            const quiz = document.getElementById('quiz');
+            quiz.innerHTML = `
+                <div class="question-card">
+                    <div class="question-text">${current + 1}. ${q.q}</div>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="selectOption(this, \( {i})"> \){opt}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            document.getElementById('nextBtn').disabled = true;
+            updateProgress();
+        }
+
+        function selectOption(el, index) {
+            document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            const selected = document.querySelector('.option.selected');
+            if (!selected) return;
+
+            const answer = Array.from(document.querySelectorAll('.option')).indexOf(selected);
+            if (answer === selectedQuestions[current].a) score += 10;
+
+            current++;
+            if (current < 10) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('progressBar').style.width = `${((current + 1)/10)*100}%`;
+        }
+
+        function showResult() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score').textContent = `${score}٪`;
+            let msg = '';
+            if (score >= 80) msg = 'عالی! سطح دانش شما بسیار بالاست.';
+            else if (score >= 60) msg = 'خوب! با کمی مطالعه بیشتر عالی می‌شوید.';
+            else if (score >= 40) msg = 'متوسط. پیشنهاد می‌شود دوره را کامل مشاهده کنید.';
+            else msg = 'نیاز به یادگیری بیشتر دارید. دوره را با دقت ببینید.';
+            document.getElementById('message').textContent = msg;
+        }
+
+        const body = document.body;
+        const toggle = document.getElementById('themeToggle');
+        const moon = toggle.querySelector('.moon-icon');
+        const sun = toggle.querySelector('.sun-icon');
+        const themeColorMeta = document.getElementById('themeColor');
+
+        const applyTheme = (isDark) => {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                moon.style.display = 'none';
+                sun.style.display = 'block';
+                themeColorMeta.content = '#fcd34d';
+            } else {
+                body.classList.remove('dark-mode');
+                moon.style.display = 'block';
+                sun.style.display = 'none';
+                themeColorMeta.content = '#2563eb';
+            }
+        };
+
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialDark = saved === 'dark' || (!saved && prefersDark);
+        applyTheme(initialDark);
+
+        toggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
