@@ -37,7 +37,7 @@
 
         body.dark-mode {
             --primary: #fcd34d;
-            --primary-light: #fffbeb;
+            --primary-light: #2d3748;
             --text-dark: #f3f4f6;
             --text-gray: #9ca3af;
             --bg: #000000;
@@ -74,6 +74,12 @@
             align-items: center;
             justify-content: space-between;
             padding: 15px 20px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .search-container {
@@ -209,12 +215,18 @@
             transition: all 0.3s ease;
         }
 
+        .video-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
+        }
+
         .video-header {
             padding: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .video-info {
@@ -250,9 +262,8 @@
         .video-summary {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s ease;
             background-color: var(--primary-light);
-            transition: background-color 0.3s ease;
         }
 
         .summary-inner {
@@ -292,7 +303,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </a>
             <div class="logo">هوشمند نما</div>
-            <div class="header-top-right">
+            <div class="header-right">
                 <div class="icon-btn" onclick="toggleSearch()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </div>
@@ -434,16 +445,20 @@
         function toggleItem(element) {
             const parent = element.parentElement;
             const content = parent.querySelector('.video-summary');
-            const isActive = parent.classList.contains('active');
             
             document.querySelectorAll('.video-item').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.video-summary').style.maxHeight = null;
+                if (item !== parent) {
+                    item.classList.remove('active');
+                    item.querySelector('.video-summary').style.maxHeight = null;
+                }
             });
 
-            if (!isActive) {
+            if (parent.classList.contains('active')) {
+                parent.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
                 parent.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.maxHeight = content.scrollHeight + 20 + "px";
             }
         }
 
