@@ -3,39 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سنجش سطح دانش | هوشمند نما</title>
-    <meta name="description" content="آزمون آنلاین رایگان شامل ۱۰ سوال تصادفی از ۵۰ سوال تخصصی سواد رسانه‌ای و امنیت سایبری.">
-    <meta name="keywords" content="سنجش سواد رسانه ای، آزمون امنیت سایبری، تست دانش دیجیتال">
-    <meta name="author" content="امیرمهدی عابدینی">
-    
-    <meta property="og:title" content="سنجش سطح دانش سواد رسانه‌ای | هوشمند نما">
-    <meta property="og:description" content="آزمون ۱۰ سوالی رایگان برای ارزیابی دانش دیجیتال">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/16VU6m-APrS_4me0LJ4JRgoSUrGQqZPow">
-    <meta name="theme-color" id="themeColor" content="#2563eb">
-
+    <title>آزمون جامع هوشمند نما</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-
     <style>
-        /* دقیقاً کپی از index.html */
         :root {
-            --primary: #2563eb;
-            --primary-light: #eff6ff;
-            --text-dark: #1f2937;
-            --text-gray: #6b7280;
-            --bg: #ffffff;
-            --border: #e5e7eb;
+            --primary: #bc6c4d;
+            --primary-light: #f4ece6;
+            --text-dark: #4a4441;
+            --text-gray: #7a7471;
+            --bg: #f9f7f2;
+            --border: #e2ddd9;
             --radius: 16px;
         }
-
         body.dark-mode {
-            --primary: #fcd34d;
-            --primary-light: #422006;
-            --text-dark: #f3f4f6;
-            --text-gray: #9ca3af;
-            --bg: #000000;
-            --border: #374151;
+            --primary: #d4a373;
+            --primary-light: #3d3532;
+            --text-dark: #f1ebe7;
+            --text-gray: #b5ada8;
+            --bg: #1c1917;
+            --border: #44403c;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -43,7 +30,6 @@
             font-family: 'Vazirmatn', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             background-color: var(--bg);
             color: var(--text-dark);
@@ -52,10 +38,8 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: all 0.4s ease;
         }
-
-        /* Header دقیقاً مثل index */
         header {
             display: flex;
             align-items: center;
@@ -66,342 +50,188 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border);
-            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
-
-        .header-left { display: flex; gap: 15px; }
+        .logo { font-weight: 900; font-size: 1.5rem; color: var(--primary); }
         .icon-btn {
             width: 40px; height: 40px; border: 1px solid var(--border);
             border-radius: 12px; display: flex; align-items: center;
             justify-content: center; color: var(--primary); background: var(--bg);
-            cursor: pointer; transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .logo {
-            font-weight: 900; font-size: 1.5rem; color: var(--primary);
-            letter-spacing: -1px; text-align: center; transition: color 0.4s ease;
-        }
-        .moon-icon { fill: var(--primary); stroke: var(--primary); }
-        .sun-icon { fill: var(--primary); stroke: var(--primary); }
-
-        /* Hero Section */
-        .hero {
-            padding: 20px; text-align: center; flex: 1;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 800;
-            margin-bottom: 20px; line-height: 1.4;
-        }
-
-        .hero p {
-            color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px;
-        }
-
-        .action-buttons {
-            display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px; border-radius: 12px; font-weight: bold;
-            font-size: 0.9rem; display: flex; align-items: center;
-            justify-content: center; gap: 8px; cursor: pointer;
-            transition: 0.2s; white-space: nowrap; min-width: 150px;
-        }
-
-        .btn-primary {
-            background-color: var(--primary); color: white; border: none;
-            flex: 1 1 60%;
-        }
-
-        .btn-secondary {
-            background-color: var(--primary-light); color: var(--primary);
-            border: none; flex: 1 1 35%;
-        }
-
-        /* Quiz Section - با استایل‌های index */
-        .quiz-container {
-            max-width: 700px; margin: 0 auto; padding: 0 20px;
-        }
-
+        .hero { padding: 20px; text-align: center; flex: 1; }
+        .quiz-container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
         .question-card {
             border: 1px solid var(--border); border-radius: 20px;
             padding: 25px; background: var(--bg); margin-bottom: 20px;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        .question-card:hover {
-            border-color: var(--primary); box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .question-header {
-            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
-        }
-
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
         .question-number {
             background: var(--primary-light); color: var(--primary);
             padding: 8px 16px; border-radius: 20px; font-weight: bold;
-            font-size: 0.9rem; min-width: 45px; text-align: center;
         }
-
-        .question-text {
-            font-size: 1.2rem; font-weight: 700; color: var(--text-dark);
-            line-height: 1.5;
-        }
-
-        .options-grid {
-            display: grid; gap: 12px; margin-bottom: 25px;
-        }
-
+        .question-text { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); text-align: right; }
+        .options-grid { display: grid; gap: 10px; margin-top: 20px; }
         .option {
-            padding: 18px 20px; border: 1px solid var(--border);
-            border-radius: 16px; cursor: pointer; transition: all 0.3s ease;
-            background: var(--bg); text-align: right; font-weight: 500;
+            padding: 15px; border: 1px solid var(--border);
+            border-radius: 12px; cursor: pointer; transition: 0.3s;
+            background: var(--bg); text-align: right;
         }
-
-        .option:hover {
-            border-color: var(--primary); background: var(--primary-light);
-            transform: translateX(-3px);
+        .option:hover { border-color: var(--primary); background: var(--primary-light); }
+        .option.selected { background: var(--primary); color: white; border-color: var(--primary); }
+        .progress-bar { width: 100%; height: 8px; background: var(--primary-light); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: 0.4s; }
+        .btn {
+            padding: 12px 30px; border-radius: 12px; font-weight: bold;
+            cursor: pointer; transition: 0.2s; border: none; width: 100%;
         }
-
-        .option.selected {
-            background: var(--primary); color: white; border-color: var(--primary);
-        }
-
-        .progress-bar {
-            width: 100%; height: 8px; background: var(--primary-light);
-            border-radius: 4px; overflow: hidden; margin-bottom: 25px;
-        }
-
-        .progress-fill {
-            height: 100%; background: var(--primary);
-            width: 0%; transition: width 0.4s ease; border-radius: 4px;
-        }
-
+        .btn-primary { background-color: var(--primary); color: white; }
         .results-card {
-            text-align: center; padding: 40px 25px; border-radius: 20px;
-            border: 2px solid var(--primary); background: var(--bg);
+            text-align: center; padding: 40px 20px; border-radius: 20px;
+            border: 2px solid var(--primary); background: var(--primary-light);
         }
-
         .score-circle {
-            width: 140px; height: 140px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #10b981);
-            margin: 0 auto 25px; display: flex; align-items: center;
-            justify-content: center; box-shadow: 0 10px 30px rgba(37,99,235,0.3);
+            width: 120px; height: 120px; border-radius: 50%;
+            background: var(--primary); margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 900; color: white;
         }
-
-        .score-number {
-            font-size: 2.2rem; font-weight: 900; color: white;
-        }
-
-        footer {
-            margin-top: 40px; padding: 20px; text-align: center;
-            border-top: 1px solid var(--border); font-size: 0.85rem;
-            color: var(--text-gray); transition: all 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            .action-buttons { flex-wrap: nowrap; }
-            .btn { flex: 1; }
-        }
+        footer { margin-top: auto; padding: 20px; text-align: center; border-top: 1px solid var(--border); font-size: 0.8rem; }
     </style>
 </head>
 <body>
-    <!-- Header دقیقاً مثل index -->
     <header>
-        <div class="icon-btn" style="border:none;">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        </div>
+        <a href="index.html" class="icon-btn" style="border:none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
         <div class="logo">هوشمند نما</div>
-        <div class="header-left">
-            <div class="icon-btn theme-toggle" id="themeToggle">
-                <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            </div>
+        <div class="icon-btn" id="themeToggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="quiz-container">
-                <!-- Intro -->
-                <div id="introSection">
-                    <h1>سنجش سطح دانش سواد رسانه‌ای</h1>
-                    <p>آزمون ۱۰ سوالی تصادفی از ۵۰ سوال تخصصی جهت ارزیابی دانش فعلی</p>
-                    
-                    <div class="action-buttons">
-                        <button onclick="startQuiz()" class="btn btn-primary">
-                            شروع آزمون <span>←</span>
-                        </button>
-                    </div>
-                </div>
+    <main class="hero">
+        <div class="quiz-container">
+            <div id="intro">
+                <h1>آزمون جامع سطح‌بندی</h1>
+                <p>۱۰ سوال تصادفی از بانک ۵۰ سوالی هوشمند نما</p>
+                <button onclick="startQuiz()" class="btn btn-primary" style="margin-top:20px">شروع آزمون</button>
+            </div>
 
-                <!-- Quiz -->
-                <div id="quizSection" style="display:none;">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    
-                    <div id="questionContainer"></div>
-                    
-                    <div class="action-buttons" style="justify-content: center;">
-                        <button id="nextBtn" onclick="nextQuestion()" disabled 
-                                class="btn btn-primary">سوال بعدی ←</button>
-                    </div>
-                </div>
+            <div id="quiz" style="display:none">
+                <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+                <div id="questionBox"></div>
+                <button id="nextBtn" onclick="next()" disabled class="btn btn-primary">تایید و بعدی</button>
+            </div>
 
-                <!-- Results -->
-                <div id="resultsSection" style="display:none;" class="results-card">
-                    <div class="score-circle">
-                        <div class="score-number" id="scoreValue">۰٪</div>
-                    </div>
-                    <h2 id="scoreMessage">عالی!</h2>
-                    <p id="scoreDesc">نتیجه آزمون شما نمایش داده می‌شود</p>
-                    
-                    <div class="action-buttons" style="margin-top: 30px;">
-                        <a href="question.html" class="btn btn-primary">آزمون مجدد</a>
-                        <a href="index.html" class="btn btn-secondary">صفحه اصلی</a>
-                    </div>
+            <div id="result" style="display:none" class="results-card">
+                <div class="score-circle" id="finalScore"></div>
+                <h2 id="msg"></h2>
+                <div style="margin-top:20px">
+                    <button onclick="location.reload()" class="btn btn-primary">آزمون مجدد</button>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer>
-        <p>تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.</p>
-    </footer>
-
     <script>
-        // Theme Toggle (دقیقاً مثل index)
-        const body = document.body;
-        const toggle = document.getElementById('themeToggle');
-        const moon = toggle.querySelector('.moon-icon');
-        const sun = toggle.querySelector('.sun-icon');
-        const themeColorMeta = document.getElementById('themeColor');
-
-        const applyTheme = (isDark) => {
-            if (isDark) {
-                body.classList.add('dark-mode');
-                moon.style.display = 'none';
-                sun.style.display = 'block';
-                themeColorMeta.content = '#fcd34d';
-            } else {
-                body.classList.remove('dark-mode');
-                moon.style.display = 'block';
-                sun.style.display = 'none';
-                themeColorMeta.content = '#2563eb';
-            }
-        };
-
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(saved === 'dark' || (!saved && prefersDark));
-
-        toggle.addEventListener('click', () => {
-            const isDark = !body.classList.contains('dark-mode');
-            applyTheme(isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-
-        // Quiz Logic
-        const questions = [
-            {q:"رسانه چیست؟",o:["ابزار انتقال پیام","فقط تلویزیون","شبکه‌های اجتماعی"],c:0},
-            {q:"فیشینگ به چه معناست؟",o:["دزدی اطلاعات","ماهیگیری","ویروس"],c:0},
-            {q:"رمز عبور قوی شامل چه مواردی است؟",o:["ترکیب حروف،اعداد،نمادها","فقط نام خودم","تاریخ تولد"],c:0},
-            {q:"لینک‌های کوتاه‌شده چه خطری دارند؟",o:["ممکن است فیشینگ باشند","همیشه امن هستند","فقط برای زیبایی"],c:0},
-            {q:"تفکر انتقادی یعنی چه؟",o:["تحلیل و ارزیابی اطلاعات","پذیرش همه چیز","نادیده گرفتن اخبار"],c:0},
-            {q:"Fake News چیست؟",o:["اخبار جعلی و گمراه‌کننده","اخبار قدیمی","اخبار خارجی"],c:0},
-            {q:"بهترین روش تأیید خبر چیست؟",o:["بررسی چند منبع معتبر","پذیرش از اولین منبع","مشارفه با دوستان"],c:0},
-            {q:"دو مرحله‌ای احراز هویت چیست؟",o:["امنیت بیشتر حساب","رمز دوم","ایمیل تأیید"],c:0},
-            {q:"URL امن با چه چیزی شروع می‌شود؟",o:["https://","http://","ftp://"],c:0},
-            {q:"مهندسی اجتماعی چیست؟",o:["فریب دادن افراد","هک فنی","ویروس کامپیوتری"],c:0},
-            // 40 سوال دیگر...
+        const bank = [
+            {q:"اولین قدم برای واکاوی یک پیام رسانه‌ای چیست؟",o:["پذیرش محتوا","شناسایی فرستنده و هدف","ارسال برای دیگران","لایک کردن"],c:1},
+            {q:"کدام یک از نشانه‌های ایمیل فیشینگ است؟",o:["نام فرستنده رسمی","غلط املایی و فوریت کاذب","تاریخ دقیق","متن طولانی"],c:1},
+            {q:"امن‌ترین روش برای قفل گوشی چیست؟",o:["الگوی ساده","رمز عددی ۴ رقمی","تشخیص چهره/اثر انگشت معتبر","بدون قفل"],c:2},
+            {q:"منظور از اتاق پژواک (Echo Chamber) چیست؟",o:["اتاق ضبط صدا","تکرار عقاید مشابه در فضای مجازی","سرعت بالای اینترنت","نویز رسانه‌ای"],c:1},
+            {q:"HTTPS نشانه چیست؟",o:["سرعت بالا","امنیت و رمزنگاری تبادل داده","سایت دولتی","سایت خارجی"],c:1},
+            {q:"دیپ‌فیک (Deepfake) از کدام ابزار استفاده می‌کند؟",o:["فتوشاپ","هوش مصنوعی و یادگیری عمیق","نقاشی دیجیتال","تدوین دستی"],c:1},
+            {q:"در صورت مشاهده آزار سایبری اولین اقدام چیست؟",o:["پاسخ تند","بلاک و گزارش دادن","سکوت همیشگی","حذف اکانت"],c:1},
+            {q:"کدام رمز عبور قوی‌تر است؟",o:["123456","Admin123","H#9k!m2@Pz","MyName2024"],c:2},
+            {q:"ردپای دیجیتال شامل چه مواردی است؟",o:["فقط عکس‌ها","تمامی فعالیت‌های آنلاین ثبت شده","فقط ایمیل‌ها","تعداد فالوور"],c:1},
+            {q:"هدف اصلی مهندسی اجتماعی چیست؟",o:["هک سخت‌افزاری","فریب انسان برای لو دادن اطلاعات","کاهش سرعت سایت","نصب ویندوز"],c:1},
+            {q:"چرا نباید از وای‌فای عمومی برای بانکی استفاده کرد؟",o:["سرعت کم است","احتمال شنود اطلاعات وجود دارد","هزینه بالایی دارد","باعث داغی گوشی می‌شود"],c:1},
+            {q:"منظور از سواد رسانه‌ای چیست؟",o:["فقط خواندن خبر","توانایی تحلیل و تولید آگاهانه پیام","داشتن گوشی هوشمند","عضویت در شبکه‌ها"],c:1},
+            {q:"کدام یک 'خبر جعلی' محسوب می‌شود؟",o:["تحلیل شخصی","شایعه‌ای که به عنوان واقعیت نشر یابد","خبر قدیمی","نقد فیلم"],c:1},
+            {q:"تایید دو مرحله‌ای (2FA) چه مزیتی دارد؟",o:["ورود سریع‌تر","امنیت دوچندان حساب کاربری","ذخیره حجم اینترنت","زیبایی پروفایل"],c:1},
+            {q:"حق کپی‌رایت یعنی چه؟",o:["حق کپی کردن آزاد","حق مالکیت معنوی پدیدآورنده","اجبار به اشتراک‌گذاری","حذف نام نویسنده"],c:1},
+            {q:"یک 'بات' (Bot) در فضای مجازی چه می‌کند؟",o:["فقط چت می‌کند","انجام خودکار وظایف برنامه‌ریزی شده","تعمیر سخت‌افزار","خاموش کردن سرور"],c:1},
+            {q:"نشانه اصلی یک سایت فیشینگ در آدرس‌بار چیست؟",o:["رنگ سبز","تغییر جزئی در حروف دامنه","لوگوی سایت","فونت درشت"],c:1},
+            {q:"منظور از حریم خصوصی دیجیتال چیست؟",o:["نشان دادن همه چیز","کنترل فرد بر اطلاعات شخصی خود","بستن اینترنت","نداشتن پروفایل"],c:1},
+            {q:"کلیک‌بیت (Clickbait) به چه معناست؟",o:["نرم‌افزار کلیک","تیتر فریبنده برای جذب کلیک","سرعت ماوس","بازی رایانه‌ای"],c:1},
+            {q:"کدام ابزار برای راستی‌آزمایی عکس بهتر است؟",o:["اینستاگرام","جستجوی معکوس گوگل","تلگرام","واتس‌اپ"],c:1},
+            {q:"هوش مصنوعی مولد چیست؟",o:["ماشین حساب","سیستمی که محتوای جدید تولید می‌کند","روبات فیزیکی","تلویزیون هوشمند"],c:1},
+            {q:"منظور از فایروال (Firewall) چیست؟",o:["دیوار آتشین فیزیکی","سد دفاعی در برابر دسترسی غیرمجاز","کپسول آتش‌نشانی","آنتی‌ویروس گوشی"],c:1},
+            {q:"بدافزار (Malware) مخفف چیست؟",o:["سخت‌افزار مخرب","نرم‌افزار مخرب","ایمیل تبلیغاتی","بازی آنلاین"],c:1},
+            {q:"اسکم (Scam) به چه معناست؟",o:["پیام تبریک","کلاهبرداری و فریب آنلاین","بروزرسانی سیستم","ذخیره سازی"],c:1},
+            {q:"در مواجهه با خبر شوکه‌کننده چه باید کرد؟",o:["ارسال فوری","صبر و بررسی منابع معتبر","بستن برنامه","لایک کردن"],c:1},
+            {q:"منظور از 'اورکات' در امنیت چیست؟",o:["نام یک هکر","دسترسی از راه دور به سیستم","یک شبکه قدیمی","نام آنتی ویروس"],c:1},
+            {q:"کوکی‌ها در مرورگر چه وظیفه‌ای دارند؟",o:["پاک کردن حافظه","ذخیره تنظیمات و اطلاعات ورود کاربر","افزایش سرعت پردازنده","خنک کردن سیستم"],c:1},
+            {q:"یک شهروند دیجیتال مسئول کیست؟",o:["کسی که زیاد پست می‌گذارد","کسی که اخلاق را در فضای مجازی رعایت می‌کند","کسی که هکر است","کسی که فقط تماشا می‌کند"],c:1},
+            {q:"وی‌پی‌ان (VPN) چه ریسک امنیتی می‌تواند داشته باشد؟",o:["هیچ ریسکی ندارد","دسترسی سرور وی‌پی‌ان به داده‌های شما","کندی ویندوز","تموم شدن شارژ"],c:1},
+            {q:"فیشینگ تلفنی چه نام دارد؟",o:["اسمیشینگ","ویشینگ","ایمیلینگ","کالینگ"],c:1},
+            {q:"بهترین راه برای جلوگیری از نفوذ به مودم چیست؟",o:["خاموش کردن شبانه","تغییر رمز پیش‌فرض و پروتکل WPA3","برداشتن آنتن","گذاشتن زیر جعبه"],c:1},
+            {q:"منظور از بایوس (BIOS) در امنیت چیست؟",o:["اولین سطح نرم‌افزاری راه‌اندازی","نام یک ویروس","نرم‌افزار چت","شرکت سازنده"],c:0},
+            {q:"تفکر الگوریتمی در رسانه یعنی چه؟",o:["حل ریاضی","درک نحوه اولویت‌بندی محتوا توسط سیستم","برنامه‌نویسی سخت","خرید آنلاین"],c:1},
+            {q:"بلاک‌چین در امنیت چه کاربردی دارد؟",o:["ساخت عکس","تامین امنیت و شفافیت داده‌های توزیع شده","بازی سازی","نصب ویندوز"],c:1},
+            {q:"اسمیشینگ (Smishing) حمله از طریق چیست؟",o:["ایمیل","پیامک (SMS)","تماس تصویری","فکس"],c:1},
+            {q:"چرا اخبار جعلی سریع‌تر پخش می‌شوند؟",o:["چون علمی هستند","چون بر احساسات سوار می‌شوند","چون گران هستند","چون کوتاه هستند"],c:1},
+            {q:"قانون '۱۰ ثانیه مکث' برای چیست؟",o:["شارژ گوشی","جلوگیری از واکنش هیجانی به اخبار","سرعت اینترنت","اجرای بازی"],c:1},
+            {q:"نرم‌افزار متن‌باز (Open Source) یعنی چه؟",o:["نرم‌افزار رایگان","نرم‌افزاری که کد آن در دسترس عموم است","نرم‌افزار بدون امنیت","فقط برای لینوکس"],c:1},
+            {q:"منظور از سواد بصری چیست؟",o:["خوب دیدن","توانایی تحلیل تصاویر و نشانه‌ها","عکاسی حرفه‌ای","خرید دوربین"],c:1},
+            {q:"پاپ‌آپ (Pop-up) های مزاحم نشانه چیست؟",o:["جایزه","احتمال وجود بدافزار تبلیغاتی","سرعت بالا","بروزرسانی"],c:1},
+            {q:"امن‌ترین راه برای دانلود اپلیکیشن چیست؟",o:["سایت‌های متفرقه","فروشگاه‌های رسمی (مثل Google Play)","ارسال از طریق بلوتوث","کانال‌های تلگرامی"],c:1},
+            {q:"جاسوس‌افزار (Spyware) چه هدفی دارد؟",o:["کمک به کاربر","سرقت اطلاعات و نظارت مخفیانه","زیبایی ویندوز","افزایش رم"],c:1},
+            {q:"منظور از اینترنت اشیا (IoT) چیست؟",o:["فقط کامپیوترها","اتصال وسایل فیزیکی به اینترنت","اینترنت پرسرعت","کابل کشی"],c:1},
+            {q:"بیت‌کوین چه ارتباطی با باج‌افزار دارد؟",o:["هیچ","واحد پرداخت درخواستی مجرمان سایبری","نام یک آنتی ویروس","شرکت امنیتی"],c:1},
+            {q:"اعتبارسنجی منبع یعنی چه؟",o:["خرید اکانت","بررسی تخصص و سابقه منتشر کننده خبر","لایک زیاد","فالوور بالا"],c:1},
+            {q:"منظور از سواد خبری چیست؟",o:["روزنامه خواندن","تشخیص تفاوت بین واقعیت، نظر و تبلیغ","نوشتن مقاله","خبرنگاری"],c:1},
+            {q:"بهره‌کشی از کودکان در فضای مجازی چه نام دارد؟",o:["فیشینگ","گرومینگ (Grooming)","اسپم","هک"],c:1},
+            {q:"چرا اشتراک‌گذاری مکان لحظه‌ای خطرناک است؟",o:["شارژ کم می‌شود","سوءاستفاده افراد از غیبت شما در منزل","کندی گوشی","تبلیغات"],c:1},
+            {q:"تکنیک 'برش انتخابی' در رسانه چیست؟",o:["سانسور کامل","نمایش بخشی از واقعیت برای تغییر کل مفهوم","چسباندن عکس","فتوشاپ"],c:1},
+            {q:"هدف از ایجاد هوشمند نما چیست؟",o:["بازی","ارتقای سواد رسانه و امنیت نوجوانان","فروش گوشی","تبلیغات"],c:1}
         ];
 
-        let currentQuestion = 0;
-        let score = 0;
-        let selectedAnswers = [];
+        let selectedQ = [], current = 0, score = 0, userAns = null;
 
         function startQuiz() {
-            document.getElementById('introSection').style.display = 'none';
-            document.getElementById('quizSection').style.display = 'block';
-            currentQuestion = 0;
-            score = 0;
-            selectedAnswers = [];
-            showQuestion();
+            selectedQ = bank.sort(() => 0.5 - Math.random()).slice(0, 10);
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+            render();
         }
 
-        function showQuestion() {
-            const container = document.getElementById('questionContainer');
-            const q = questions[Math.floor(Math.random() * questions.length)];
-            
-            container.innerHTML = `
+        function render() {
+            const q = selectedQ[current];
+            document.getElementById('fill').style.width = (current * 10) + '%';
+            document.getElementById('questionBox').innerHTML = `
                 <div class="question-card">
-                    <div class="question-header">
-                        <span class="question-number">سوال ${currentQuestion + 1}/10</span>
-                    </div>
-                    <div class="question-text">${q.q}</div>
+                    <div class="question-header"><span class="question-number">سوال ${current+1}</span></div>
+                    <p class="question-text">${q.q}</p>
                     <div class="options-grid">
-                        ${q.o.map((option, index) => 
-                            `<div class="option" onclick="selectOption(${index})">${option}</div>`
-                        ).join('')}
+                        ${q.o.map((o,i) => `<div class="option" onclick="pick(${i})">${o}</div>`).join('')}
                     </div>
-                </div>
-            `;
-
-            updateProgress();
+                </div>`;
             document.getElementById('nextBtn').disabled = true;
+            userAns = null;
         }
 
-        function selectOption(index) {
-            document.querySelectorAll('.option').forEach((opt, i) => {
-                opt.classList.toggle('selected', i === index);
-            });
+        function pick(i) {
+            userAns = i;
+            document.querySelectorAll('.option').forEach((el,idx) => el.classList.toggle('selected', idx === i));
             document.getElementById('nextBtn').disabled = false;
-            selectedAnswers[currentQuestion] = index;
         }
 
-        function nextQuestion() {
-            if (selectedAnswers[currentQuestion] === questions[0].c) score++;
-            
-            currentQuestion++;
-            if (currentQuestion < 10) {
-                showQuestion();
-            } else {
-                showResults();
-            }
+        function next() {
+            if(userAns === selectedQ[current].c) score++;
+            current++;
+            if(current < 10) render(); else showResult();
         }
 
-        function updateProgress() {
-            const progress = ((currentQuestion) / 10) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+        function showResult() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('finalScore').innerText = (score * 10) + '%';
+            document.getElementById('msg').innerText = score >= 7 ? "سطح شما: عالی" : "سطح شما: نیاز به آموزش";
         }
 
-        function showResults() {
-            const percentage = Math.round((score / 10) * 100);
-            document.getElementById('quizSection').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'block';
-            
-            document.getElementById('scoreValue').textContent = percentage + '%';
-            
-            let message = '', desc = '';
-            if (percentage >= 80) {
-                message = 'عالی! 👏';
-                desc = 'شما دانش بسیار خوبی در سواد رسانه‌ای دارید';
-            } else if (percentage >= 60) {
-                message = 'خوب 👍';
-                desc = 'پایه دانش شما مناسب است، دوره‌های آموزشی کمک‌کننده خواهد بود';
-            } else {
-                message = 'نیاز به مطالعه 📚';
-                desc = 'پیشنهاد می‌شود دوره‌های آموزشی هوشمند نما را مشاهده کنید';
-            }
-            
-            document.getElementById('scoreMessage').textContent = message;
-            document.getElementById('scoreDesc').textContent = desc;
-        }
-
-        function restartQuiz() {
-            document.getElementById('resultsSection').style.display = 'none';
-            document.getElementById('introSection').style.display = 'block';
+        document.getElementById('themeToggle').onclick = () => {
+            document.body.classList.toggle('dark-mode');
         }
     </script>
 </body>
