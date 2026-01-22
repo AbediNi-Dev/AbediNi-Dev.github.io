@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پخش ویدیو | هوشمند نما</title>
+    <meta name="theme-color" content="#bc6c4d">
+    <title>پخش آموزش | هوشمند نما</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
@@ -36,7 +37,8 @@
         body {
             background-color: var(--bg);
             color: var(--text-dark);
-            transition: background-color 0.4s ease;
+            transition: all 0.4s ease;
+            line-height: 1.6;
         }
 
         header {
@@ -58,8 +60,8 @@
         }
 
         .icon-btn {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border: 1px solid var(--border);
             border-radius: 12px;
             display: flex;
@@ -69,6 +71,7 @@
             background: var(--bg);
             cursor: pointer;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .container {
@@ -77,14 +80,19 @@
             margin: 0 auto;
         }
 
-        .video-wrapper {
+        .video-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .video-box {
             width: 100%;
             aspect-ratio: 16/9;
             background: #000;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            position: relative;
         }
 
         video {
@@ -93,53 +101,79 @@
             display: block;
         }
 
-        .video-info-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px;
+        .video-content {
+            padding: 25px;
         }
 
-        .video-info-card h1 {
-            font-size: 1.3rem;
+        .video-content h1 {
+            font-size: 1.4rem;
             font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .video-info-card p {
-            font-size: 0.95rem;
-            line-height: 1.8;
             color: var(--text-dark);
-            text-align: justify;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .action-area {
+        .video-content h1::before {
+            content: "";
+            width: 6px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .video-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 25px;
+            gap: 15px;
         }
 
-        .btn-play {
+        .btn-main {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 14px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 12px;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: 0.3s;
-            border: 1px solid transparent;
         }
 
-        .btn-play:hover {
+        .btn-quiz {
             background: var(--primary);
-            color: white;
+            color: #fff;
+        }
+
+        .btn-quiz:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .btn-back:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-gray);
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -152,7 +186,7 @@
                 <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
         </a>
-        <div class="logo">پخش آموزش</div>
+        <div class="logo">هوشمند نما</div>
         <div class="icon-btn" id="themeToggle">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -161,37 +195,48 @@
     </header>
 
     <main class="container">
-        <div class="video-wrapper">
-            <video controls poster="thumb.jpg">
-                <source src="lesson.mp4" type="video/mp4">
-                مرورگر شما از ویدیو پشتیبانی نمی‌کند.
-            </video>
-        </div>
-
-        <div class="video-info-card">
-            <h1>عنوان جلسه آموزشی</h1>
-            <p>توضیحات مربوط به این ویدیو در این قسمت قرار می‌گیرد. شما می‌توانید جزئیات مربوط به مباحث سواد رسانه و امنیت سایبری این جلسه را در اینجا مطالعه کنید.</p>
+        <div class="video-card">
+            <div class="video-box">
+                <video controls poster="poster.jpg">
+                    <source src="lesson-video.mp4" type="video/mp4">
+                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                </video>
+            </div>
             
-            <div class="action-area">
-                <a href="question.html" class="btn-play">
-                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    شرکت در آزمون
-                </a>
-                <a href="#" class="btn-play">
-                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    دانلود منابع
-                </a>
+            <div class="video-content">
+                <h1>تحلیل پیام‌های رسانه‌ای</h1>
+                <p>در این جلسه آموزشی، ما به عمق تولیدات رسانه‌ای نفوذ می‌کنیم تا بفهمیم پشت هر تصویر یا خبر ساده، چه اهداف و پیام‌های پنهانی نهفته است. یادگیری این مهارت اولین قدم برای تبدیل شدن به یک شهروند دیجیتال هوشمند است.</p>
+                
+                <div class="actions">
+                    <a href="question.html" class="btn-main btn-quiz">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                        شروع کوییز
+                    </a>
+                    <a href="videos.html" class="btn-main btn-back">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        سایر دروس
+                    </a>
+                </div>
             </div>
         </div>
     </main>
 
+    <footer>
+        ارتقای سواد رسانه با <b>هوشمند نما</b>
+    </footer>
+
     <script>
-        const body = document.body;
-        const toggle = document.getElementById('themeToggle');
-        
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-        });
+        const btn = document.getElementById('themeToggle');
+        btn.onclick = () => {
+            document.body.classList.toggle('dark-mode');
+            // تغییر رنگ نوار آدرس در حالت دارک مود (اختیاری)
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (document.body.classList.contains('dark-mode')) {
+                metaTheme.setAttribute('content', '#1c1917');
+            } else {
+                metaTheme.setAttribute('content', '#bc6c4d');
+            }
+        };
     </script>
 </body>
 </html>
