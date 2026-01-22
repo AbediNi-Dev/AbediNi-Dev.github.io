@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>هوشمند نما | پلتفرم تخصصی ارتقای سواد رسانه‌ای و امنیت سایبری</title>
+    
     <meta name="description" content="هوشمند نما؛ مرجع آموزش تخصصی سواد رسانه‌ای، امنیت حریم خصوصی و تفکر انتقادی ویژه دانش‌آموزان و نوجوانان. آموزش مقابله با فیشینگ و مدیریت حضور در فضای مجازی با ۱۸ جلسه آموزشی کوتاه و کاربردی.">
     <meta name="keywords" content="سواد رسانه ای، امنیت دیجیتال، حریم خصوصی، جشنواره خوارزمی، هوش مصنوعی، شناسایی فیشینگ، تفکر انتقادی، آموزش امنیت سایبری نوجوانان">
     <meta name="author" content="امیرمهدی عابدینی">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://abedini-dev.github.io/">
+    
     <meta property="og:title" content="هوشمند نما | آموزش جامع سواد رسانه و امنیت دیجیتال">
     <meta property="og:description" content="۱۸ جلسه آموزشی کوتاه و کاربردی برای ارتقای سواد رسانه‌ای و امنیت سایبری نوجوانان و دانش‌آموزان.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000">
+    
     <meta name="theme-color" id="themeColor" content="#bc6c4d">
+    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
     <style>
         :root {
             --primary: #bc6c4d;
@@ -55,6 +61,7 @@
         }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        
         header {
             display: flex;
             align-items: center;
@@ -67,10 +74,7 @@
             border-bottom: 1px solid var(--border);
             transition: background-color 0.4s ease, border-color 0.4s ease;
         }
-        .header-left {
-            display: flex;
-            gap: 15px;
-        }
+        .header-left { display: flex; gap: 15px; }
         .icon-btn {
             width: 40px;
             height: 40px;
@@ -84,12 +88,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .icon-btn svg {
-            stroke: var(--primary);
-            transition: stroke 0.3s ease;
-        }
+        .icon-btn svg { stroke: var(--primary); transition: stroke 0.3s ease; }
         .moon-icon { fill: var(--primary); stroke: var(--primary); }
         .sun-icon { fill: var(--primary); stroke: var(--primary); }
+        
         .logo {
             font-weight: 900;
             font-size: 1.5rem;
@@ -98,11 +100,8 @@
             text-align: center;
             transition: color 0.4s ease;
         }
-        .hero {
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-        }
+        
+        .hero { padding: 20px; text-align: center; flex: 1; }
         .hero-banner {
             width: 100%;
             border-radius: 20px;
@@ -112,11 +111,8 @@
             background: var(--primary-light);
             border: 1px solid var(--border);
         }
-        .hero-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .hero-banner img { width: 100%; height: auto; display: block; }
+        
         .hero h1 {
             font-size: clamp(1.4rem, 4vw, 1.8rem);
             font-weight: 800;
@@ -124,17 +120,9 @@
             line-height: 1.4;
             color: var(--text-dark);
         }
-        .hero p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
+        .hero p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; }
+        
+        .action-buttons { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
         .btn {
             padding: 12px;
             border-radius: 12px;
@@ -149,18 +137,9 @@
             white-space: nowrap;
             min-width: 150px;
         }
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            flex: 1 1 60%;
-        }
-        .btn-secondary {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            border: 1px solid var(--border);
-            flex: 1 1 35%;
-        }
+        .btn-primary { background-color: var(--primary); color: white; border: none; flex: 1 1 60%; }
+        .btn-secondary { background-color: var(--primary-light); color: var(--primary); border: 1px solid var(--border); flex: 1 1 35%; }
+        
         .stats-row {
             display: flex;
             justify-content: space-around;
@@ -171,176 +150,68 @@
             gap: 20px;
             transition: border-color 0.4s ease;
         }
-        .stat-item {
-            text-align: center;
-            min-width: 100px;
-        }
+        .stat-item { text-align: center; min-width: 100px; }
         .stat-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-            background: var(--bg);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 5px;
+            font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;
+            background: var(--bg); width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;
             box-shadow: 0 4px 15px rgba(188, 108, 77, 0.1);
             transition: all 0.3s ease;
         }
-        .stat-num {
-            font-weight: 800;
-            color: var(--primary);
-            direction: ltr;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            transition: color 0.3s ease;
-        }
-        .section-title {
-            text-align: center;
-            margin: 40px 0 10px;
-        }
-        .section-title h2 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-        }
-        .section-title p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
+        .stat-num { font-weight: 800; color: var(--primary); direction: ltr; display: block; transition: color 0.3s ease; }
+        .stat-label { font-size: 0.8rem; color: var(--text-gray); transition: color 0.3s ease; }
+        
+        .section-title { text-align: center; margin: 40px 0 10px; }
+        .section-title h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; color: var(--text-dark); }
+        .section-title p { color: var(--text-gray); font-size: 0.9rem; }
+        
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
         .cat-card {
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            background: var(--primary-light);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border); border-radius: 20px; padding: 20px;
+            text-align: center; background: var(--primary-light); transition: all 0.3s ease;
         }
-        .cat-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 10px 25px rgba(188, 108, 77, 0.05);
-        }
-        .cat-icon {
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 10px;
-            color: var(--primary);
-            transition: color 0.3s ease;
-        }
+        .cat-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px rgba(188, 108, 77, 0.05); }
+        .cat-icon { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--primary); transition: color 0.3s ease; }
+        
         svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; }
-        .cat-title {
-            font-weight: bold;
-            font-size: 0.85rem;
-            color: var(--text-dark);
-            transition: color 0.3s ease;
-        }
-        .features-section {
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .feature-list {
-            margin: 20px 0;
-        }
+        .cat-title { font-weight: bold; font-size: 0.85rem; color: var(--text-dark); transition: color 0.3s ease; }
+        
+        .features-section { padding: 20px; margin-top: 20px; }
+        .feature-list { margin: 20px 0; }
         .feature-item {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            transition: border-color 0.3s ease;
+            display: flex; align-items: flex-start; justify-content: space-between;
+            padding: 15px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s ease;
         }
         .feature-item:last-child { border: none; }
         .check-icon {
-            background: var(--primary);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 4px;
-            transition: background 0.3s ease;
+            background: var(--primary); color: white; width: 20px; height: 20px;
+            border-radius: 50%; padding: 4px; display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; margin-top: 4px; transition: background 0.3s ease;
         }
-        .feature-text {
-            font-weight: bold;
-            font-size: 0.95rem;
-            text-align: right;
-            flex: 1;
-            padding-right: 10px;
-            color: var(--text-dark);
-        }
+        .feature-text { font-weight: bold; font-size: 0.95rem; text-align: right; flex: 1; padding-right: 10px; color: var(--text-dark); }
+        
         .testimonial-section {
-            padding: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            display: flex;
-            gap: 15px;
+            padding: 20px; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none;
+            scrollbar-width: none; display: flex; gap: 15px;
         }
         .testimonial-section::-webkit-scrollbar { display: none; }
         .quote-card {
-            flex: 0 0 85%;
-            max-width: 350px;
-            white-space: normal;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: 20px;
-            padding: 25px;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
+            flex: 0 0 85%; max-width: 350px; white-space: normal; border: 1px solid var(--border);
+            background: var(--bg); border-radius: 20px; padding: 25px; position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;
         }
         .quote-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            opacity: 0.2;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-family: serif;
-            transition: color 0.3s ease;
+            font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute;
+            top: 20px; left: 20px; font-family: serif; transition: color 0.3s ease;
         }
-        .quote-text {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            transition: color 0.3s ease;
-        }
-        .quote-author {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
+        .quote-text { font-size: 0.95rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 20px; transition: color 0.3s ease; }
+        .quote-author { color: var(--primary); font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease; }
+        
         footer {
-            margin-top: 40px;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            background: var(--primary-light);
-            transition: all 0.3s ease;
+            margin-top: 40px; padding: 20px; text-align: center; border-top: 1px solid var(--border);
+            font-size: 0.85rem; color: var(--text-gray); background: var(--primary-light); transition: all 0.3s ease;
         }
+        
         @media (min-width: 768px) {
             .action-buttons { flex-wrap: nowrap; }
             .btn { flex: 1; }
@@ -356,6 +227,7 @@
     </style>
 </head>
 <body>
+
 <header>
     <div class="icon-btn" style="border:none;">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -368,6 +240,7 @@
         </div>
     </div>
 </header>
+
 <main>
     <section class="hero">
         <div class="hero-banner">
@@ -397,6 +270,7 @@
             </div>
         </div>
     </section>
+
     <section aria-labelledby="cat-title">
         <div class="section-title">
             <h2 id="cat-title">محورهای اصلی یادگیری</h2>
@@ -421,6 +295,7 @@
             </div>
         </div>
     </section>
+
     <section class="features-section">
         <div class="section-title" style="text-align: right;">
             <h2>اهداف راهبردی پلتفرم هوشمند نما</h2>
@@ -445,6 +320,7 @@
             <a href="question.html" class="btn btn-secondary">سنجش سطح دانش</a>
         </div>
     </section>
+
     <section>
         <div class="section-title"><h2>دیدگاه متخصصین حوزه تکنولوژی</h2></div>
         <div class="testimonial-section">
@@ -461,13 +337,17 @@
         </div>
     </section>
 </main>
+
 <footer><p>تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.</p></footer>
+
 <script>
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
     const moon = toggle.querySelector('.moon-icon');
     const sun = toggle.querySelector('.sun-icon');
     const themeColorMeta = document.getElementById('themeColor');
+
+   
     const applyTheme = (isDark) => {
         if (isDark) {
             body.classList.add('dark-mode');
@@ -481,14 +361,20 @@
             themeColorMeta.content = '#bc6c4d';
         }
     };
-    const saved = localStorage.getItem('theme');
+
+    
+    const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = saved === 'dark' || (!saved && prefersDark);
+    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    
     applyTheme(initialDark);
+
+    
     toggle.addEventListener('click', () => {
-        const isDark = !body.classList.contains('dark-mode');
-        applyTheme(isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        const isDarkNow = !body.classList.contains('dark-mode');
+        applyTheme(isDarkNow);
+        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
     });
 </script>
 </body>
