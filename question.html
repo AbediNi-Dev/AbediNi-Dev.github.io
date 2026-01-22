@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="theme-color-meta" name="theme-color" content="#bc6c4d">
     <title>آزمون جامع هوشمند نما</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <style>
@@ -133,6 +134,10 @@
         </div>
     </main>
 
+    <footer>
+        ارتقای سواد رسانه و امنیت با هوشمند نما
+    </footer>
+
     <script>
         const bank = [
             {q:"اولین قدم برای واکاوی یک پیام رسانه‌ای چیست؟",o:["پذیرش محتوا","شناسایی فرستنده و هدف","ارسال برای دیگران","لایک کردن"],c:1},
@@ -177,7 +182,7 @@
             {q:"پاپ‌آپ (Pop-up) های مزاحم نشانه چیست؟",o:["جایزه","احتمال وجود بدافزار تبلیغاتی","سرعت بالا","بروزرسانی"],c:1},
             {q:"امن‌ترین راه برای دانلود اپلیکیشن چیست؟",o:["سایت‌های متفرقه","فروشگاه‌های رسمی (مثل Google Play)","ارسال از طریق بلوتوث","کانال‌های تلگرامی"],c:1},
             {q:"جاسوس‌افزار (Spyware) چه هدفی دارد؟",o:["کمک به کاربر","سرقت اطلاعات و نظارت مخفیانه","زیبایی ویندوز","افزایش رم"],c:1},
-            {q:"منظور از اینترنت اشیا (IoT) چیست؟",o:["فقط کامپیوترها","اتصال وسایل فیزیکی به اینترنت","اینترنت پرسرعت","کابل کشی"],c:1},
+            {q:"منظور از اینترنت اشیا (IoT) چیست؟",o:["فقط کامپترها","اتصال وسایل فیزیکی به اینترنت","اینترنت پرسرعت","کابل کشی"],c:1},
             {q:"بیت‌کوین چه ارتباطی با باج‌افزار دارد؟",o:["هیچ","واحد پرداخت درخواستی مجرمان سایبری","نام یک آنتی ویروس","شرکت امنیتی"],c:1},
             {q:"اعتبارسنجی منبع یعنی چه؟",o:["خرید اکانت","بررسی تخصص و سابقه منتشر کننده خبر","لایک زیاد","فالوور بالا"],c:1},
             {q:"منظور از سواد خبری چیست؟",o:["روزنامه خواندن","تشخیص تفاوت بین واقعیت، نظر و تبلیغ","نوشتن مقاله","خبرنگاری"],c:1},
@@ -231,7 +236,15 @@
         }
 
         document.getElementById('themeToggle').onclick = () => {
-            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            const metaThemeColor = document.getElementById('theme-color-meta');
+            
+        
+            if (isDarkMode) {
+                metaThemeColor.setAttribute('content', '#1c1917');
+            } else {
+                metaThemeColor.setAttribute('content', '#bc6c4d');
+            }
         }
     </script>
 </body>
