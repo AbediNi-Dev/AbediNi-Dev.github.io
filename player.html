@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#bc6c4d">
+    <meta name="theme-color" id="theme-color-meta" content="#bc6c4d">
     <title>پخش آموزش | هوشمند نما</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -37,7 +37,7 @@
         body {
             background-color: var(--bg);
             color: var(--text-dark);
-            transition: all 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
             line-height: 1.6;
         }
 
@@ -51,12 +51,14 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         .logo {
             font-weight: 900;
             font-size: 1.5rem;
             color: var(--primary);
+            transition: color 0.4s ease;
         }
 
         .icon-btn {
@@ -71,7 +73,7 @@
             background: var(--bg);
             cursor: pointer;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .container {
@@ -86,6 +88,7 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         .video-box {
@@ -113,6 +116,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: color 0.4s ease;
         }
 
         .video-content h1::before {
@@ -121,6 +125,7 @@
             height: 24px;
             background: var(--primary);
             border-radius: 10px;
+            transition: background 0.4s ease;
         }
 
         .video-content p {
@@ -128,6 +133,7 @@
             font-size: 0.95rem;
             text-align: justify;
             margin-bottom: 25px;
+            transition: color 0.4s ease;
         }
 
         .actions {
@@ -174,6 +180,7 @@
             padding: 30px;
             color: var(--text-gray);
             font-size: 0.8rem;
+            transition: color 0.4s ease;
         }
     </style>
 </head>
@@ -188,8 +195,12 @@
         </a>
         <div class="logo">هوشمند نما</div>
         <div class="icon-btn" id="themeToggle">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
             </svg>
         </div>
     </header>
@@ -226,16 +237,38 @@
     </footer>
 
     <script>
-        const btn = document.getElementById('themeToggle');
-        btn.onclick = () => {
-            document.body.classList.toggle('dark-mode');
-            // تغییر رنگ نوار آدرس در حالت دارک مود (اختیاری)
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if (document.body.classList.contains('dark-mode')) {
-                metaTheme.setAttribute('content', '#1c1917');
+        const body = document.body;
+        const themeBtn = document.getElementById('themeToggle');
+        const moonIcon = themeBtn.querySelector('.moon-icon');
+        const sunIcon = themeBtn.querySelector('.sun-icon');
+        const metaThemeColor = document.getElementById('theme-color-meta');
+
+        
+        function applyTheme(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+                metaThemeColor.setAttribute('content', '#1c1917');
             } else {
-                metaTheme.setAttribute('content', '#bc6c4d');
+                body.classList.remove('dark-mode');
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+                metaThemeColor.setAttribute('content', '#bc6c4d');
             }
+        }
+
+       
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        applyTheme(initialDark);
+
+        themeBtn.onclick = () => {
+            const isDarkNow = !body.classList.contains('dark-mode');
+            applyTheme(isDarkNow);
+            localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
         };
     </script>
 </body>
