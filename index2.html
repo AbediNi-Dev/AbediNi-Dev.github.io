@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هوشمند نما | پلتفرم تخصصی ارتقای سواد رسانه‌ای و امنیت سایبری</title>
-    <meta name="description" content="هوشمند نما؛ مرجع آموزش تخصصی سواد رسانه‌ای، امنیت حریم خصوصی و تفکر انتقادی ویژه دانش‌آموزان و نوجوانان.">
+    <title>هوشمند نما | پلتفرم تخصصی ارتقای سواد رسانه‌ای</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            /* پالت رنگی الهام گرفته از بنر (Deep Tech Blue) */
-            --primary: #2563eb; /* آبی اصلی بنر */
-            --primary-dark: #1e40af;
-            --accent: #38bdf8; /* آبی روشن نئونی موجود در درخشش‌های بنر */
-            --bg-deep: #0f172a; /* رنگ پس‌زمینه تیره هماهنگ با بنر */
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --radius: 18px;
-            --glow: 0 0 15px rgba(37, 99, 235, 0.3);
+            /* پالت رنگی استخراج شده از تصویر ارسالی */
+            --primary: #bc6c4d; /* آجری/قهوه‌ای گرم دکمه‌ها */
+            --primary-light: #f4ece6; /* کرم روشن پس‌زمینه کارت‌ها */
+            --text-dark: #4a4441; /* خاکستری تیره مایل به قهوه‌ای برای متون */
+            --text-gray: #7a7471; 
+            --bg: #f9f7f2; /* رنگ پس‌زمینه اصلی (استخوانی/کرم) */
+            --border: #e2ddd9;
+            --radius: 12px;
         }
 
-        body.light-mode {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --accent: #0ea5e9;
-            --bg-deep: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --glow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        body.dark-mode {
+            --primary: #d4a373;
+            --primary-light: #3d3532;
+            --text-dark: #f1ebe7;
+            --text-gray: #b5ada8;
+            --bg: #1c1917;
+            --border: #44403c;
         }
 
         * {
@@ -38,237 +31,157 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            line-height: 1.7;
-            transition: all 0.4s ease;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 5%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            background: var(--bg);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
             font-weight: 900;
-            font-size: 1.6rem;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            color: var(--text-dark);
         }
 
         .icon-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+            color: var(--primary);
             cursor: pointer;
-            color: var(--accent);
-            transition: 0.3s;
+            background: transparent;
         }
 
-        .hero {
-            padding: 40px 5%;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .hero { padding: 40px 5%; text-align: center; }
 
         .hero-banner {
             width: 100%;
-            border-radius: 24px;
+            border-radius: 15px;
             overflow: hidden;
             margin-bottom: 30px;
-            box-shadow: var(--glow);
             border: 1px solid var(--border);
         }
 
-        .hero-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-
         .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.2rem;
             font-weight: 800;
+            color: var(--text-dark);
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 40px;
         }
 
         .btn {
-            padding: 14px 28px;
-            border-radius: 14px;
+            padding: 12px 25px;
+            border-radius: 8px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
-            display: flex;
+            transition: 0.3s;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background-color: var(--primary);
             color: white;
-            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+            border: none;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
 
         .btn-secondary {
-            background: var(--card-bg);
-            color: var(--text-main);
+            background-color: var(--primary-light);
+            color: var(--primary);
             border: 1px solid var(--border);
         }
 
         .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 0;
+            margin: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(188, 108, 77, 0.03);
         }
 
-        .stat-item { text-align: center; }
-        .stat-icon {
-            color: var(--accent);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .stat-num {
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--text-main);
-            display: block;
-        }
+        .stat-num { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             padding: 20px 5%;
         }
 
         .cat-card {
-            background: var(--card-bg);
+            background: var(--primary-light);
             border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 20px;
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
             transition: 0.3s;
         }
 
-        .cat-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-        }
+        .cat-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        .cat-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 15px;
-            color: var(--accent);
-        }
-
-        .features-section {
-            background: linear-gradient(to bottom, var(--bg-deep), var(--card-bg));
-            padding: 60px 5%;
-            margin-top: 40px;
-            border-radius: 40px 40px 0 0;
-        }
+        .cat-icon { color: var(--primary); width: 35px; height: 35px; margin: 0 auto 15px; }
 
         .feature-item {
             display: flex;
             align-items: center;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            margin-bottom: 15px;
-            border-radius: 15px;
-            border-right: 4px solid var(--primary);
+            padding: 15px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
-        .feature-text { margin-right: 15px; font-weight: 600; }
-
-        .testimonial-section {
-            display: flex;
-            gap: 20px;
-            padding: 40px 5%;
-            overflow-x: auto;
-        }
-
-        .quote-card {
-            min-width: 300px;
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            border-left: 4px solid var(--accent);
-        }
+        .check-icon { background: var(--primary); color: white; border-radius: 50%; padding: 3px; width: 20px; height: 20px; margin-left: 10px;}
 
         footer {
-            padding: 40px;
+            margin-top: 50px;
+            padding: 30px;
             text-align: center;
-            border-top: 1px solid var(--border);
-            background: var(--bg-deep);
-            color: var(--text-muted);
+            background: var(--primary-light);
+            color: var(--text-gray);
         }
 
-        svg { fill: none; stroke: currentColor; stroke-width: 2; }
-
-        @media (max-width: 768px) {
-            .action-buttons { flex-direction: column; }
-            .btn { width: 100%; justify-content: center; }
-        }
+        svg { fill: none; stroke: currentColor; stroke-width: 2.5; }
     </style>
 </head>
-<body class="dark-mode"> <header>
-    <div class="icon-btn" style="border:none;">
-        <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-    </div>
+<body>
+
+<header>
     <div class="logo">هوشمند نما</div>
     <div class="header-left">
-        <div class="icon-btn theme-toggle" id="themeToggle">
-            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg class="sun-icon" style="display:none" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <div class="icon-btn" id="themeToggle">
+            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="sun-icon" style="display:none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </div>
     </div>
 </header>
@@ -276,73 +189,42 @@
 <main>
     <section class="hero">
         <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200" alt="سواد رسانه‌ای">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200" alt="سواد رسانه‌ای" style="width:100%">
         </div>
-        <h1>امنیت دیجیتال و سواد رسانه‌ای</h1>
-        <p>مرجع تخصصی آموزش تفکر انتقادی و صیانت از حریم خصوصی در عصر هوش مصنوعی</p>
+        <h1>هوشمندانه در فضای مجازی حضور یابید</h1>
+        <p>ارتقای سواد رسانه‌ای و امنیت سایبری با متدهای نوین آموزشی</p>
         
-        <div class="action-buttons">
-            <a href="#" class="btn btn-primary">شروع یادگیری رایگان</a>
-            <a href="#" class="btn btn-secondary">سنجش سطح دانش</a>
+        <div style="margin: 30px 0; display: flex; gap: 10px; justify-content: center;">
+            <a href="#" class="btn btn-primary">مشاهده دوره‌ها</a>
+            <a href="#" class="btn btn-secondary">سنجش دانش</a>
         </div>
 
         <div class="stats-row">
             <div class="stat-item">
-                <div class="stat-icon">🎓</div>
-                <span class="stat-num">60+</span>
-                <span class="stat-label">محتوای آموزشی</span>
+                <span class="stat-num">۱۸</span>
+                <div style="font-size: 0.8rem;">جلسه آموزشی</div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon">⏱️</div>
-                <span class="stat-num">20 دقیقه</span>
-                <span class="stat-label">زمان یادگیری روزانه</span>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">🛡️</div>
-                <span class="stat-num">100%</span>
-                <span class="stat-label">امنیت کاربر</span>
+                <span class="stat-num">۲۰۴</span>
+                <div style="font-size: 0.8rem;">دانش‌آموز فعال</div>
             </div>
         </div>
     </section>
 
-    <section>
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 1.8rem;">محورهای آموزشی</h2>
+    <div class="categories-grid">
+        <div class="cat-card">
+            <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div style="font-weight: bold;">امنیت حساب‌ها</div>
         </div>
-        <div class="categories-grid">
-            <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <h3>امنیت سایبری</h3>
-            </div>
-            <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                <h3>سواد رسانه</h3>
-            </div>
-            <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3-3.5 3.5z"/></svg></div>
-                <h3>مهندسی اجتماعی</h3>
-            </div>
+        <div class="cat-card">
+            <div class="cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div style="font-weight: bold;">تفکر انتقادی</div>
         </div>
-    </section>
-
-    <section class="features-section">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="margin-bottom: 25px;">چرا هوشمند نما؟</h2>
-            <div class="feature-item">
-                <div class="feature-text">آموزش بر اساس جدیدترین تهدیدات سال 2026</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-text">پروتکل‌های عملی برای محافظت از حساب‌های بانکی و شبکه اجتماعی</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-text">تشخیص اخبار جعلی با ابزارهای هوش مصنوعی</div>
-            </div>
-        </div>
-    </section>
+    </div>
 </main>
 
 <footer>
-    <p>تمامی حقوق برای <b>امیرمهدی عابدینی</b> محفوظ است.</p>
+    <p>تمامی حقوق متعلق به امیرمهدی عابدینی است.</p>
 </footer>
 
 <script>
@@ -351,23 +233,11 @@
     const sun = toggle.querySelector('.sun-icon');
     
     toggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const isLight = document.body.classList.contains('light-mode');
-        moon.style.display = isLight ? 'block' : 'none';
-        sun.style.display = isLight ? 'none' : 'block';
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        moon.style.display = isDark ? 'none' : 'block';
+        sun.style.display = isDark ? 'block' : 'none';
     });
-
-    // بارگذاری تم ذخیره شده
-    if(localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
-        moon.style.display = 'block';
-        sun.style.display = 'none';
-    } else {
-        moon.style.display = 'none';
-        sun.style.display = 'block';
-    }
 </script>
-
 </body>
 </html>
