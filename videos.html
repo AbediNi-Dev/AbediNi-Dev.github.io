@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="theme-color-meta" name="theme-color" content="#bc6c4d">
     <title>سرفصل‌های آموزشی | هوشمند نما</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -43,6 +44,7 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border);
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
         .header-top {
             display: flex;
@@ -54,10 +56,11 @@
             font-weight: 900;
             font-size: 1.5rem;
             color: var(--primary);
+            transition: color 0.4s ease;
         }
         .icon-btn {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border: 1px solid var(--border);
             border-radius: 12px;
             display: flex;
@@ -66,19 +69,26 @@
             background: var(--bg);
             cursor: pointer;
             color: var(--primary);
+            transition: all 0.3s ease;
         }
         .search-container {
             padding: 0 20px 15px;
             display: none;
+            animation: fadeInDown 0.3s ease;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .search-input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border: 2px solid var(--primary);
             border-radius: 12px;
             outline: none;
-            background: var(--primary-light);
+            background: var(--bg);
             color: var(--text-dark);
+            font-weight: 600;
         }
         .main-container {
             padding: 20px;
@@ -87,12 +97,13 @@
         }
         .hero-banner {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             margin-bottom: 25px;
             aspect-ratio: 16 / 9;
             background: var(--primary-light);
             border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .hero-banner img {
             width: 100%;
@@ -101,13 +112,14 @@
         }
         .phase-title {
             font-size: 1.1rem;
-            font-weight: 800;
+            font-weight: 900;
             color: var(--primary);
-            margin: 30px 0 15px 0;
-            padding: 10px;
-            border-right: 4px solid var(--primary);
+            margin: 35px 0 15px 0;
+            padding: 12px 15px;
+            border-right: 5px solid var(--primary);
             background-color: var(--primary-light);
-            border-radius: 8px;
+            border-radius: 10px;
+            transition: all 0.4s ease;
         }
         .video-item {
             background: var(--bg);
@@ -119,45 +131,60 @@
         }
         .video-item.active {
             border-color: var(--primary);
-            box-shadow: 0 4px 15px rgba(188, 108, 77, 0.1);
+            box-shadow: 0 8px 20px rgba(188, 108, 77, 0.1);
         }
         .video-header {
-            padding: 15px;
+            padding: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
         }
         .play-icon {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background: var(--primary);
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .video-item:hover .play-icon {
+            transform: scale(1.1);
         }
         .video-summary {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: var(--primary-light);
         }
         .summary-inner {
-            padding: 15px;
-            font-size: 0.9rem;
+            padding: 20px;
+            font-size: 0.95rem;
             border-top: 1px solid var(--border);
         }
+        .summary-inner p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
         .action-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
             background: var(--primary);
             color: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
         svg { fill: none; stroke: currentColor; stroke-width: 2.5; }
     </style>
@@ -174,13 +201,13 @@
                     <svg viewBox="0 0 24 24" width="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </div>
                 <div class="icon-btn" id="themeToggle">
-                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 </div>
             </div>
         </div>
         <div class="search-container" id="searchBox">
-            <input type="text" class="search-input" id="searchInput" placeholder="جستجوی در مباحث..." onkeyup="liveSearch()">
+            <input type="text" class="search-input" id="searchInput" placeholder="جستجوی عنوان درس..." onkeyup="liveSearch()">
         </div>
     </header>
 
@@ -192,38 +219,39 @@
     </main>
 
     <script>
+        
         const phases = [
             {
                 title: "فاز اول: سواد رسانه و تفکر انتقادی",
                 episodes: [
-                    { title: "مفهوم رسانه و پیام‌های پنهان", summary: "آشنایی با لایه‌های زیرین تولیدات رسانه‌ای." },
-                    { title: "تکنیک‌های زرد نویسی و دام کلیک", summary: "چگونه عناوین فریبنده ما را جذب می‌کنند؟" },
-                    { title: "عملکرد الگوریتم‌های پیشنهاد دهنده", summary: "چرا محتواهای خاصی را در اکسپلور می‌بینیم؟" },
-                    { title: "راستی‌آزمایی اخبار در یک دقیقه", summary: "جعبه ابزار تشخیص اخبار جعلی از واقعی." },
-                    { title: "جستجوی معکوس و اعتبار سنجی عکس", summary: "شناسایی تصاویر دستکاری شده و فتوشاپ." },
-                    { title: "ردپای دیجیتال و برندینگ شخصی", summary: "تأثیر فعالیت‌های آنلاین بر آینده شغلی." }
+                    { title: "مفهوم رسانه و پیام‌های پنهان", summary: "در این جلسه یاد می‌گیریم که چگونه لایه‌های زیرین و اهداف تولیدکنندگان پیام‌های رسانه‌ای را کشف کنیم." },
+                    { title: "تکنیک‌های زرد نویسی و دام کلیک", summary: "چرا روی برخی خبرها کلیک می‌کنیم؟ بررسی روانشناختی عناوین فریبنده." },
+                    { title: "عملکرد الگوریتم‌های پیشنهاد دهنده", summary: "تحلیل نحوه کارکرد اینستاگرام و یوتیوب در نمایش محتواهای شخصی‌سازی شده." },
+                    { title: "راستی‌آزمایی اخبار در یک دقیقه", summary: "معرفی ابزارهای سریع برای تشخیص شایعه از واقعیت." },
+                    { title: "جستجوی معکوس و اعتبار سنجی عکس", summary: "چگونه بفهمیم یک عکس واقعی است یا با فتوشاپ و هوش مصنوعی ساخته شده؟" },
+                    { title: "ردپای دیجیتال و برندینگ شخصی", summary: "هر لایک و کامنت شما شناسنامه آینده شماست. مدیریت ردپای دیجیتال." }
                 ]
             },
             {
                 title: "فاز دوم: امنیت دیجیتال و صیانت",
                 episodes: [
-                    { title: "مهندسی گذرواژه‌های نفوذ ناپذیر", summary: "اصول طراحی پسوردهای امن و مدیریت آن‌ها." },
-                    { title: "فعالسازی لایه‌های امنیتی 2FA", summary: "آموزش گام به گام تایید دو مرحله‌ای." },
-                    { title: "آناتومی لینک‌های آلوده و فیشینگ", summary: "شناسایی درگاه‌های پرداخت جعلی." },
-                    { title: "مدیریت دسترسی اپلیکیشن‌ها", summary: "کدام برنامه‌ها جاسوسی ما را می‌کنند؟" },
-                    { title: "امنیت در شبکه‌های وای‌فای عمومی", summary: "خطرات اتصال به اینترنت رایگان در اماکن عمومی." },
-                    { title: "پیشگیری از هک و نفوذ به اکانت", summary: "روش‌های مقابله با بدافزارها و رات‌ها." }
+                    { title: "مهندسی گذرواژه‌های نفوذ ناپذیر", summary: "فراتر از ۱۲۳۴۵۶؛ چگونه رمزی بسازیم که ابرکامپیوترها هم نتوانند حدس بزنند." },
+                    { title: "فعالسازی لایه‌های امنیتی 2FA", summary: "امنیت حساب‌های کاربری خود را با تایید دو مرحله‌ای صدبرابر کنید." },
+                    { title: "آناتومی لینک‌های آلوده و فیشینگ", summary: "کالبدشکافی پیامک‌های جعلی ابلاغیه قضایی و سهام عدالت." },
+                    { title: "مدیریت دسترسی اپلیکیشن‌ها", summary: "بررسی دسترسی‌های مشکوک (میکروفون، گالری و...) در برنامه‌های موبایلی." },
+                    { title: "امنیت در شبکه‌های وای‌فای عمومی", summary: "چرا نباید در کافه یا فرودگاه وارد حساب بانکی شد؟" },
+                    { title: "پیشگیری از هک و نفوذ به اکانت", summary: "شناخت بدافزارها و راه‌های پاکسازی گوشی آلوده." }
                 ]
             },
             {
                 title: "فاز سوم: تکنولوژی‌های نوظهور و اخلاق",
                 episodes: [
-                    { title: "شناخت تصاویر ساخته شده با AI", summary: "نشانه‌های بصری برای تشخیص کارهای هوش مصنوعی." },
-                    { title: "دیپ فیک؛ جعل واقعیت", summary: "خطر ویدئوهای جعلی و نحوه تشخیص آن‌ها." },
-                    { title: "پرسشگری انتقادی در فضای مجازی", summary: "چگونه هر چیزی را به راحتی باور نکنیم؟" },
-                    { title: "مقابله با قلدری و آزار سایبری", summary: "روش‌های برخورد با ترول‌ها و مزاحمان آنلاین." },
-                    { title: "حقوق مولف و کپی رایت دیجیتال", summary: "قوانین استفاده از محتوای دیگران." },
-                    { title: "مسئولیت اجتماعی شهروند دیجیتال", summary: "اخلاق حرفه‌ای در تعاملات فضای مجازی." }
+                    { title: "شناخت تصاویر ساخته شده با AI", summary: "نکات کلیدی برای تشخیص تصاویر جعلی ساخته شده توسط Midjourney و DALL-E." },
+                    { title: "دیپ فیک؛ جعل واقعیت", summary: "وقتی ویدئوها دروغ می‌گویند؛ آشنایی با تکنولوژی جعل عمیق چهره و صدا." },
+                    { title: "پرسشگری انتقادی در فضای مجازی", summary: "تقویت ماهیچه شک و پرسشگری قبل از باور کردن هر محتوا." },
+                    { title: "مقابله با قلدری و آزار سایبری", summary: "در برابر هیت‌رها و ترول‌های مجازی چگونه از سلامت روان خود محافظت کنیم؟" },
+                    { title: "حقوق مولف و کپی رایت دیجیتال", summary: "اخلاق در استفاده از آثار دیگران و قوانین جهانی کپی رایت." },
+                    { title: "مسئولیت اجتماعی شهروند دیجیتال", summary: "چگونه به عنوان یک کاربر بالغ و مسئولیت‌پذیر در فضای آنلاین رفتار کنیم؟" }
                 ]
             }
         ];
@@ -231,6 +259,7 @@
         const container = document.getElementById('course-list');
         let counter = 1;
 
+        
         phases.forEach(phase => {
             const h2 = document.createElement('h2');
             h2.className = 'phase-title';
@@ -242,27 +271,65 @@
                 div.className = 'video-item';
                 div.innerHTML = `
                     <div class="video-header" onclick="toggleItem(this)">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <div class="play-icon"><svg viewBox="0 0 24 24" width="18" stroke="white"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24" width="20" stroke="white" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
                             <div>
-                                <h3 class="title-text">${ep.title}</h3>
-                                <small style="color:var(--text-gray)">جلسه ${counter++}</small>
+                                <h3 class="title-text" style="font-size:1rem; font-weight:800;">${ep.title}</h3>
+                                <small style="color:var(--text-gray); font-weight:bold;">جلسه ${counter++}</small>
                             </div>
                         </div>
+                        <svg class="chevron" viewBox="0 0 24 24" width="18" style="transition:0.3s"><path d="M6 9l6 6 6-6"/></svg>
                     </div>
                     <div class="video-summary">
                         <div class="summary-inner">
                             <p>${ep.summary}</p>
-                            <a href="player.html" class="action-btn">مشاهده ویدیو</a>
+                            <a href="player.html" class="action-btn">
+                                <svg viewBox="0 0 24 24" width="18" stroke="white"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                ورود به کلاس
+                            </a>
                         </div>
                     </div>`;
                 container.appendChild(div);
             });
         });
 
+        
+        const body = document.body;
+        const themeBtn = document.getElementById('themeToggle');
+        const moonIcon = themeBtn.querySelector('.moon-icon');
+        const sunIcon = themeBtn.querySelector('.sun-icon');
+        const metaThemeColor = document.getElementById('theme-color-meta');
+
+        function applyTheme(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+                metaThemeColor.setAttribute('content', '#1c1917');
+            } else {
+                body.classList.remove('dark-mode');
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+                metaThemeColor.setAttribute('content', '#bc6c4d');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        applyTheme(savedTheme === 'dark');
+
+        themeBtn.onclick = () => {
+            const isDark = !body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+
+        
         function toggleSearch() {
             const box = document.getElementById('searchBox');
             box.style.display = box.style.display === 'block' ? 'none' : 'block';
+            if(box.style.display === 'block') document.getElementById('searchInput').focus();
         }
 
         function liveSearch() {
@@ -277,24 +344,22 @@
         function toggleItem(el) {
             const parent = el.parentElement;
             const content = parent.querySelector('.video-summary');
+            const chevron = el.querySelector('.chevron');
             const isActive = parent.classList.contains('active');
+
+         
             document.querySelectorAll('.video-item').forEach(i => {
                 i.classList.remove('active');
                 i.querySelector('.video-summary').style.maxHeight = null;
+                i.querySelector('.chevron').style.transform = 'rotate(0deg)';
             });
+
             if (!isActive) {
                 parent.classList.add('active');
                 content.style.maxHeight = content.scrollHeight + "px";
+                chevron.style.transform = 'rotate(180deg)';
             }
         }
-
-        const toggle = document.getElementById('themeToggle');
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            toggle.querySelector('.moon-icon').style.display = isDark ? 'none' : 'block';
-            toggle.querySelector('.sun-icon').style.display = isDark ? 'block' : 'none';
-        });
     </script>
 </body>
 </html>
