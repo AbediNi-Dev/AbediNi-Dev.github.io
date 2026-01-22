@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هوشمند نما | پلتفرم تخصصی ارتقای سواد رسانه‌ای و امنیت سایبری</title>
+    <meta name="description" content="هوشمند نما؛ مرجع آموزش تخصصی سواد رسانه‌ای، امنیت حریم خصوصی و تفکر انتقادی ویژه دانش‌آموزان و نوجوانان.">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            /* پالت رنگی الهام گرفته از بنر (Deep Tech Blue) */
+            --primary: #2563eb; /* آبی اصلی بنر */
+            --primary-dark: #1e40af;
+            --accent: #38bdf8; /* آبی روشن نئونی موجود در درخشش‌های بنر */
+            --bg-deep: #0f172a; /* رنگ پس‌زمینه تیره هماهنگ با بنر */
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --radius: 18px;
+            --glow: 0 0 15px rgba(37, 99, 235, 0.3);
+        }
+
+        body.light-mode {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #0ea5e9;
+            --bg-deep: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --glow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.7;
+            transition: all 0.4s ease;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.6rem;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            color: var(--accent);
+            transition: 0.3s;
+        }
+
+        .hero {
+            padding: 40px 5%;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-banner {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--glow);
+            border: 1px solid var(--border);
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-item { text-align: center; }
+        .stat-icon {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-num {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 20px 5%;
+        }
+
+        .cat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .cat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+
+        .cat-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            color: var(--accent);
+        }
+
+        .features-section {
+            background: linear-gradient(to bottom, var(--bg-deep), var(--card-bg));
+            padding: 60px 5%;
+            margin-top: 40px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .feature-text { margin-right: 15px; font-weight: 600; }
+
+        .testimonial-section {
+            display: flex;
+            gap: 20px;
+            padding: 40px 5%;
+            overflow-x: auto;
+        }
+
+        .quote-card {
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: var(--bg-deep);
+            color: var(--text-muted);
+        }
+
+        svg { fill: none; stroke: currentColor; stroke-width: 2; }
+
+        @media (max-width: 768px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body class="dark-mode"> <header>
+    <div class="icon-btn" style="border:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+    </div>
+    <div class="logo">هوشمند نما</div>
+    <div class="header-left">
+        <div class="icon-btn theme-toggle" id="themeToggle">
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="sun-icon" style="display:none" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-banner">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200" alt="سواد رسانه‌ای">
+        </div>
+        <h1>امنیت دیجیتال و سواد رسانه‌ای</h1>
+        <p>مرجع تخصصی آموزش تفکر انتقادی و صیانت از حریم خصوصی در عصر هوش مصنوعی</p>
+        
+        <div class="action-buttons">
+            <a href="#" class="btn btn-primary">شروع یادگیری رایگان</a>
+            <a href="#" class="btn btn-secondary">سنجش سطح دانش</a>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-icon">🎓</div>
+                <span class="stat-num">60+</span>
+                <span class="stat-label">محتوای آموزشی</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">⏱️</div>
+                <span class="stat-num">20 دقیقه</span>
+                <span class="stat-label">زمان یادگیری روزانه</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🛡️</div>
+                <span class="stat-num">100%</span>
+                <span class="stat-label">امنیت کاربر</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 1.8rem;">محورهای آموزشی</h2>
+        </div>
+        <div class="categories-grid">
+            <div class="cat-card">
+                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>امنیت سایبری</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                <h3>سواد رسانه</h3>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3-3.5 3.5z"/></svg></div>
+                <h3>مهندسی اجتماعی</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="margin-bottom: 25px;">چرا هوشمند نما؟</h2>
+            <div class="feature-item">
+                <div class="feature-text">آموزش بر اساس جدیدترین تهدیدات سال 2026</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-text">پروتکل‌های عملی برای محافظت از حساب‌های بانکی و شبکه اجتماعی</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-text">تشخیص اخبار جعلی با ابزارهای هوش مصنوعی</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>تمامی حقوق برای <b>امیرمهدی عابدینی</b> محفوظ است.</p>
+</footer>
+
+<script>
+    const toggle = document.getElementById('themeToggle');
+    const moon = toggle.querySelector('.moon-icon');
+    const sun = toggle.querySelector('.sun-icon');
+    
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        moon.style.display = isLight ? 'block' : 'none';
+        sun.style.display = isLight ? 'none' : 'block';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // بارگذاری تم ذخیره شده
+    if(localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        moon.style.display = 'block';
+        sun.style.display = 'none';
+    } else {
+        moon.style.display = 'none';
+        sun.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
