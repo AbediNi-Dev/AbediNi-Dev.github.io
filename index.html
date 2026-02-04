@@ -3,379 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هوشمند نما | پلتفرم تخصصی ارتقای سواد رسانه‌ای و امنیت سایبری</title>
+    <title>هوشمند نما | ارتقای سواد رسانه‌ای و امنیت سایبری</title>
     
-    <meta name="description" content="هوشمند نما؛ مرجع آموزش تخصصی سواد رسانه‌ای، امنیت حریم خصوصی و تفکر انتقادی ویژه دانش‌آموزان و نوجوانان. آموزش مقابله با فیشینگ و مدیریت حضور در فضای مجازی با ۱۸ جلسه آموزشی کوتاه و کاربردی.">
-    <meta name="keywords" content="سواد رسانه ای، امنیت دیجیتال، حریم خصوصی، جشنواره خوارزمی، هوش مصنوعی، شناسایی فیشینگ، تفکر انتقادی، آموزش امنیت سایبری نوجوانان">
+    <meta name="description" content="هوشمند نما؛ مرجع آموزش تخصصی سواد رسانه‌ای و امنیت دیجیتال ویژه نوجوانان. آموزش مقابله با فیشینگ و مدیریت حریم خصوصی.">
+    <meta name="keywords" content="سواد رسانه ای, امنیت دیجیتال, جشنواره خوارزمی, هوش مصنوعی, فیشینگ">
     <meta name="author" content="امیرمهدی عابدینی">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://abedini-dev.github.io/">
     
-    <meta property="og:title" content="هوشمند نما | آموزش جامع سواد رسانه و امنیت دیجیتال">
-    <meta property="og:description" content="۱۸ جلسه آموزشی کوتاه و کاربردی برای ارتقای سواد رسانه‌ای و امنیت سایبری نوجوانان و دانش‌آموزان.">
+    <meta property="og:title" content="هوشمند نما | آموزش جامع سواد رسانه">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500">
     
     <meta name="theme-color" id="themeColor" content="#bc6c4d">
-    
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
 
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     
     <style>
         :root {
             --primary: #bc6c4d;
+            --primary-hover: #a05a3e;
             --primary-light: #f4ece6;
-            --text-dark: #4a4441;
-            --text-gray: #7a7471;
-            --bg: #f9f7f2;
-            --border: #e2ddd9;
-            --radius: 16px;
+            --text-dark: #2d2a28;
+            --text-gray: #5e5855;
+            --bg: #fdfcfb;
+            --border: #e8e3e0;
+            --shadow: 0 10px 30px -10px rgba(188, 108, 77, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         body.dark-mode {
             --primary: #d4a373;
-            --primary-light: #3d3532;
-            --text-dark: #f1ebe7;
-            --text-gray: #b5ada8;
-            --bg: #1c1917;
-            --border: #44403c;
+            --primary-hover: #e5b88b;
+            --primary-light: #2d2623;
+            --text-dark: #f8f1ed;
+            --text-gray: #b0a6a0;
+            --bg: #12100f;
+            --border: #332d2a;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
         }
+
         body {
             background-color: var(--bg);
             color: var(--text-dark);
-            line-height: 1.6;
-            padding-bottom: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.8;
+            transition: var(--transition);
         }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        
+
+        /* Header & Navigation */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
+            padding: 1rem 5%;
             background: var(--bg);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 1px solid var(--border);
-            transition: background-color 0.4s ease, border-color 0.4s ease;
+            backdrop-filter: blur(10px);
         }
-        .header-left { display: flex; gap: 15px; }
-        .icon-btn {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            background: var(--bg);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .icon-btn svg { stroke: var(--primary); transition: stroke 0.3s ease; }
-        .moon-icon { fill: var(--primary); stroke: var(--primary); }
-        .sun-icon { fill: var(--primary); stroke: var(--primary); }
-        
+
         .logo {
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary);
-            letter-spacing: -1px;
-            text-align: center;
-            transition: color 0.4s ease;
+            text-shadow: 2px 2px 0px var(--primary-light);
         }
-        
-        .hero { padding: 20px; text-align: center; flex: 1; }
-        .hero-banner {
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            position: relative;
-            background: var(--primary-light);
+
+        .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
             border: 1px solid var(--border);
-        }
-        .hero-banner img { width: 100%; height: auto; display: block; }
-        
-        .hero h1 {
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            font-weight: 800;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            color: var(--text-dark);
-        }
-        .hero p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; }
-        
-        .action-buttons { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        .btn {
-            padding: 12px;
             border-radius: 12px;
-            font-weight: bold;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            background: transparent;
             cursor: pointer;
-            transition: 0.2s;
-            white-space: nowrap;
-            min-width: 150px;
+            transition: var(--transition);
+            color: var(--text-dark);
         }
-        .btn-primary { background-color: var(--primary); color: white; border: none; flex: 1 1 60%; }
-        .btn-secondary { background-color: var(--primary-light); color: var(--primary); border: 1px solid var(--border); flex: 1 1 35%; }
-        
-        .stats-row {
+
+        .icon-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-banner {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 4px solid white;
+        }
+
+        body.dark-mode .hero-banner { border-color: var(--border); }
+
+        .hero-banner img { width: 100%; height: auto; display: block; }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Buttons */
+        .action-buttons {
             display: flex;
-            justify-content: space-around;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(188, 108, 77, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: scale(1.03);
+        }
+
+        .btn-secondary {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover { background: var(--border); }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
-            transition: border-color 0.4s ease;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
         }
-        .stat-item { text-align: center; min-width: 100px; }
-        .stat-icon {
-            font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;
-            background: var(--bg); width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;
-            box-shadow: 0 4px 15px rgba(188, 108, 77, 0.1);
-            transition: all 0.3s ease;
+
+        .stat-card {
+            padding: 20px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            transition: var(--transition);
         }
-        .stat-num { font-weight: 800; color: var(--primary); direction: ltr; display: block; transition: color 0.3s ease; }
-        .stat-label { font-size: 0.8rem; color: var(--text-gray); transition: color 0.3s ease; }
-        
-        .section-title { text-align: center; margin: 40px 0 10px; }
-        .section-title h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; color: var(--text-dark); }
-        .section-title p { color: var(--text-gray); font-size: 0.9rem; }
-        
-        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
+
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 20px 5%;
+        }
+
         .cat-card {
-            border: 1px solid var(--border); border-radius: 20px; padding: 20px;
-            text-align: center; background: var(--primary-light); transition: all 0.3s ease;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            transition: var(--transition);
         }
-        .cat-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px rgba(188, 108, 77, 0.05); }
-        .cat-icon { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--primary); transition: color 0.3s ease; }
-        
-        svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; }
-        .cat-title { font-weight: bold; font-size: 0.85rem; color: var(--text-dark); transition: color 0.3s ease; }
-        
-        .features-section { padding: 20px; margin-top: 20px; }
-        .feature-list { margin: 20px 0; }
-        .feature-item {
-            display: flex; align-items: flex-start; justify-content: space-between;
-            padding: 15px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s ease;
+
+        .cat-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+            background: var(--primary-light);
         }
-        .feature-item:last-child { border: none; }
-        .check-icon {
-            background: var(--primary); color: white; width: 20px; height: 20px;
-            border-radius: 50%; padding: 4px; display: flex; align-items: center;
-            justify-content: center; flex-shrink: 0; margin-top: 4px; transition: background 0.3s ease;
+
+        .cat-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            color: var(--primary);
         }
-        .feature-text { font-weight: bold; font-size: 0.95rem; text-align: right; flex: 1; padding-right: 10px; color: var(--text-dark); }
-        
-        .testimonial-section {
-            padding: 20px; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none;
-            scrollbar-width: none; display: flex; gap: 15px;
+
+        /* Testimonials */
+        .testimonials {
+            padding: 40px 5%;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
         }
-        .testimonial-section::-webkit-scrollbar { display: none; }
+
         .quote-card {
-            flex: 0 0 85%; max-width: 350px; white-space: normal; border: 1px solid var(--border);
-            background: var(--bg); border-radius: 20px; padding: 25px; position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;
+            min-width: 300px;
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid var(--border);
         }
-        .quote-icon {
-            font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute;
-            top: 20px; left: 20px; font-family: serif; transition: color 0.3s ease;
-        }
-        .quote-text { font-size: 0.95rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 20px; transition: color 0.3s ease; }
-        .quote-author { color: var(--primary); font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease; }
-        
+
         footer {
-            margin-top: 40px; padding: 20px; text-align: center; border-top: 1px solid var(--border);
-            font-size: 0.85rem; color: var(--text-gray); background: var(--primary-light); transition: all 0.3s ease;
+            padding: 40px 5%;
+            text-align: center;
+            background: var(--primary-light);
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
         }
-        
-        @media (min-width: 768px) {
-            .action-buttons { flex-wrap: nowrap; }
-            .btn { flex: 1; }
-            .stats-row { justify-content: space-between; gap: 0; }
-            .categories-grid { grid-template-columns: 1fr 1fr; }
-            .testimonial-section { overflow-x: hidden; justify-content: center; }
-            .quote-card { flex: 0 0 40%; }
-        }
-        @media (min-width: 1024px) {
-            .hero { padding: 40px; }
-            .categories-grid { grid-template-columns: repeat(4, 1fr); }
+
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.7rem; }
+            .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="icon-btn" style="border:none;">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-    </div>
     <div class="logo">هوشمند نما</div>
-    <div class="header-left">
-        <div class="icon-btn theme-toggle" id="themeToggle">
-            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </div>
+    <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="تغییر تم">
+            <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="sun-icon" style="display:none" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
     </div>
 </header>
 
 <main>
     <section class="hero">
         <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200" alt="دوره تخصصی ارتقای سواد رسانه‌ای" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200" alt="امنیت سایبری">
         </div>
-        <h1>امنیت دیجیتال و سواد رسانه‌ای<br>پیش‌نیاز نسل هوشمند</h1>
-        <p>توسعه مهارت‌های تفکر انتقادی و صیانت از حریم خصوصی در فضای مجازی با استانداردهای نوین آموزشی.</p>
+        <h1>امنیت دیجیتال و سواد رسانه‌ای<br>برای نسل فردا</h1>
+        <p>آیا می‌دانید چگونه هویت دیجیتال خود را مدیریت کنید؟ هوشمند نما همراه شماست تا در دنیای مجازی امن بمانید.</p>
+        
         <div class="action-buttons">
-            <a href="videos.html" class="btn btn-primary">مشاهده دوره‌های آموزشی <span>←</span></a>
-            <a href="question.html" class="btn btn-secondary">سنجش سطح دانش</a>
+            <a href="#courses" class="btn btn-primary">شروع یادگیری رایگان ←</a>
+            <a href="quiz.html" class="btn btn-secondary">سنجش سطح دانش</a>
         </div>
-        <div class="stats-row">
-            <div class="stat-item">
-                <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-                <span class="stat-num">60+</span>
-                <span class="stat-label">محتوای آموزشی</span>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-num">۱۸+</span>
+                <span class="stat-label">جلسه آموزشی</span>
             </div>
-            <div class="stat-item">
-                <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                <span class="stat-num">20 دقیقه</span>
-                <span class="stat-label">مدت زمان دوره</span>
+            <div class="stat-card">
+                <span class="stat-num">۱۰۰٪</span>
+                <span class="stat-label">محتوای کاربردی</span>
             </div>
-            <div class="stat-item">
-                <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                <span class="stat-num">مدرس</span>
-                <span class="stat-label">امیرمهدی عابدینی</span>
+            <div class="stat-card">
+                <span class="stat-num">۲۴/۷</span>
+                <span class="stat-label">دسترسی همیشگی</span>
             </div>
         </div>
     </section>
 
-    <section aria-labelledby="cat-title">
-        <div class="section-title">
-            <h2 id="cat-title">محورهای اصلی یادگیری</h2>
-            <p>مسیرهای تخصصی جهت ارتقای امنیت و آگاهی دیجیتال</p>
+    <section id="courses">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2>محورهای یادگیری</h2>
+            <p>سرفصل‌های منطبق بر آخرین چالش‌های فضای مجازی</p>
         </div>
         <div class="categories-grid">
             <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-                <div class="cat-title">امنیت و حریم خصوصی</div>
+                <div class="cat-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>امنیت حریم خصوصی</h3>
+                <p>پروتکل‌های حفاظت از داده‌های شخصی در شبکه‌های اجتماعی.</p>
             </div>
             <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M14.5 9.5a5.5 5.5 0 0 0-9.6 4.3M12 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M21 15a4 4 0 0 0-4-4H7"/></svg></div>
-                <div class="cat-title">سواد رسانه‌ای پیشرفته</div>
-            </div>
-            <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.12 12.12"/><path d="M12 12V22"/></svg></div>
-                <div class="cat-title">مهندسی اجتماعی و فیشینگ</div>
-            </div>
-            <div class="cat-card">
-                <div class="cat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <div class="cat-title">کاربرد هوش مصنوعی</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section">
-        <div class="section-title" style="text-align: right;">
-            <h2>اهداف راهبردی پلتفرم هوشمند نما</h2>
-            <p style="margin-top: 10px;">رسالت ما ارتقای شاخص‌های سواد رسانه‌ای در سطح عمومی جامعه است. در دنیای امروز، عدم آگاهی از ماهیت اخبار جعلی (Fake News) منجر به پذیرش و بازنشر شایعات می‌گردد که پیامدهای اجتماعی نامطلوبی به همراه دارد. پلتفرم هوشمند نما با رویکردی پیشگیرانه، به دنبال توانمندسازی آحاد جامعه در برابر تهدیداتی نظیر فیشینگ، نفوذ به حساب‌های کاربری و مهندسی اجتماعی است.</p>
-        </div>
-        <div class="feature-list">
-            <div class="feature-item">
-                <span class="feature-text">تطبیق سرفصل‌های آموزشی با چالش‌های نوظهور جامعه</span>
-                <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            </div>
-            <div class="feature-item">
-                <span class="feature-text">ارائه پروتکل‌های عملیاتی جهت صیانت از حساب‌های کاربری</span>
-                <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            </div>
-            <div class="feature-item">
-                <span class="feature-text">نهادینه‌سازی تفکر انتقادی در تحلیل و اعتبارسنجی اخبار</span>
-                <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            </div>
-        </div>
-        <div class="action-buttons">
-            <a href="videos.html" class="btn btn-primary">ورود به پنل دوره‌ها ←</a>
-            <a href="question.html" class="btn btn-secondary">سنجش سطح دانش</a>
-        </div>
-    </section>
-
-    <section>
-        <div class="section-title"><h2>دیدگاه متخصصین حوزه تکنولوژی</h2></div>
-        <div class="testimonial-section">
-            <div class="quote-card">
-                <span class="quote-icon">❝</span>
-                <p class="quote-text">این دوره‌ها با بیانی ساده و استاندارد، نوجوانان را برای مواجهه با چالش‌های پیچیده دنیای دیجیتال آماده می‌سازد.</p>
-                <span class="quote-author">دکتر سمیرا نادری</span>
-            </div>
-            <div class="quote-card">
-                <span class="quote-icon">❝</span>
-                <p class="quote-text">هوشمند نما با تمرکز بر آموزش‌های پروژه‌محور، نقشی کلیدی در امنیت سایبری نسل فردا ایفا می‌کند.</p>
-                <span class="quote-author">مهندس علی حسینی</span>
+                <div class="cat-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>تفکر انتقادی</h3>
+                <p>چگونه اخبار جعلی (Fake News) را از واقعیت تشخیص دهیم؟</p>
             </div>
         </div>
     </section>
 </main>
 
-<footer><p>تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.</p></footer>
+<footer>
+    <p>طراحی و توسعه با ❤️ برای جشنواره نوجوان خوارزمی</p>
+    <p style="margin-top: 10px; font-weight: bold;">© ۱۴۰۳ - تمامی حقوق برای امیرمهدی عابدینی محفوظ است</p>
+</footer>
 
 <script>
-    const body = document.body;
     const toggle = document.getElementById('themeToggle');
-    const moon = toggle.querySelector('.moon-icon');
-    const sun = toggle.querySelector('.sun-icon');
-    const themeColorMeta = document.getElementById('themeColor');
+    const moon = document.querySelector('.moon-icon');
+    const sun = document.querySelector('.sun-icon');
+    const themeColor = document.getElementById('themeColor');
 
-   
-    const applyTheme = (isDark) => {
+    function updateTheme(isDark) {
         if (isDark) {
-            body.classList.add('dark-mode');
+            document.body.classList.add('dark-mode');
             moon.style.display = 'none';
             sun.style.display = 'block';
-            themeColorMeta.content = '#d4a373';
+            themeColor.content = '#12100f';
+            localStorage.setItem('theme', 'dark');
         } else {
-            body.classList.remove('dark-mode');
+            document.body.classList.remove('dark-mode');
             moon.style.display = 'block';
             sun.style.display = 'none';
-            themeColorMeta.content = '#bc6c4d';
+            themeColor.content = '#bc6c4d';
+            localStorage.setItem('theme', 'light');
         }
-    };
+    }
 
-    
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    
-    
-    applyTheme(initialDark);
+    // Load saved theme
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') updateTheme(true);
 
-    
     toggle.addEventListener('click', () => {
-        const isDarkNow = !body.classList.contains('dark-mode');
-        applyTheme(isDarkNow);
-        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+        updateTheme(!document.body.classList.contains('dark-mode'));
     });
 </script>
+
 </body>
 </html>
