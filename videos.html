@@ -1,374 +1,531 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="theme-color-meta" name="theme-color" content="#bc6c4d">
-    <title>سرفصل‌های آموزشی | هوشمند نما</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        :root {
-            --primary: #bc6c4d;
-            --primary-hover: #a05a3e;
-            --primary-light: #f4ece6;
-            --text-dark: #2d2a28;
-            --text-gray: #5e5855;
-            --bg: #fdfcfb;
-            --border: #e8e3e0;
-            --shadow: 0 10px 30px -10px rgba(188, 108, 77, 0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 18px;
-        }
-        body.dark-mode {
-            --primary: #d4a373;
-            --primary-hover: #e5b88b;
-            --primary-light: #2d2623;
-            --text-dark: #f8f1ed;
-            --text-gray: #b0a6a0;
-            --bg: #12100f;
-            --border: #332d2a;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.7;
-            transition: var(--transition);
-            padding-bottom: 50px;
-        }
-        header {
-            background: var(--bg);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-        .header-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 5%;
-        }
-        .logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        .icon-btn {
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-        .icon-btn:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-        .search-container {
-            padding: 0 5% 15px;
-            display: none;
-            animation: fadeInDown 0.3s ease;
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .search-input {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--primary);
-            border-radius: 15px;
-            outline: none;
-            background: var(--bg);
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .main-container {
-            padding: 30px 5%;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-        .hero-banner {
-            width: 100%;
-            border-radius: 28px;
-            overflow: hidden;
-            margin-bottom: 35px;
-            aspect-ratio: 21 / 9;
-            background: var(--primary-light);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-        .hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .phase-title {
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin: 40px 0 15px 0;
-            padding: 14px 20px;
-            border-right: 5px solid var(--primary);
-            background-color: var(--primary-light);
-            border-radius: 12px;
-        }
-        .video-item {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .video-item.active {
-            border-color: var(--primary);
-            box-shadow: 0 10px 25px -5px rgba(188, 108, 77, 0.15);
-        }
-        .video-header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-        .play-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: white;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
-        .video-item:hover .play-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        .video-summary {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: var(--primary-light);
-        }
-        .summary-inner {
-            padding: 25px;
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border);
-        }
-        .summary-inner p {
-            margin-bottom: 20px;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-        .action-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 28px;
-            background: var(--primary);
-            color: #fff;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: var(--transition);
-            border: none;
-        }
-        .action-btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(188, 108, 77, 0.3);
-        }
-        footer {
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            background-color: var(--primary-light);
-            transition: background-color 0.3s ease;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>دوره‌های آموزشی سواد رسانه‌ای | هوشمند نما</title>
+<meta name="description" content="دوره جامع آموزش سواد رسانه‌ای و امنیت سایبری هوشمند نما. بیش از ۱۸ جلسه آموزشی تخصصی در ۳ فاز یادگیری.">
+<meta name="keywords" content="دوره سواد رسانه ای, آموزش امنیت سایبری, ویدیو آموزشی, هوشمند نما, جشنواره خوارزمی, امیرمهدی عابدینی">
+<meta name="author" content="امیرمهدی عابدینی">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://abedini-dev.github.io/videos">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="هوشمند نما">
+<meta property="og:title" content="دوره‌های آموزشی سواد رسانه‌ای | هوشمند نما">
+<meta property="og:description" content="دوره جامع آموزش سواد رسانه‌ای و امنیت سایبری هوشمند نما. بیش از ۱۸ جلسه آموزشی تخصصی در ۳ فاز یادگیری.">
+<meta property="og:image" content="https://image.qwenlm.ai/public_source/841ad641-3f31-423c-8a03-d478c3f068b4/1fa3c85e2-4f6c-4c44-bee9-e3888faff06f.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:url" content="https://abedini-dev.github.io/videos">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@HoshmandNama">
+<meta name="twitter:title" content="دوره‌های آموزشی سواد رسانه‌ای | هوشمند نما">
+<meta name="twitter:description" content="دوره جامع آموزش سواد رسانه‌ای و امنیت سایبری هوشمند نما.">
+<meta name="twitter:image" content="https://image.qwenlm.ai/public_source/841ad641-3f31-423c-8a03-d478c3f068b4/1fa3c85e2-4f6c-4c44-bee9-e3888faff06f.png">
+<meta name="theme-color" id="themeColor" content="#bc6c4d" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#d4a373" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="هوشمند نما">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "WebPage",
+"@id": "https://abedini-dev.github.io/videos#webpage",
+"url": "https://abedini-dev.github.io/videos",
+"name": "دوره‌های آموزشی سواد رسانه‌ای | هوشمند نما",
+"description": "دوره جامع آموزش سواد رسانه‌ای و امنیت سایبری هوشمند نما. بیش از ۱۸ جلسه آموزشی تخصصی در ۳ فاز یادگیری.",
+"isPartOf": { "@id": "https://abedini-dev.github.io/#website" },
+"inLanguage": "fa-IR",
+"breadcrumb": {
+"@type": "BreadcrumbList",
+"itemListElement": [
+{ "@type": "ListItem", "position": 1, "name": "خانه", "item": "https://abedini-dev.github.io/" },
+{ "@type": "ListItem", "position": 2, "name": "دوره‌ها", "item": "https://abedini-dev.github.io/videos" }
+]
+}
+},
+{
+"@type": "Course",
+"@id": "https://abedini-dev.github.io/videos#course",
+"name": "دوره جامع سواد رسانه‌ای و امنیت سایبری",
+"description": "آموزش تخصصی سواد رسانه‌ای، امنیت حریم خصوصی، مقابله با فیشینگ و مهندسی اجتماعی ویژه نوجوانان و دانش‌آموزان.",
+"provider": {
+"@type": "Organization",
+"name": "هوشمند نما",
+"url": "https://abedini-dev.github.io/"
+},
+"instructor": {
+"@type": "Person",
+"name": "امیرمهدی عابدینی"
+},
+"educationalLevel": "beginner",
+"inLanguage": "fa",
+"isAccessibleForFree": true,
+"hasCourseInstance": {
+"@type": "CourseInstance",
+"courseMode": "online"
+},
+"numberOfCredits": 18,
+"timeRequired": "PT180M"
+},
+{
+"@type": "Organization",
+"@id": "https://abedini-dev.github.io/#organization",
+"name": "هوشمند نما",
+"url": "https://abedini-dev.github.io/",
+"founder": { "@type": "Person", "name": "امیرمهدی عابدینی" }
+}
+]
+}
+</script>
+<style>
+:root {
+--primary: #bc6c4d;
+--primary-hover: #a05a3e;
+--primary-light: #f4ece6;
+--text-dark: #4a4441;
+--text-gray: #7a7471;
+--bg: #f9f7f2;
+--bg-card: #ffffff;
+--border: #e2ddd9;
+--radius: 16px;
+--shadow: 0 4px 20px rgba(188, 108, 77, 0.08);
+}
+html.dark {
+--primary: #d4a373;
+--primary-hover: #c9925d;
+--primary-light: #3d3532;
+--text-dark: #f1ebe7;
+--text-gray: #b5ada8;
+--bg: #1c1917;
+--bg-card: #28211f;
+--border: #44403c;
+--shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+@media (prefers-color-scheme: dark) {
+html:not(.light):not(.dark) {
+--primary: #d4a373;
+--primary-hover: #c9925d;
+--primary-light: #3d3532;
+--text-dark: #f1ebe7;
+--text-gray: #b5ada8;
+--bg: #1c1917;
+--bg-card: #28211f;
+--border: #44403c;
+--shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+-webkit-tap-highlight-color: transparent;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+html {
+font-size: 16px;
+scroll-behavior: smooth;
+overflow-x: hidden;
+}
+body {
+background-color: var(--bg);
+color: var(--text-dark);
+line-height: 1.6;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+transition: background-color 0.4s ease, color 0.4s ease;
+-webkit-text-size-adjust: 100%;
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 15px 20px;
+background: var(--bg);
+position: sticky;
+top: 0;
+z-index: 100;
+border-bottom: 1px solid var(--border);
+transition: background-color 0.4s ease, border-color 0.4s ease;
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+}
+.logo {
+font-weight: 900;
+font-size: 1.5rem;
+color: var(--primary);
+letter-spacing: -1px;
+transition: color 0.4s ease;
+}
+.icon-btn {
+width: 40px;
+height: 40px;
+border: 1px solid var(--border);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--primary);
+background: var(--bg);
+cursor: pointer;
+transition: all 0.3s ease;
+-webkit-appearance: none;
+appearance: none;
+}
+.icon-btn svg {
+stroke: var(--primary);
+}
+.icon-btn:hover {
+border-color: var(--primary);
+background: var(--primary-light);
+}
+.moon-icon { fill: var(--primary); stroke: var(--primary); }
+.sun-icon { fill: var(--primary); stroke: var(--primary); }
+.hidden { display: none !important; }
+.block { display: block !important; }
+.search-container {
+padding: 15px 20px;
+display: none;
+animation: fadeInDown 0.3s ease;
+}
+@keyframes fadeInDown {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.search-input {
+width: 100%;
+padding: 14px 20px;
+border: 2px solid var(--primary);
+border-radius: 15px;
+outline: none;
+background: var(--bg-card);
+color: var(--text-dark);
+font-weight: 600;
+font-size: 0.95rem;
+transition: border-color 0.3s ease, background-color 0.4s ease;
+}
+.search-input:focus {
+border-color: var(--primary-hover);
+}
+.main-container {
+padding: 30px 20px;
+max-width: 850px;
+margin: 0 auto;
+flex: 1;
+width: 100%;
+}
+.hero-banner {
+width: 100%;
+border-radius: 28px;
+overflow: hidden;
+margin-bottom: 35px;
+aspect-ratio: 21 / 9;
+background: var(--primary-light);
+border: 1px solid var(--border);
+box-shadow: var(--shadow);
+}
+.hero-banner img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.phase-title {
+font-size: 1.15rem;
+font-weight: 900;
+color: var(--primary);
+margin: 40px 0 15px 0;
+padding: 14px 20px;
+border-right: 5px solid var(--primary);
+background-color: var(--primary-light);
+border-radius: 12px;
+transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.video-item {
+background: var(--bg-card);
+border: 1px solid var(--border);
+border-radius: var(--radius);
+margin-bottom: 15px;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+.video-item.active {
+border-color: var(--primary);
+box-shadow: 0 10px 25px -5px rgba(188, 108, 77, 0.15);
+}
+.video-header {
+padding: 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+cursor: pointer;
+}
+.play-icon {
+width: 45px;
+height: 45px;
+background: var(--primary);
+color: white;
+border-radius: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: 0.3s;
+flex-shrink: 0;
+}
+.video-item:hover .play-icon {
+transform: scale(1.1) rotate(5deg);
+}
+.video-summary {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+background-color: var(--primary-light);
+}
+.summary-inner {
+padding: 25px;
+font-size: 0.95rem;
+border-top: 1px solid var(--border);
+}
+.summary-inner p {
+margin-bottom: 20px;
+color: var(--text-dark);
+line-height: 1.8;
+}
+.action-btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 12px 28px;
+background: var(--primary);
+color: #fff;
+border-radius: 14px;
+text-decoration: none;
+font-weight: 800;
+transition: all 0.3s ease;
+border: none;
+cursor: pointer;
+}
+.action-btn:hover {
+background: var(--primary-hover);
+transform: translateY(-3px);
+box-shadow: 0 5px 15px rgba(188, 108, 77, 0.3);
+}
+footer {
+padding: 20px;
+text-align: center;
+border-top: 1px solid var(--border);
+font-size: 0.85rem;
+color: var(--text-gray);
+background: var(--primary-light);
+transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+@media (max-width: 768px) {
+.main-container { padding: 20px 15px; }
+.hero-banner { aspect-ratio: 16 / 9; }
+.video-header { padding: 15px; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="header-top">
-            <a href="index.html" class="icon-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </a>
-            <div class="logo">هوشمند نما</div>
-            <div style="display:flex; gap:10px;">
-                <div class="icon-btn" onclick="toggleSearch()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <div class="icon-btn" id="themeToggle">
-                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    <svg class="sun-icon" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                </div>
-            </div>
-        </div>
-        <div class="search-container" id="searchBox">
-            <input type="text" class="search-input" id="searchInput" placeholder="نام درس را جستجو کنید..." onkeyup="liveSearch()">
-        </div>
-    </header>
-    <main class="main-container">
-        <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200" alt="Banner">
-        </div>
-        <div id="course-list"></div>
-    </main>
-    <footer>
-        تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.
-    </footer>
-    <script>
-        const phases = [
-            {
-                title: "فاز اول: سواد رسانه و تفکر انتقادی",
-                episodes: [
-                    { title: "مفهوم رسانه و پیام‌های پنهان", summary: "در این جلسه یاد می‌گیریم که چگونه لایه‌های زیرین و اهداف تولیدکنندگان پیام‌های رسانه‌ای را کشف کنیم." },
-                    { title: "تکنیک‌های زرد نویسی و دام کلیک", summary: "چرا روی برخی خبرها کلیک می‌کنیم؟ بررسی روانشناختی عناوین فریبنده و راه‌های مقابله با آن‌ها." },
-                    { title: "عملکرد الگوریتم‌های پیشنهاد دهنده", summary: "تحلیل نحوه کارکرد شبکه‌های اجتماعی در نمایش محتواهای شخصی‌سازی شده و حبابی." },
-                    { title: "راستی‌آزمایی اخبار در یک دقیقه", summary: "معرفی ابزارهای سریع و تکنیک‌های چک کردن منابع برای تشخیص شایعه از واقعیت." },
-                    { title: "جستجوی معکوس و اعتبار سنجی عکس", summary: "چگونه بفهمیم یک عکس واقعاً مربوط به کجاست و آیا با هوش مصنوعی ساخته شده یا خیر؟" },
-                    { title: "ردپای دیجیتال و برندینگ شخصی", summary: "هر لایک و کامنت شما شناسنامه دیجیتال شماست. یاد بگیرید چگونه آن را مدیریت کنید." }
-                ]
-            },
-            {
-                title: "فاز دوم: امنیت دیجیتال و صیانت",
-                episodes: [
-                    { title: "مهندسی گذرواژه‌های نفوذ ناپذیر", summary: "روش‌های نوین برای ساخت رمزهای عبوری که حتی ابرکامپیوترها هم از پس آن بر نیایند." },
-                    { title: "فعالسازی لایه‌های امنیتی 2FA", summary: "آموزش گام به گام فعالسازی تایید دو مرحله‌ای در تلگرام، اینستاگرام و ایمیل." },
-                    { title: "آناتومی لینک‌های آلوده و فیشینگ", summary: "بررسی پیامک‌های جعلی ابلاغیه، سهام عدالت و روش‌های شناسایی درگاه‌های بانکی تقلبی." },
-                    { title: "مدیریت دسترسی اپلیکیشن‌ها", summary: "چرا یک اپلیکیشن چراغ‌قوه به گالری و میکروفون شما نیاز دارد؟ بررسی حریم خصوصی." },
-                    { title: "امنیت در شبکه‌های وای‌فای عمومی", summary: "خطرات استفاده از وای‌فای رایگان و راه‌های محافظت از داده‌ها در محیط‌های عمومی." },
-                    { title: "پیشگیری از هک و نفوذ به اکانت", summary: "اگر هک شدیم چه کنیم؟ علائم نفوذ و اولین اقدامات اضطراری برای بازیابی امنیت." }
-                ]
-            },
-            {
-                title: "فاز سوم: تکنولوژی‌های نوظهور و اخلاق",
-                episodes: [
-                    { title: "شناخت تصاویر ساخته شده با AI", summary: "بررسی سوتی‌های هوش مصنوعی در تولید تصویر و راه‌های تشخیص واقعیت." },
-                    { title: "دیپ فیک؛ جعل واقعیت", summary: "وقتی ویدئوها دروغ می‌گویند؛ آشنایی با جعل عمیق چهره و صدا و خطرات آن." },
-                    { title: "پرسشگری انتقادی در فضای مجازی", summary: "تقویت ماهیچه شک و پرسشگری قبل از لایک یا اشتراک‌گذاری هر محتوایی." },
-                    { title: "مقابله با قلدری و آزار سایبری", summary: "چگونه در برابر ترول‌ها و آزارهای آنلاین بایستیم و سلامت روان خود را حفظ کنیم؟" },
-                    { title: "حقوق مولف و کپی رایت دیجیتال", summary: "اخلاق در استفاده از آثار دیگران و آشنایی با قوانین مالکیت معنوی در وب." },
-                    { title: "مسئولیت اجتماعی شهروند دیجیتال", summary: "چگونه به عنوان یک کاربر بالغ، تاثیر مثبتی بر جامعه آنلاین خود داشته باشیم؟" }
-                ]
-            }
-        ];
-        const container = document.getElementById('course-list');
-        let sessionCounter = 1;
-        phases.forEach(phase => {
-            const h2 = document.createElement('h2');
-            h2.className = 'phase-title';
-            h2.textContent = phase.title;
-            container.appendChild(h2);
-            phase.episodes.forEach(ep => {
-                const div = document.createElement('div');
-                div.className = 'video-item';
-                div.innerHTML = `
-                    <div class="video-header" onclick="toggleItem(this)">
-                        <div style="display:flex; align-items:center; gap:18px;">
-                            <div class="play-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                            </div>
-                            <div>
-                                <h3 class="title-text" style="font-size:1rem; font-weight:800;">${ep.title}</h3>
-                                <small style="color:var(--text-gray); font-weight:bold;">جلسه ${sessionCounter++}</small>
-                            </div>
-                        </div>
-                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:0.4s"><path d="M6 9l6 6 6-6"/></svg>
-                    </div>
-                    <div class="video-summary">
-                        <div class="summary-inner">
-                            <p>${ep.summary}</p>
-                            <a href="player.html" class="action-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                                مشاهده درس
-                            </a>
-                        </div>
-                    </div>`;
-                container.appendChild(div);
-            });
-        });
-        const body = document.body;
-        const themeBtn = document.getElementById('themeToggle');
-        const moon = themeBtn.querySelector('.moon-icon');
-        const sun = themeBtn.querySelector('.sun-icon');
-        const themeMeta = document.getElementById('theme-color-meta');
-        function updateTheme(isDark) {
-            if (isDark) {
-                body.classList.add('dark-mode');
-                moon.style.display = 'none';
-                sun.style.display = 'block';
-                themeMeta.setAttribute('content', '#12100f');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark-mode');
-                moon.style.display = 'block';
-                sun.style.display = 'none';
-                themeMeta.setAttribute('content', '#bc6c4d');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        if (localStorage.getItem('theme') === 'dark') updateTheme(true);
-        themeBtn.onclick = () => updateTheme(!body.classList.contains('dark-mode'));
-        function toggleSearch() {
-            const box = document.getElementById('searchBox');
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
-            if(box.style.display === 'block') document.getElementById('searchInput').focus();
-        }
-        function liveSearch() {
-            const val = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.querySelectorAll('.video-item');
-            const phases = document.querySelectorAll('.phase-title');
-            items.forEach(item => {
-                const text = item.querySelector('.title-text').textContent.toLowerCase();
-                item.style.display = text.includes(val) ? 'block' : 'none';
-            });
-            phases.forEach(phase => {
-                let next = phase.nextElementSibling;
-                let visible = false;
-                while(next && next.classList.contains('video-item')) {
-                    if(next.style.display === 'block') visible = true;
-                    next = next.nextElementSibling;
-                }
-                phase.style.display = visible ? 'block' : 'none';
-            });
-        }
-        function toggleItem(el) {
-            const parent = el.parentElement;
-            const content = parent.querySelector('.video-summary');
-            const chevron = el.querySelector('.chevron');
-            const isActive = parent.classList.contains('active');
-            document.querySelectorAll('.video-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.video-summary').style.maxHeight = null;
-                i.querySelector('.chevron').style.transform = 'rotate(0deg)';
-            });
-            if (!isActive) {
-                parent.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
-                chevron.style.transform = 'rotate(180deg)';
-            }
-        }
-    </script>
+<header role="banner">
+<a href="index.html" class="icon-btn" aria-label="بازگشت به صفحه اصلی" title="بازگشت">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+</svg>
+</a>
+<a href="index.html" class="logo" aria-label="هوشمند نما - صفحه اصلی">هوشمند نما</a>
+<button class="icon-btn" id="themeToggle" aria-label="فعال‌سازی حالت شب">
+<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+<svg class="sun-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" y1="1" x2="12" y2="3"></line>
+<line x1="12" y1="21" x2="12" y2="23"></line>
+<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+<line x1="1" y1="12" x2="3" y2="12"></line>
+<line x1="21" y1="12" x2="23" y2="12"></line>
+<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+</svg>
+</button>
+</header>
+<nav aria-label="مسیر ناوبری" itemscope itemtype="https://schema.org/BreadcrumbList" style="padding: 8px 20px; font-size: 0.8rem; color: var(--text-gray);">
+<ol style="display: flex; gap: 6px; list-style: none; flex-wrap: wrap;">
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a href="index.html" itemprop="item" style="color: var(--primary);"><span itemprop="name">خانه</span></a>
+<meta itemprop="position" content="1">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<span itemprop="name">دوره‌ها</span>
+<meta itemprop="position" content="2">
+</li>
+</ol>
+</nav>
+<div class="search-container" id="searchBox">
+<input type="text" class="search-input" id="searchInput" placeholder="نام درس را جستجو کنید..." onkeyup="liveSearch()" aria-label="جستجو در دوره‌ها">
+</div>
+<main class="main-container" role="main" id="main-content">
+<div class="hero-banner">
+<img src="https://image.qwenlm.ai/public_source/841ad641-3f31-423c-8a03-d478c3f068b4/1fa3c85e2-4f6c-4c44-bee9-e3888faff06f.png" alt="بنر دوره‌های آموزشی هوشمند نما" loading="eager" fetchpriority="high" width="1920" height="1080" decoding="async">
+</div>
+<div id="course-list"></div>
+</main>
+<footer role="contentinfo">
+<p>تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.</p>
+</footer>
+<script>
+const phases = [
+{
+title: "فاز اول: سواد رسانه و تفکر انتقادی",
+episodes: [
+{ title: "مفهوم رسانه و پیام‌های پنهان", summary: "در این جلسه یاد می‌گیریم که چگونه لایه‌های زیرین و اهداف تولیدکنندگان پیام‌های رسانه‌ای را کشف کنیم.", video: "player.html?lesson=1" },
+{ title: "تکنیک‌های زرد نویسی و دام کلیک", summary: "چرا روی برخی خبرها کلیک می‌کنیم؟ بررسی روانشناختی عناوین فریبنده و راه‌های مقابله با آن‌ها.", video: "player.html?lesson=2" },
+{ title: "عملکرد الگوریتم‌های پیشنهاد دهنده", summary: "تحلیل نحوه کارکرد شبکه‌های اجتماعی در نمایش محتواهای شخصی‌سازی شده و حبابی.", video: "player.html?lesson=3" },
+{ title: "راستی‌آزمایی اخبار در یک دقیقه", summary: "معرفی ابزارهای سریع و تکنیک‌های چک کردن منابع برای تشخیص شایعه از واقعیت.", video: "player.html?lesson=4" },
+{ title: "جستجوی معکوس و اعتبار سنجی عکس", summary: "چگونه بفهمیم یک عکس واقعاً مربوط به کجاست و آیا با هوش مصنوعی ساخته شده یا خیر؟", video: "player.html?lesson=5" },
+{ title: "ردپای دیجیتال و برندینگ شخصی", summary: "هر لایک و کامنت شما شناسنامه دیجیتال شماست. یاد بگیرید چگونه آن را مدیریت کنید.", video: "player.html?lesson=6" }
+]
+},
+{
+title: "فاز دوم: امنیت دیجیتال و صیانت",
+episodes: [
+{ title: "مهندسی گذرواژه‌های نفوذ ناپذیر", summary: "روش‌های نوین برای ساخت رمزهای عبوری که حتی ابرکامپیوترها هم از پس آن بر نیایند.", video: "player.html?lesson=7" },
+{ title: "فعالسازی لایه‌های امنیتی 2FA", summary: "آموزش گام به گام فعالسازی تایید دو مرحله‌ای در تلگرام، اینستاگرام و ایمیل.", video: "player.html?lesson=8" },
+{ title: "آناتومی لینک‌های آلوده و فیشینگ", summary: "بررسی پیامک‌های جعلی ابلاغیه، سهام عدالت و روش‌های شناسایی درگاه‌های بانکی تقلبی.", video: "player.html?lesson=9" },
+{ title: "مدیریت دسترسی اپلیکیشن‌ها", summary: "چرا یک اپلیکیشن چراغ‌قوه به گالری و میکروفون شما نیاز دارد؟ بررسی حریم خصوصی.", video: "player.html?lesson=10" },
+{ title: "امنیت در شبکه‌های وای‌فای عمومی", summary: "خطرات استفاده از وای‌فای رایگان و راه‌های محافظت از داده‌ها در محیط‌های عمومی.", video: "player.html?lesson=11" },
+{ title: "پیشگیری از هک و نفوذ به اکانت", summary: "اگر هک شدیم چه کنیم؟ علائم نفوذ و اولین اقدامات اضطراری برای بازیابی امنیت.", video: "player.html?lesson=12" }
+]
+},
+{
+title: "فاز سوم: تکنولوژی‌های نوظهور و اخلاق",
+episodes: [
+{ title: "شناخت تصاویر ساخته شده با AI", summary: "بررسی سوتی‌های هوش مصنوعی در تولید تصویر و راه‌های تشخیص واقعیت.", video: "player.html?lesson=13" },
+{ title: "دیپ فیک؛ جعل واقعیت", summary: "وقتی ویدئوها دروغ می‌گویند؛ آشنایی با جعل عمیق چهره و صدا و خطرات آن.", video: "player.html?lesson=14" },
+{ title: "پرسشگری انتقادی در فضای مجازی", summary: "تقویت ماهیچه شک و پرسشگری قبل از لایک یا اشتراک‌گذاری هر محتوایی.", video: "player.html?lesson=15" },
+{ title: "مقابله با قلدری و آزار سایبری", summary: "چگونه در برابر ترول‌ها و آزارهای آنلاین بایستیم و سلامت روان خود را حفظ کنیم؟", video: "player.html?lesson=16" },
+{ title: "حقوق مولف و کپی رایت دیجیتال", summary: "اخلاق در استفاده از آثار دیگران و آشنایی با قوانین مالکیت معنوی در وب.", video: "player.html?lesson=17" },
+{ title: "مسئولیت اجتماعی شهروند دیجیتال", summary: "چگونه به عنوان یک کاربر بالغ، تاثیر مثبتی بر جامعه آنلاین خود داشته باشیم؟", video: "player.html?lesson=18" }
+]
+}
+];
+const container = document.getElementById('course-list');
+let sessionCounter = 1;
+phases.forEach(function(phase) {
+const h2 = document.createElement('h2');
+h2.className = 'phase-title';
+h2.textContent = phase.title;
+container.appendChild(h2);
+phase.episodes.forEach(function(ep) {
+const div = document.createElement('div');
+div.className = 'video-item';
+div.innerHTML = '<div class="video-header" onclick="toggleItem(this)" role="button" tabindex="0" aria-expanded="false"><div style="display:flex; align-items:center; gap:18px;"><div class="play-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div><h3 class="title-text" style="font-size:1rem; font-weight:800;">' + ep.title + '</h3><small style="color:var(--text-gray); font-weight:bold;">جلسه ' + sessionCounter++ + '</small></div></div><svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:0.4s"><path d="M6 9l6 6 6-6"/></svg></div><div class="video-summary"><div class="summary-inner"><p>' + ep.summary + '</p><a href="' + ep.video + '" class="action-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>مشاهده درس</a></div></div>';
+container.appendChild(div);
+});
+});
+const htmlEl = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const moonIcon = document.querySelector('.moon-icon');
+const sunIcon = document.querySelector('.sun-icon');
+const themeColorMeta = document.getElementById('themeColor');
+const saved = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let isDark = saved === 'dark' || (!saved && prefersDark);
+function applyTheme(dark) {
+if (dark) {
+htmlEl.classList.add('dark');
+htmlEl.classList.remove('light');
+moonIcon.classList.add('hidden');
+sunIcon.classList.remove('hidden');
+sunIcon.classList.add('block');
+if (themeColorMeta) themeColorMeta.content = '#d4a373';
+themeToggle.setAttribute('aria-label', 'فعال‌سازی حالت روز');
+} else {
+htmlEl.classList.remove('dark');
+htmlEl.classList.add('light');
+moonIcon.classList.remove('hidden');
+sunIcon.classList.add('hidden');
+sunIcon.classList.remove('block');
+if (themeColorMeta) themeColorMeta.content = '#bc6c4d';
+themeToggle.setAttribute('aria-label', 'فعال‌سازی حالت شب');
+}
+}
+applyTheme(isDark);
+themeToggle.addEventListener('click', function () {
+isDark = !isDark;
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+applyTheme(isDark);
+});
+function toggleSearch() {
+const box = document.getElementById('searchBox');
+box.style.display = box.style.display === 'block' ? 'none' : 'block';
+if(box.style.display === 'block') document.getElementById('searchInput').focus();
+}
+function liveSearch() {
+const val = document.getElementById('searchInput').value.toLowerCase();
+const items = document.querySelectorAll('.video-item');
+const phases = document.querySelectorAll('.phase-title');
+items.forEach(function(item) {
+const text = item.querySelector('.title-text').textContent.toLowerCase();
+item.style.display = text.includes(val) ? 'block' : 'none';
+});
+phases.forEach(function(phase) {
+let next = phase.nextElementSibling;
+let visible = false;
+while(next && next.classList.contains('video-item')) {
+if(next.style.display === 'block') visible = true;
+next = next.nextElementSibling;
+}
+phase.style.display = visible ? 'block' : 'none';
+});
+}
+function toggleItem(el) {
+const parent = el.parentElement;
+const content = parent.querySelector('.video-summary');
+const chevron = el.querySelector('.chevron');
+const isActive = parent.classList.contains('active');
+document.querySelectorAll('.video-item').forEach(function(i) {
+i.classList.remove('active');
+i.querySelector('.video-summary').style.maxHeight = null;
+i.querySelector('.chevron').style.transform = 'rotate(0deg)';
+i.querySelector('.video-header').setAttribute('aria-expanded', 'false');
+});
+if (!isActive) {
+parent.classList.add('active');
+content.style.maxHeight = content.scrollHeight + "px";
+chevron.style.transform = 'rotate(180deg)';
+el.setAttribute('aria-expanded', 'true');
+}
+}
+document.querySelectorAll('.video-header').forEach(function(header) {
+header.addEventListener('keydown', function(e) {
+if (e.key === 'Enter' || e.key === ' ') {
+e.preventDefault();
+toggleItem(this);
+}
+});
+});
+</script>
 </body>
 </html>
+
