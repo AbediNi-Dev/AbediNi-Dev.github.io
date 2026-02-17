@@ -1,435 +1,558 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="theme-color-meta" name="theme-color" content="#bc6c4d">
-    <title>آزمون جامع | هوشمند نما</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        :root {
-            --primary: #bc6c4d;
-            --primary-hover: #a05a3e;
-            --primary-light: #f4ece6;
-            --text-dark: #2d2a28;
-            --text-gray: #5e5855;
-            --bg: #fdfcfb;
-            --border: #e8e3e0;
-            --shadow: 0 10px 30px -10px rgba(188, 108, 77, 0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body.dark-mode {
-            --primary: #d4a373;
-            --primary-hover: #e5b88b;
-            --primary-light: #2d2623;
-            --text-dark: #f8f1ed;
-            --text-gray: #b0a6a0;
-            --bg: #12100f;
-            --border: #332d2a;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.8;
-            transition: var(--transition);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 5%;
-            background: var(--bg);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .icon-btn {
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-
-        .icon-btn:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .quiz-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 5%;
-        }
-
-        .card {
-            width: 100%;
-            max-width: 650px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: var(--primary-light);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        .question-tag {
-            display: inline-block;
-            padding: 4px 16px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-
-        .question-text {
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            text-align: right;
-        }
-
-        .options-list {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .option-item {
-            padding: 16px 20px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: right;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .option-item:hover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .option-item.selected {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-            transform: translateX(-5px);
-        }
-
-        .btn {
-            padding: 14px 30px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            width: 100%;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(188, 108, 77, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary:disabled {
-            background: var(--border);
-            color: var(--text-gray);
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-
-        .btn-secondary {
-            background: var(--primary-light);
-            color: var(--primary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--border);
-        }
-
-        .result-score {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            background-color: var(--primary-light);
-            transition: background-color 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade { animation: fadeIn 0.4s ease forwards; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>آزمون جامع سواد رسانه‌ای | هوشمند نما</title>
+<meta name="description" content="آزمون آنلاین سنجش سطح دانش سواد رسانه‌ای و امنیت سایبری. ۱۰ سوال تصادفی برای ارزیابی مهارت‌های دیجیتال شما.">
+<meta name="keywords" content="آزمون سواد رسانه ای, تست امنیت سایبری, سنجش دانش دیجیتال, کوییز آنلاین, هوشمند نما, امیرمهدی عابدینی">
+<meta name="author" content="امیرمهدی عابدینی">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://abedini-dev.github.io/question">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="هوشمند نما">
+<meta property="og:title" content="آزمون جامع سواد رسانه‌ای | هوشمند نما">
+<meta property="og:description" content="آزمون آنلاین سنجش سطح دانش سواد رسانه‌ای و امنیت سایبری. ۱۰ سوال تصادفی برای ارزیابی مهارت‌های دیجیتال شما.">
+<meta property="og:image" content="https://image.qwenlm.ai/public_source/841ad641-3f31-423c-8a03-d478c3f068b4/1fa3c85e2-4f6c-4c44-bee9-e3888faff06f.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:url" content="https://abedini-dev.github.io/question">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@HoshmandNama">
+<meta name="twitter:title" content="آزمون جامع سواد رسانه‌ای | هوشمند نما">
+<meta name="twitter:description" content="آزمون آنلاین سنجش سطح دانش سواد رسانه‌ای و امنیت سایبری.">
+<meta name="twitter:image" content="https://image.qwenlm.ai/public_source/841ad641-3f31-423c-8a03-d478c3f068b4/1fa3c85e2-4f6c-4c44-bee9-e3888faff06f.png">
+<meta name="theme-color" id="themeColor" content="#bc6c4d" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#d4a373" media="(prefers-color-scheme: dark)">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="هوشمند نما">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "WebPage",
+"@id": "https://abedini-dev.github.io/question#webpage",
+"url": "https://abedini-dev.github.io/question",
+"name": "آزمون جامع سواد رسانه‌ای | هوشمند نما",
+"description": "آزمون آنلاین سنجش سطح دانش سواد رسانه‌ای و امنیت سایبری. ۱۰ سوال تصادفی برای ارزیابی مهارت‌های دیجیتال شما.",
+"isPartOf": { "@id": "https://abedini-dev.github.io/#website" },
+"inLanguage": "fa-IR",
+"breadcrumb": {
+"@type": "BreadcrumbList",
+"itemListElement": [
+{ "@type": "ListItem", "position": 1, "name": "خانه", "item": "https://abedini-dev.github.io/" },
+{ "@type": "ListItem", "position": 2, "name": "آزمون", "item": "https://abedini-dev.github.io/question" }
+]
+}
+},
+{
+"@type": "Quiz",
+"@id": "https://abedini-dev.github.io/question#quiz",
+"name": "آزمون جامع سواد رسانه‌ای و امنیت سایبری",
+"description": "آزمون ۱۰ سوالی برای سنجش سطح دانش سواد رسانه‌ای، امنیت دیجیتال و تفکر انتقادی",
+"hasPart": [
+{ "@type": "Question", "name": "اولین قدم برای واکاوی یک پیام رسانه‌ای چیست؟" },
+{ "@type": "Question", "name": "کدام مورد یکی از نشانه‌های ایمیل فیشینگ است؟" },
+{ "@type": "Question", "name": "امن‌ترین روش برای قفل گوشی چیست؟" }
+],
+"educationalLevel": "beginner",
+"inLanguage": "fa",
+"provider": {
+"@type": "Organization",
+"name": "هوشمند نما",
+"url": "https://abedini-dev.github.io/"
+}
+},
+{
+"@type": "Organization",
+"@id": "https://abedini-dev.github.io/#organization",
+"name": "هوشمند نما",
+"url": "https://abedini-dev.github.io/",
+"founder": { "@type": "Person", "name": "امیرمهدی عابدینی" }
+}
+]
+}
+</script>
+<style>
+:root {
+--primary: #bc6c4d;
+--primary-hover: #a05a3e;
+--primary-light: #f4ece6;
+--text-dark: #4a4441;
+--text-gray: #7a7471;
+--bg: #f9f7f2;
+--bg-card: #ffffff;
+--border: #e2ddd9;
+--radius: 16px;
+--shadow: 0 4px 20px rgba(188, 108, 77, 0.08);
+}
+html.dark {
+--primary: #d4a373;
+--primary-hover: #c9925d;
+--primary-light: #3d3532;
+--text-dark: #f1ebe7;
+--text-gray: #b5ada8;
+--bg: #1c1917;
+--bg-card: #28211f;
+--border: #44403c;
+--shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+@media (prefers-color-scheme: dark) {
+html:not(.light):not(.dark) {
+--primary: #d4a373;
+--primary-hover: #c9925d;
+--primary-light: #3d3532;
+--text-dark: #f1ebe7;
+--text-gray: #b5ada8;
+--bg: #1c1917;
+--bg-card: #28211f;
+--border: #44403c;
+--shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+-webkit-tap-highlight-color: transparent;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+html {
+font-size: 16px;
+scroll-behavior: smooth;
+overflow-x: hidden;
+}
+body {
+background-color: var(--bg);
+color: var(--text-dark);
+line-height: 1.6;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+transition: background-color 0.4s ease, color 0.4s ease;
+-webkit-text-size-adjust: 100%;
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 15px 20px;
+background: var(--bg);
+position: sticky;
+top: 0;
+z-index: 100;
+border-bottom: 1px solid var(--border);
+transition: background-color 0.4s ease, border-color 0.4s ease;
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+}
+.logo {
+font-weight: 900;
+font-size: 1.5rem;
+color: var(--primary);
+letter-spacing: -1px;
+transition: color 0.4s ease;
+}
+.icon-btn {
+width: 40px;
+height: 40px;
+border: 1px solid var(--border);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--primary);
+background: var(--bg);
+cursor: pointer;
+transition: all 0.3s ease;
+-webkit-appearance: none;
+appearance: none;
+}
+.icon-btn svg {
+stroke: var(--primary);
+}
+.icon-btn:hover {
+border-color: var(--primary);
+background: var(--primary-light);
+}
+.moon-icon { fill: var(--primary); stroke: var(--primary); }
+.sun-icon { fill: var(--primary); stroke: var(--primary); }
+.hidden { display: none !important; }
+.block { display: block !important; }
+.quiz-wrapper {
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px 20px;
+}
+.card {
+width: 100%;
+max-width: 650px;
+background: var(--bg-card);
+border: 1px solid var(--border);
+border-radius: 28px;
+padding: 40px;
+box-shadow: var(--shadow);
+text-align: center;
+transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.progress-container {
+width: 100%;
+height: 8px;
+background: var(--primary-light);
+border-radius: 10px;
+margin-bottom: 30px;
+overflow: hidden;
+}
+.progress-fill {
+height: 100%;
+background: var(--primary);
+width: 0%;
+transition: width 0.4s ease;
+}
+.question-tag {
+display: inline-block;
+padding: 4px 16px;
+background: var(--primary-light);
+color: var(--primary);
+border-radius: 10px;
+font-weight: 800;
+font-size: 0.85rem;
+margin-bottom: 15px;
+}
+.question-text {
+font-size: 1.25rem;
+font-weight: 800;
+margin-bottom: 25px;
+line-height: 1.6;
+text-align: right;
+}
+.options-list {
+display: grid;
+gap: 12px;
+margin-bottom: 30px;
+}
+.option-item {
+padding: 16px 20px;
+border: 1px solid var(--border);
+border-radius: 16px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-align: right;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 10px;
+background: var(--bg);
+color: var(--text-dark);
+}
+.option-item:hover {
+border-color: var(--primary);
+background: var(--primary-light);
+}
+.option-item.selected {
+border-color: var(--primary);
+background: var(--primary);
+color: white;
+transform: translateX(-5px);
+}
+.option-item.selected:hover {
+background: var(--primary);
+}
+.btn {
+padding: 14px 30px;
+border-radius: 14px;
+font-weight: 700;
+font-size: 1rem;
+cursor: pointer;
+transition: all 0.3s ease;
+border: none;
+width: 100%;
+-webkit-appearance: none;
+appearance: none;
+}
+.btn-primary {
+background: var(--primary);
+color: white;
+box-shadow: 0 4px 15px rgba(188, 108, 77, 0.3);
+}
+.btn-primary:hover {
+background: var(--primary-hover);
+transform: translateY(-2px);
+}
+.btn-primary:disabled {
+background: var(--border);
+color: var(--text-gray);
+cursor: not-allowed;
+box-shadow: none;
+transform: none;
+}
+.btn-secondary {
+background: var(--primary-light);
+color: var(--primary);
+border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+background: var(--border);
+}
+.result-score {
+font-size: 3.5rem;
+font-weight: 900;
+color: var(--primary);
+margin: 20px 0;
+}
+.action-buttons {
+display: flex;
+gap: 10px;
+margin-top: 20px;
+flex-wrap: wrap;
+}
+footer {
+padding: 20px;
+text-align: center;
+border-top: 1px solid var(--border);
+font-size: 0.85rem;
+color: var(--text-gray);
+background: var(--primary-light);
+transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade {
+animation: fadeIn 0.4s ease forwards;
+}
+@media (max-width: 480px) {
+.card { padding: 25px; border-radius: 20px; }
+.question-text { font-size: 1.1rem; }
+.result-score { font-size: 2.5rem; }
+.action-buttons { flex-direction: column; }
+.btn { width: 100%; }
+}
+</style>
 </head>
 <body>
-
-<header>
-    <a href="index.html" class="icon-btn" aria-label="بازگشت">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    </a>
-    <div class="logo">هوشمند نما</div>
-    <button class="icon-btn" id="themeToggle">
-        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="sun-icon" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-    </button>
+<header role="banner">
+<a href="index.html" class="icon-btn" aria-label="بازگشت به صفحه اصلی" title="بازگشت">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+</svg>
+</a>
+<a href="index.html" class="logo" aria-label="هوشمند نما - صفحه اصلی">هوشمند نما</a>
+<button class="icon-btn" id="themeToggle" aria-label="فعال‌سازی حالت شب">
+<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</svg>
+<svg class="sun-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" y1="1" x2="12" y2="3"></line>
+<line x1="12" y1="21" x2="12" y2="23"></line>
+<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+<line x1="1" y1="12" x2="3" y2="12"></line>
+<line x1="21" y1="12" x2="23" y2="12"></line>
+<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+</svg>
+</button>
 </header>
-
-<main class="quiz-wrapper">
-    <div id="intro-screen" class="card animate-fade">
-        <div class="question-tag">سنجش آگاهی</div>
-        <h1 style="margin-bottom: 15px;">آزمون جامع هوشمند نما</h1>
-        <p style="color: var(--text-gray); margin-bottom: 30px;">این آزمون شامل ۱۰ سوال تصادفی برای ارزیابی سطح سواد رسانه‌ای و امنیت دیجیتال شماست.</p>
-        <button onclick="startQuiz()" class="btn btn-primary">شروع چالش هوشمندی</button>
-    </div>
-
-    <div id="quiz-screen" class="card animate-fade" style="display: none;">
-        <div class="progress-container">
-            <div id="progress-fill" class="progress-fill"></div>
-        </div>
-        <div id="question-content"></div>
-        <button id="nextBtn" onclick="handleNext()" class="btn btn-primary" disabled>تایید و مرحله بعد</button>
-    </div>
-
-    <div id="result-screen" class="card animate-fade" style="display: none;">
-        <h2 id="result-title">نتیجه نهایی شما</h2>
-        <div class="result-score" id="final-score">۰٪</div>
-        <p id="result-text" style="margin-bottom: 30px; font-weight: 500;"></p>
-        <div style="display: flex; gap: 10px;">
-            <button onclick="location.reload()" class="btn btn-secondary">تلاش دوباره</button>
-            <a href="index.html" class="btn btn-primary" style="text-align: center; text-decoration: none; line-height: 1.2;">بازگشت به خانه</a>
-        </div>
-    </div>
+<nav aria-label="مسیر ناوبری" itemscope itemtype="https://schema.org/BreadcrumbList" style="padding: 8px 20px; font-size: 0.8rem; color: var(--text-gray);">
+<ol style="display: flex; gap: 6px; list-style: none; flex-wrap: wrap;">
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a href="index.html" itemprop="item" style="color: var(--primary);"><span itemprop="name">خانه</span></a>
+<meta itemprop="position" content="1">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<span itemprop="name">آزمون</span>
+<meta itemprop="position" content="2">
+</li>
+</ol>
+</nav>
+<main class="quiz-wrapper" role="main" id="main-content">
+<div id="intro-screen" class="card animate-fade">
+<div class="question-tag">سنجش آگاهی</div>
+<h1 style="margin-bottom: 15px; color: var(--text-dark);">آزمون جامع هوشمند نما</h1>
+<p style="color: var(--text-gray); margin-bottom: 30px; line-height: 1.8;">این آزمون شامل ۱۰ سوال تصادفی برای ارزیابی سطح سواد رسانه‌ای و امنیت دیجیتال شماست.</p>
+<button onclick="startQuiz()" class="btn btn-primary" aria-label="شروع آزمون سواد رسانه‌ای">شروع چالش هوشمندی</button>
+</div>
+<div id="quiz-screen" class="card animate-fade" style="display: none;">
+<div class="progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+<div id="progress-fill" class="progress-fill"></div>
+</div>
+<div id="question-content"></div>
+<button id="nextBtn" onclick="handleNext()" class="btn btn-primary" disabled>تایید و مرحله بعد</button>
+</div>
+<div id="result-screen" class="card animate-fade" style="display: none;">
+<h2 id="result-title" style="color: var(--text-dark); margin-bottom: 15px;">نتیجه نهایی شما</h2>
+<div class="result-score" id="final-score" aria-label="امتیاز نهایی">۰٪</div>
+<p id="result-text" style="margin-bottom: 30px; font-weight: 500; color: var(--text-gray); line-height: 1.8;"></p>
+<div class="action-buttons">
+<button onclick="location.reload()" class="btn btn-secondary" aria-label="تلاش مجدد برای آزمون">تلاش دوباره</button>
+<a href="index.html" class="btn btn-primary" style="text-align: center; text-decoration: none; line-height: 1.2; flex: 1;">بازگشت به خانه</a>
+</div>
+</div>
 </main>
-
-<footer>طراح سایت امیرمهدی عابدینی- </footer>
-
+<footer role="contentinfo">
+<p>تمامی حقوق مادی و معنوی این پلتفرم متعلق به <b>امیرمهدی عابدینی</b> می‌باشد.</p>
+</footer>
 <script>
-    const bank = [
-        {q:"اولین قدم برای واکاوی یک پیام رسانه‌ای چیست؟",o:["بررسی میزان بازنشر در شبکه‌ها","شناسایی فرستنده و هدف نهایی پیام","اطمینان از کیفیت گرافیکی پیام","مطابقت با اخبار خبرگزاری رسمی"],c:1},
-        {q:"کدام مورد یکی از نشانه‌های ایمیل فیشینگ است؟",o:["استفاده از پروتکل‌های امنیتی","ایجاد فوریت کاذب و تحریک احساسات","ارسال از دامنه‌های شناخته شده","وجود اطلاعات تماس کامل"],c:1},
-        {q:"امن‌ترین روش برای قفل گوشی چیست؟",o:["استفاده از الگوهای پیچیده هندسی","رمز عددی ۸ رقمی غیرمتوالی","تشخیص بیومتریک معتبر و ترکیبی","تغییر دوره‌ای رمزهای ساده"],c:2},
-        {q:"منظور از اتاق پژواک (Echo Chamber) چیست؟",o:["نویز موجود در محیط استودیویی","تکرار و تقویت عقاید مشابه توسط الگوریتم","سیستم فیلترینگ محتوای نامناسب","سرعت بالای انتقال داده در شبکه"],c:1},
-        {q:"HTTPS در آدرس‌بار نشانه چیست؟",o:["تایید رسمی محتوای علمی سایت","امنیت و رمزنگاری تبادل داده‌ها","نشان دهنده سرعت بارگذاری","مجوز فعالیت بین‌المللی"],c:1},
-        {q:"دیپ‌فیک (Deepfake) از کدام فناوری بهره می‌برد؟",o:["فیلترهای پیشرفته فتوشاپ","هوش مصنوعی و شبکه‌های عصبی عمیق","تکنیک‌های قدیمی تدوین سینمایی","عکاسی با وضوح بسیار بالا"],c:1},
-        {q:"در صورت مشاهده آزار سایبری منطقی‌ترین اقدام چیست؟",o:["پاسخ متقابل برای دفاع از خود","مستندسازی، بلاک و گزارش به پلتفرم","حذف فوری تمامی حساب‌های کاربری","نادیده گرفتن کامل بدون هیچ واکنشی"],c:1},
-        {q:"کدام رمز عبور از نظر امنیتی استانداردتر است؟",o:["MyFamilyName2024","Password@12345","H#9k!m2@Pz$R","Admin!#Security"],c:2},
-        {q:"ردپای دیجیتال شامل چه مواردی است؟",o:["فقط عکس‌ها و پست‌های منتشر شده","مجموعه تمامی فعالیت‌های آنلاین ثبت شده","فقط تاریخچه جستجو در مرورگر","اطلاعاتی که آگاهانه وارد می‌کنیم"],c:1},
-        {q:"هدف اصلی مهندسی اجتماعی چیست؟",o:["نفوذ به زیرساخت‌های سخت‌افزاری","فریب انسان برای افشای اطلاعات حساس","کاهش پهنای باند سرورها","نصب بدافزار روی سیستم‌های آفلاین"],c:1},
-        {q:"چرا نباید از وای‌فای عمومی برای امور بانکی استفاده کرد؟",o:["محدودیت حجم آپلود داده","احتمال شنود و حملات مرد میانی","پایین بودن سرعت تراکنش مالی","مصرف بالای باتری در این شبکه‌ها"],c:1},
-        {q:"تعریف دقیق سواد رسانه‌ای چیست؟",o:["توانایی استفاده از ابزار هوشمند","تحلیل انتقادی و تولید آگاهانه محتوا","عضویت در شبکه‌های اجتماعی","آگاهی از آخرین اخبار تکنولوژی"],c:1},
-        {q:"کدام مورد 'خبر جعلی' (Fake News) محسوب می‌شود؟",o:["نقد تند یک سیاستمدار در وبلاگ","شایعه‌ای که با هدف فریب عمومی نشر یابد","گزارش قدیمی که مجدد بازنشر شود","اشتباه تایپی در خبرگزاری رسمی"],c:1},
-        {q:"تایید دو مرحله‌ای (2FA) چه مزیتی دارد؟",o:["جلوگیری از فراموشی رمز عبور","ایجاد سد دفاعی ثانویه در برابر نفوذ","افزایش سرعت ورود به حساب","کاهش مصرف اینترنت"],c:1},
-        {q:"حق کپی‌رایت به چه معناست؟",o:["حق کپی کردن مطالب با ذکر منبع","مالکیت معنوی و انحصاری پدیدآورنده","اجبار به اشتراک‌گذاری عمومی آثار","قانون حذف محتوای تکراری"],c:1},
-        {q:"یک 'بات' (Bot) مخرب در فضای مجازی چه می‌کند؟",o:["فقط با کاربران گفتگو می‌کند","انجام خودکار وظایف با اهداف مخرب","تعمیر خطاهای نرم‌افزاری سیستم","افزایش امنیت سرورهای وب"],c:1},
-        {q:"نشانه اصلی سایت فیشینگ در آدرس‌بار چیست؟",o:["نبود لوگوی رسمی سایت در تب‌ها","تغییرات بسیار جزئی در حروف دامنه","استفاده از فونت‌های غیر استاندارد","نمایش تبلیغات زیاد در صفحه اول"],c:1},
-        {q:"حریم خصوصی دیجیتال یعنی چه؟",o:["مخفی کردن هویت واقعی از همه","کنترل کاربر بر نحوه جمع‌آوری داده‌هایش","نداشتن هیچ‌گونه فعالیت در وب","استفاده از نام‌های مستعار"],c:1},
-        {q:"کلیک‌بیت (Clickbait) با چه هدفی استفاده می‌شود؟",o:["بهبود سئوی سایت در گوگل","جذب کلیک با تیترهای اغراق‌آمیز","افزایش امنیت لینک‌های خروجی","راهنمای کاربران به بخش‌های اصلی"],c:1},
-        {q:"بهترین ابزار برای راستی‌آزمایی عکس‌های مشکوک چیست؟",o:["فیلترهای اینستاگرام","جستجوی معکوس تصویر در گوگل","ارسال عکس به گروه‌های خبری","بررسی وضوح پیکسل‌ها"],c:1},
-        {q:"هوش مصنوعی مولد (Generative AI) چیست؟",o:["سیستمی برای مدیریت پایگاه داده","هوشی که محتوای کاملاً جدید خلق می‌کند","نسل جدید روبات‌های انسان‌نما","نرم‌افزار آنتی‌ویروس هوشمند"],c:1},
-        {q:"فایروال (Firewall) در سیستم چه وظیفه‌ای دارد؟",o:["جلوگیری از گرم شدن قطعات","کنترل ترافیک ورودی و خروجی شبکه","پاکسازی فایل‌های تکراری","افزایش سرعت پردازش در هسته‌ها"],c:1},
-        {q:"بدافزار (Malware) دقیقاً چیست؟",o:["سخت‌افزاری که باعث خرابی می‌شود","هر نوع نرم‌افزار با اهداف مخرب","برنامه‌ای که فضای رم را اشغال می‌کند","تبلیغات پاپ‌آپ در سایت‌ها"],c:1},
-        {q:"اسکم (Scam) به کدام دسته از فعالیت‌ها گفته می‌شود؟",o:["بروزرسانی‌های اجباری سیستم عامل","کلاهبرداری و فریب آنلاین کاربران","ایمیل‌های تبلیغاتی انبوه","بازی‌های آنلاین بدون لایسنس"],c:1},
-        {q:"در مواجهه با خبرهای شوکه‌کننده اولین واکنش چیست؟",o:["ارسال سریع برای دوستان","صبر، تامل و بررسی منابع معتبر","بستن برنامه و خروج از وب","لایک کردن برای حمایت"],c:1},
-        {q:"کوکی‌ها (Cookies) در مرورگر چه می‌کنند؟",o:["حذف فایل‌های موقت مرورگر","ذخیره تنظیمات و وضعیت ورود کاربر","شناسایی ویروس‌های وب","ردیابی فیزیکی مکان کاربر"],c:1},
-        {q:"شهروند دیجیتال مسئولیت‌پذیر کیست؟",o:["کسی که تمام وقت آنلاین است","کسی که اخلاق و قانون را رعایت می‌کند","کسی که دانش فنی بسیار بالایی دارد","کسی که فقط محتوای دیگران را می‌بیند"],c:1},
-        {q:"استفاده از وی‌پی‌ان (VPN) نامعتبر چه خطری دارد؟",o:["کاهش دائمی عمر باتری گوشی","دسترسی سرور واسط به تمامی داده‌ها","کندی در اجرای برنامه‌های آفلاین","حذف خودکار فایل‌های شخصی"],c:1},
-        {q:"ویشینگ (Vishing) حمله از چه طریقی است؟",o:["پیامک‌های حاوی لینک آلوده","تماس صوتی و فریب از طریق تلفن","ایمیل‌های حاوی فایل پیوستی","تبلیغات در شبکه‌های اجتماعی"],c:1},
-        {q:"بهترین راه محافظت از تنظیمات مودم چیست؟",o:["خاموش کردن مودم در زمان استراحت","تغییر رمز پیش‌فرض و غیرفعال کردن WPS","پنهان کردن مودم در جعبه فلزی","استفاده از کابل به جای وای‌فای"],c:1},
-        {q:"تفکر الگوریتمی در مواجهه با رسانه یعنی چه؟",o:["توانایی حل مسائل ریاضی","درک نحوه گزینش محتوا توسط سیستم","برنامه‌نویسی برای شبکه‌های اجتماعی","خرید آنلاین بر اساس پیشنهادات"],c:1},
-        {q:"بلاک‌چین در امنیت چه نقشی ایفا می‌کند؟",o:["طراحی گرافیک‌های غیرقابل کپی","تامین امنیت داده از طریق توزیع و شفافیت","افزایش سرعت اینترنت نسل پنجم","نصب خودکار بروزرسانی‌ها"],c:1},
-        {q:"اسمیشینگ (Smishing) از چه بستری برای حمله استفاده می‌کند؟",o:["پست الکترونیک سازمانی","سرویس پیامک کوتاه (SMS)","تماس‌های تصویری رمزنگاری شده","درگاه‌های پرداخت اینترنتی"],c:1},
-        {q:"چرا اخبار جعلی با سرعت بیشتری منتشر می‌شوند؟",o:["به دلیل مستند بودن داده‌های علمی","تحریک هیجانات و سوگیری‌های شناختی","حمایت مالی موتورهای جستجو","کوتاه بودن متن این اخبار"],c:1},
-        {q:"تکنیک '۱۰ ثانیه مکث' قبل از اشتراک‌گذاری برای چیست؟",o:["صرفه‌جویی در مصرف پهنای باند","جلوگیری از رفتارهای هیجانی و اشتباه","اطمینان از شارژ بودن باتری","بررسی وضعیت اتصال آنتن"],c:1},
-        {q:"نرم‌افزار متن‌باز (Open Source) یعنی چه؟",o:["نرم‌افزاری که برای همه رایگان است","نرم‌افزاری که کد منبع آن قابل بررسی است","نرم‌افزاری که امنیت پایینی دارد","نرم‌افزاری که فقط در لینوکس است"],c:1},
-        {q:"سواد بصری در تحلیل رسانه به چه معناست؟",o:["تشخیص کیفیت دوربین عکاسی","درک معانی نهفته در تصاویر و نمادها","توانایی ادیت حرفه‌ای عکس‌ها","خرید مانیتورهای با رزولوشن بالا"],c:1},
-        {q:"پاپ‌آپ‌های ناخواسته معمولاً نشانه چیست؟",o:["برنده شدن جایزه در مسابقات","احتمال وجود بدافزارهای تبلیغاتی","دریافت بروزرسانی‌های سیستمی","بهبود سرعت مرورگر توسط سایت"],c:1},
-        {q:"امن‌ترین منبع برای دریافت اپلیکیشن کدام است؟",o:["سایت‌های دانلود نرم‌افزار متفرقه","فروشگاه‌های رسمی و تایید شده","کانال‌های تلگرامی پرمخاطب","ارسال فایل توسط بلوتوث دوستان"],c:1},
-        {q:"جاسوس‌افزار (Spyware) چه فعالیتی انجام می‌دهد؟",o:["کمک به بهبود تجربه کاربری","جمع‌آوری مخفیانه اطلاعات و فعالیت‌ها","افزایش امنیت فایل‌های حساس","پاکسازی حافظه کش مرورگر"],c:1},
-        {q:"اینترنت اشیا (IoT) چه ریسک امنیتی دارد؟",o:["کاهش سرعت وسایل برقی","امکان نفوذ به شبکه از طریق وسایل متصل","مصرف بیش از حد برق در منزل","خرابی زودرس قطعات الکترونیکی"],c:1},
-        {q:"ارتباط باج‌افزار با ارزهای دیجیتال چیست؟",o:["افزایش قیمت ارزها توسط هکرها","ناشناس ماندن هویت در زمان پرداخت باج","امنیت بالای کیف پول‌های دیجیتال","استفاده از قدرت سیستم برای استخراج"],c:1},
-        {q:"اعتبارسنجی منبع خبر یعنی چه؟",o:["بررسی تعداد فالوورهای ناشر","تحقیق درباره سابقه و تخصص ناشر","تعداد لایک‌های زیر مطلب خبر","بررسی تاریخ انتشار مطلب"],c:1},
-        {q:"سواد خبری به ما چه کمکی می‌کند؟",o:["سریع‌تر خواندن اخبار روزانه","تشخیص تفاوت واقعیت، نظر و تبلیغات","نوشتن مقالات علمی در روزنامه‌ها","خبرنگار شدن در رسانه‌های معتبر"],c:1},
-        {q:"گرومینگ (Grooming) در فضای مجازی یعنی چه؟",o:["بروزرسانی پروفایل‌های شخصی","فریب و بهره‌کشی از کودکان و نوجوانان","مرتب کردن فایل‌های موجود در سیستم","بهبود وضعیت سئوی وب‌سایت‌ها"],c:1},
-        {q:"چرا اشتراک‌گذاری مکان (Location) خطرناک است؟",o:["کاهش دقت جی‌پی‌اس در آینده","سوءاستفاده از اطلاعات رفت و آمد شما","کندی در عملکرد برنامه‌های نقشه","مصرف بالای اینترنت موبایل"],c:1},
-        {q:"تکنیک 'برش انتخابی' در رسانه چیست؟",o:["حذف بخش‌های بی کیفیت ویدیو","نمایش بخشی از واقعیت برای تحریف کل","ادیت عکس برای زیباتر شدن","ترکیب چندین خبر با یکدیگر"],c:1},
-        {q:"هدف نهایی پلتفرم هوشمند نما چیست؟",o:["ارائه بازی‌های آموزشی رایگان","ارتقای سواد رسانه و امنیت نوجوانان","فروش تجهیزات امنیتی و حفاظتی","تبلیغات گسترده در حوزه تکنولوژی"],c:1},
-        {q:"فیلتر حبابی (Filter Bubble) یعنی چه؟",o:["محصور شدن در میان نظرات موافق خود","نوعی فیلترینگ دولتی در اینترنت","سرعت پایین اینترنت در برخی مناطق","نمایش تبلیغات بر اساس سن کاربر"],c:0},
-        {q:"مهندسی معکوس در امنیت سایبری یعنی چه؟",o:["ساخت نسخه جدید از یک بدافزار","کالبدشکافی نرم‌افزار برای کشف ساختار","پاک کردن ردپای هکر از سیستم","تغییر جهت حملات سایبری"],c:1}
-    ];
-
-    let selectedQuestions = [];
-    let currentIdx = 0;
-    let score = 0;
-    let selectedAnswer = null;
-
-    const toggle = document.getElementById('themeToggle');
-    const moon = document.querySelector('.moon-icon');
-    const sun = document.querySelector('.sun-icon');
-    const themeMeta = document.getElementById('theme-color-meta');
-
-    function updateTheme(isDark) {
-        if (isDark) {
-            document.body.classList.add('dark-mode');
-            moon.style.display = 'none';
-            sun.style.display = 'block';
-            themeMeta.setAttribute('content', '#12100f');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.body.classList.remove('dark-mode');
-            moon.style.display = 'block';
-            sun.style.display = 'none';
-            themeMeta.setAttribute('content', '#bc6c4d');
-            localStorage.setItem('theme', 'light');
-        }
-    }
-
-    if (localStorage.getItem('theme') === 'dark') updateTheme(true);
-    toggle.addEventListener('click', () => updateTheme(!document.body.classList.contains('dark-mode')));
-
-    function startQuiz() {
-        selectedQuestions = bank.sort(() => 0.5 - Math.random()).slice(0, 10);
-        document.getElementById('intro-screen').style.display = 'none';
-        document.getElementById('quiz-screen').style.display = 'block';
-        renderQuestion();
-    }
-
-    function renderQuestion() {
-        const q = selectedQuestions[currentIdx];
-        const progress = ((currentIdx) / 10) * 100;
-        document.getElementById('progress-fill').style.width = `${progress}%`;
-
-        const content = document.getElementById('question-content');
-        content.innerHTML = `
-            <div class="animate-fade">
-                <span class="question-tag">سوال ${currentIdx + 1} از ۱۰</span>
-                <h2 class="question-text">${q.q}</h2>
-                <div class="options-list">
-                    ${q.o.map((opt, i) => `
-                        <div class="option-item" onclick="selectOption(${i})">
-                            ${opt}
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-        document.getElementById('nextBtn').disabled = true;
-        selectedAnswer = null;
-    }
-
-    function selectOption(idx) {
-        selectedAnswer = idx;
-        const options = document.querySelectorAll('.option-item');
-        options.forEach((opt, i) => {
-            opt.classList.toggle('selected', i === idx);
-        });
-        document.getElementById('nextBtn').disabled = false;
-    }
-
-    function handleNext() {
-        if (selectedAnswer === selectedQuestions[currentIdx].c) {
-            score++;
-        }
-
-        currentIdx++;
-        if (currentIdx < 10) {
-            renderQuestion();
-        } else {
-            showResults();
-        }
-    }
-
-    function showResults() {
-        document.getElementById('quiz-screen').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        
-        const percentage = (score / 10) * 100;
-        document.getElementById('final-score').innerText = `${percentage}%`;
-        
-        const text = document.getElementById('result-text');
-        if (score >= 8) {
-            text.innerText = "فوق‌العاده! شما یک هوشمند نمای واقعی هستید و تسلط کاملی بر امنیت دیجیتال دارید.";
-        } else if (score >= 5) {
-            text.innerText = "خوب بود! اطلاعات پایه را دارید، اما برای امنیت بیشتر پیشنهاد می‌کنیم آموزش‌های ما را دوباره مرور کنید.";
-        } else {
-            text.innerText = "نیاز به آموزش بیشتر! فضای مجازی چالش‌های زیادی دارد. پیشنهاد می‌کنیم دوره را از ابتدا با دقت ببینید.";
-        }
-    }
+const bank = [
+{q:"اولین قدم برای واکاوی یک پیام رسانه‌ای چیست؟",o:["بررسی میزان بازنشر در شبکه‌ها","شناسایی فرستنده و هدف نهایی پیام","اطمینان از کیفیت گرافیکی پیام","مطابقت با اخبار خبرگزاری رسمی"],c:1},
+{q:"کدام مورد یکی از نشانه‌های ایمیل فیشینگ است؟",o:["استفاده از پروتکل‌های امنیتی","ایجاد فوریت کاذب و تحریک احساسات","ارسال از دامنه‌های شناخته شده","وجود اطلاعات تماس کامل"],c:1},
+{q:"امن‌ترین روش برای قفل گوشی چیست؟",o:["استفاده از الگوهای پیچیده هندسی","رمز عددی ۸ رقمی غیرمتوالی","تشخیص بیومتریک معتبر و ترکیبی","تغییر دوره‌ای رمزهای ساده"],c:2},
+{q:"منظور از اتاق پژواک (Echo Chamber) چیست؟",o:["نویز موجود در محیط استودیویی","تکرار و تقویت عقاید مشابه توسط الگوریتم","سیستم فیلترینگ محتوای نامناسب","سرعت بالای انتقال داده در شبکه"],c:1},
+{q:"HTTPS در آدرس‌بار نشانه چیست؟",o:["تایید رسمی محتوای علمی سایت","امنیت و رمزنگاری تبادل داده‌ها","نشان دهنده سرعت بارگذاری","مجوز فعالیت بین‌المللی"],c:1},
+{q:"دیپ‌فیک (Deepfake) از کدام فناوری بهره می‌برد؟",o:["فیلترهای پیشرفته فتوشاپ","هوش مصنوعی و شبکه‌های عصبی عمیق","تکنیک‌های قدیمی تدوین سینمایی","عکاسی با وضوح بسیار بالا"],c:1},
+{q:"در صورت مشاهده آزار سایبری منطقی‌ترین اقدام چیست؟",o:["پاسخ متقابل برای دفاع از خود","مستندسازی، بلاک و گزارش به پلتفرم","حذف فوری تمامی حساب‌های کاربری","نادیده گرفتن کامل بدون هیچ واکنشی"],c:1},
+{q:"کدام رمز عبور از نظر امنیتی استانداردتر است؟",o:["MyFamilyName2024","Password@12345","H#9k!m2@Pz$R","Admin!#Security"],c:2},
+{q:"ردپای دیجیتال شامل چه مواردی است؟",o:["فقط عکس‌ها و پست‌های منتشر شده","مجموعه تمامی فعالیت‌های آنلاین ثبت شده","فقط تاریخچه جستجو در مرورگر","اطلاعاتی که آگاهانه وارد می‌کنیم"],c:1},
+{q:"هدف اصلی مهندسی اجتماعی چیست؟",o:["نفوذ به زیرساخت‌های سخت‌افزاری","فریب انسان برای افشای اطلاعات حساس","کاهش پهنای باند سرورها","نصب بدافزار روی سیستم‌های آفلاین"],c:1},
+{q:"چرا نباید از وای‌فای عمومی برای امور بانکی استفاده کرد؟",o:["محدودیت حجم آپلود داده","احتمال شنود و حملات مرد میانی","پایین بودن سرعت تراکنش مالی","مصرف بالای باتری در این شبکه‌ها"],c:1},
+{q:"تعریف دقیق سواد رسانه‌ای چیست؟",o:["توانایی استفاده از ابزار هوشمند","تحلیل انتقادی و تولید آگاهانه محتوا","عضویت در شبکه‌های اجتماعی","آگاهی از آخرین اخبار تکنولوژی"],c:1},
+{q:"کدام مورد خبر جعلی (Fake News) محسوب می‌شود؟",o:["نقد تند یک سیاستمدار در وبلاگ","شایعه‌ای که با هدف فریب عمومی نشر یابد","گزارش قدیمی که مجدد بازنشر شود","اشتباه تایپی در خبرگزاری رسمی"],c:1},
+{q:"تایید دو مرحله‌ای (2FA) چه مزیتی دارد؟",o:["جلوگیری از فراموشی رمز عبور","ایجاد سد دفاعی ثانویه در برابر نفوذ","افزایش سرعت ورود به حساب","کاهش مصرف اینترنت"],c:1},
+{q:"حق کپی‌رایت به چه معناست؟",o:["حق کپی کردن مطالب با ذکر منبع","مالکیت معنوی و انحصاری پدیدآورنده","اجبار به اشتراک‌گذاری عمومی آثار","قانون حذف محتوای تکراری"],c:1},
+{q:"یک بات (Bot) مخرب در فضای مجازی چه می‌کند؟",o:["فقط با کاربران گفتگو می‌کند","انجام خودکار وظایف با اهداف مخرب","تعمیر خطاهای نرم‌افزاری سیستم","افزایش امنیت سرورهای وب"],c:1},
+{q:"نشانه اصلی سایت فیشینگ در آدرس‌بار چیست؟",o:["نبود لوگوی رسمی سایت در تب‌ها","تغییرات بسیار جزئی در حروف دامنه","استفاده از فونت‌های غیر استاندارد","نمایش تبلیغات زیاد در صفحه اول"],c:1},
+{q:"حریم خصوصی دیجیتال یعنی چه؟",o:["مخفی کردن هویت واقعی از همه","کنترل کاربر بر نحوه جمع‌آوری داده‌هایش","نداشتن هیچ‌گونه فعالیت در وب","استفاده از نام‌های مستعار"],c:1},
+{q:"کلیک‌بیت (Clickbait) با چه هدفی استفاده می‌شود؟",o:["بهبود سئوی سایت در گوگل","جذب کلیک با تیترهای اغراق‌آمیز","افزایش امنیت لینک‌های خروجی","راهنمای کاربران به بخش‌های اصلی"],c:1},
+{q:"بهترین ابزار برای راستی‌آزمایی عکس‌های مشکوک چیست؟",o:["فیلترهای اینستاگرام","جستجوی معکوس تصویر در گوگل","ارسال عکس به گروه‌های خبری","بررسی وضوح پیکسل‌ها"],c:1},
+{q:"هوش مصنوعی مولد (Generative AI) چیست؟",o:["سیستمی برای مدیریت پایگاه داده","هوشی که محتوای کاملاً جدید خلق می‌کند","نسل جدید روبات‌های انسان‌نما","نرم‌افزار آنتی‌ویروس هوشمند"],c:1},
+{q:"فایروال (Firewall) در سیستم چه وظیفه‌ای دارد؟",o:["جلوگیری از گرم شدن قطعات","کنترل ترافیک ورودی و خروجی شبکه","پاکسازی فایل‌های تکراری","افزایش سرعت پردازش در هسته‌ها"],c:1},
+{q:"بدافزار (Malware) دقیقاً چیست؟",o:["سخت‌افزاری که باعث خرابی می‌شود","هر نوع نرم‌افزار با اهداف مخرب","برنامه‌ای که فضای رم را اشغال می‌کند","تبلیغات پاپ‌آپ در سایت‌ها"],c:1},
+{q:"اسکم (Scam) به کدام دسته از فعالیت‌ها گفته می‌شود؟",o:["بروزرسانی‌های اجباری سیستم عامل","کلاهبرداری و فریب آنلاین کاربران","ایمیل‌های تبلیغاتی انبوه","بازی‌های آنلاین بدون لایسنس"],c:1},
+{q:"در مواجهه با خبرهای شوکه‌کننده اولین واکنش چیست؟",o:["ارسال سریع برای دوستان","صبر، تامل و بررسی منابع معتبر","بستن برنامه و خروج از وب","لایک کردن برای حمایت"],c:1},
+{q:"کوکی‌ها (Cookies) در مرورگر چه می‌کنند؟",o:["حذف فایل‌های موقت مرورگر","ذخیره تنظیمات و وضعیت ورود کاربر","شناسایی ویروس‌های وب","ردیابی فیزیکی مکان کاربر"],c:1},
+{q:"شهروند دیجیتال مسئولیت‌پذیر کیست؟",o:["کسی که تمام وقت آنلاین است","کسی که اخلاق و قانون را رعایت می‌کند","کسی که دانش فنی بسیار بالایی دارد","کسی که فقط محتوای دیگران را می‌بیند"],c:1},
+{q:"استفاده از وی‌پی‌ان (VPN) نامعتبر چه خطری دارد؟",o:["کاهش دائمی عمر باتری گوشی","دسترسی سرور واسط به تمامی داده‌ها","کندی در اجرای برنامه‌های آفلاین","حذف خودکار فایل‌های شخصی"],c:1},
+{q:"ویشینگ (Vishing) حمله از چه طریقی است؟",o:["پیامک‌های حاوی لینک آلوده","تماس صوتی و فریب از طریق تلفن","ایمیل‌های حاوی فایل پیوستی","تبلیغات در شبکه‌های اجتماعی"],c:1},
+{q:"بهترین راه محافظت از تنظیمات مودم چیست؟",o:["خاموش کردن مودم در زمان استراحت","تغییر رمز پیش‌فرض و غیرفعال کردن WPS","پنهان کردن مودم در جعبه فلزی","استفاده از کابل به جای وای‌فای"],c:1},
+{q:"تفکر الگوریتمی در مواجهه با رسانه یعنی چه؟",o:["توانایی حل مسائل ریاضی","درک نحوه گزینش محتوا توسط سیستم","برنامه‌نویسی برای شبکه‌های اجتماعی","خرید آنلاین بر اساس پیشنهادات"],c:1},
+{q:"بلاک‌چین در امنیت چه نقشی ایفا می‌کند؟",o:["طراحی گرافیک‌های غیرقابل کپی","تامین امنیت داده از طریق توزیع و شفافیت","افزایش سرعت اینترنت نسل پنجم","نصب خودکار بروزرسانی‌ها"],c:1},
+{q:"اسمیشینگ (Smishing) از چه بستری برای حمله استفاده می‌کند؟",o:["پست الکترونیک سازمانی","سرویس پیامک کوتاه (SMS)","تماس‌های تصویری رمزنگاری شده","درگاه‌های پرداخت اینترنتی"],c:1},
+{q:"چرا اخبار جعلی با سرعت بیشتری منتشر می‌شوند؟",o:["به دلیل مستند بودن داده‌های علمی","تحریک هیجانات و سوگیری‌های شناختی","حمایت مالی موتورهای جستجو","کوتاه بودن متن این اخبار"],c:1},
+{q:"تکنیک ۱۰ ثانیه مکث قبل از اشتراک‌گذاری برای چیست؟",o:["صرفه‌جویی در مصرف پهنای باند","جلوگیری از رفتارهای هیجانی و اشتباه","اطمینان از شارژ بودن باتری","بررسی وضعیت اتصال آنتن"],c:1},
+{q:"نرم‌افزار متن‌باز (Open Source) یعنی چه؟",o:["نرم‌افزاری که برای همه رایگان است","نرم‌افزاری که کد منبع آن قابل بررسی است","نرم‌افزاری که امنیت پایینی دارد","نرم‌افزاری که فقط در لینوکس است"],c:1},
+{q:"سواد بصری در تحلیل رسانه به چه معناست؟",o:["تشخیص کیفیت دوربین عکاسی","درک معانی نهفته در تصاویر و نمادها","توانایی ادیت حرفه‌ای عکس‌ها","خرید مانیتورهای با رزولوشن بالا"],c:1},
+{q:"پاپ‌آپ‌های ناخواسته معمولاً نشانه چیست؟",o:["برنده شدن جایزه در مسابقات","احتمال وجود بدافزارهای تبلیغاتی","دریافت بروزرسانی‌های سیستمی","بهبود سرعت مرورگر توسط سایت"],c:1},
+{q:"امن‌ترین منبع برای دریافت اپلیکیشن کدام است؟",o:["سایت‌های دانلود نرم‌افزار متفرقه","فروشگاه‌های رسمی و تایید شده","کانال‌های تلگرامی پرمخاطب","ارسال فایل توسط بلوتوث دوستان"],c:1},
+{q:"جاسوس‌افزار (Spyware) چه فعالیتی انجام می‌دهد؟",o:["کمک به بهبود تجربه کاربری","جمع‌آوری مخفیانه اطلاعات و فعالیت‌ها","افزایش امنیت فایل‌های حساس","پاکسازی حافظه کش مرورگر"],c:1},
+{q:"اینترنت اشیا (IoT) چه ریسک امنیتی دارد؟",o:["کاهش سرعت وسایل برقی","امکان نفوذ به شبکه از طریق وسایل متصل","مصرف بیش از حد برق در منزل","خرابی زودرس قطعات الکترونیکی"],c:1},
+{q:"ارتباط باج‌افزار با ارزهای دیجیتال چیست؟",o:["افزایش قیمت ارزها توسط هکرها","ناشناس ماندن هویت در زمان پرداخت باج","امنیت بالای کیف پول‌های دیجیتال","استفاده از قدرت سیستم برای استخراج"],c:1},
+{q:"اعتبارسنجی منبع خبر یعنی چه؟",o:["بررسی تعداد فالوورهای ناشر","تحقیق درباره سابقه و تخصص ناشر","تعداد لایک‌های زیر مطلب خبر","بررسی تاریخ انتشار مطلب"],c:1},
+{q:"سواد خبری به ما چه کمکی می‌کند؟",o:["سریع‌تر خواندن اخبار روزانه","تشخیص تفاوت واقعیت، نظر و تبلیغات","نوشتن مقالات علمی در روزنامه‌ها","خبرنگار شدن در رسانه‌های معتبر"],c:1},
+{q:"گرومینگ (Grooming) در فضای مجازی یعنی چه؟",o:["بروزرسانی پروفایل‌های شخصی","فریب و بهره‌کشی از کودکان و نوجوانان","مرتب کردن فایل‌های موجود در سیستم","بهبود وضعیت سئوی وب‌سایت‌ها"],c:1},
+{q:"چرا اشتراک‌گذاری مکان (Location) خطرناک است؟",o:["کاهش دقت جی‌پی‌اس در آینده","سوءاستفاده از اطلاعات رفت و آمد شما","کندی در عملکرد برنامه‌های نقشه","مصرف بالای اینترنت موبایل"],c:1},
+{q:"تکنیک برش انتخابی در رسانه چیست؟",o:["حذف بخش‌های بی کیفیت ویدیو","نمایش بخشی از واقعیت برای تحریف کل","ادیت عکس برای زیباتر شدن","ترکیب چندین خبر با یکدیگر"],c:1},
+{q:"هدف نهایی پلتفرم هوشمند نما چیست؟",o:["ارائه بازی‌های آموزشی رایگان","ارتقای سواد رسانه و امنیت نوجوانان","فروش تجهیزات امنیتی و حفاظتی","تبلیغات گسترده در حوزه تکنولوژی"],c:1},
+{q:"فیلتر حبابی (Filter Bubble) یعنی چه؟",o:["محصور شدن در میان نظرات موافق خود","نوعی فیلترینگ دولتی در اینترنت","سرعت پایین اینترنت در برخی مناطق","نمایش تبلیغات بر اساس سن کاربر"],c:0},
+{q:"مهندسی معکوس در امنیت سایبری یعنی چه؟",o:["ساخت نسخه جدید از یک بدافزار","کالبدشکافی نرم‌افزار برای کشف ساختار","پاک کردن ردپای هکر از سیستم","تغییر جهت حملات سایبری"],c:1}
+];
+let selectedQuestions = [];
+let currentIdx = 0;
+let score = 0;
+let selectedAnswer = null;
+const htmlEl = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const moonIcon = document.querySelector('.moon-icon');
+const sunIcon = document.querySelector('.sun-icon');
+const themeColorMeta = document.getElementById('themeColor');
+const saved = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let isDark = saved === 'dark' || (!saved && prefersDark);
+function applyTheme(dark) {
+if (dark) {
+htmlEl.classList.add('dark');
+htmlEl.classList.remove('light');
+moonIcon.classList.add('hidden');
+sunIcon.classList.remove('hidden');
+sunIcon.classList.add('block');
+if (themeColorMeta) themeColorMeta.content = '#d4a373';
+themeToggle.setAttribute('aria-label', 'فعال‌سازی حالت روز');
+} else {
+htmlEl.classList.remove('dark');
+htmlEl.classList.add('light');
+moonIcon.classList.remove('hidden');
+sunIcon.classList.add('hidden');
+sunIcon.classList.remove('block');
+if (themeColorMeta) themeColorMeta.content = '#bc6c4d';
+themeToggle.setAttribute('aria-label', 'فعال‌سازی حالت شب');
+}
+}
+applyTheme(isDark);
+themeToggle.addEventListener('click', function () {
+isDark = !isDark;
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+applyTheme(isDark);
+});
+function startQuiz() {
+selectedQuestions = bank.sort(() => 0.5 - Math.random()).slice(0, 10);
+document.getElementById('intro-screen').style.display = 'none';
+document.getElementById('quiz-screen').style.display = 'block';
+renderQuestion();
+}
+function renderQuestion() {
+const q = selectedQuestions[currentIdx];
+const progress = ((currentIdx) / 10) * 100;
+document.getElementById('progress-fill').style.width = progress + '%';
+document.querySelector('.progress-container').setAttribute('aria-valuenow', progress);
+const content = document.getElementById('question-content');
+content.innerHTML = '<div class="animate-fade"><span class="question-tag">سوال ' + (currentIdx + 1) + ' از ۱۰</span><h2 class="question-text">' + q.q + '</h2><div class="options-list">' + q.o.map(function(opt, i) { return '<div class="option-item" onclick="selectOption(' + i + ')" role="button" tabindex="0" aria-label="گزینه ' + (i + 1) + '">' + opt + '</div>'; }).join('') + '</div></div>';
+document.getElementById('nextBtn').disabled = true;
+selectedAnswer = null;
+}
+function selectOption(idx) {
+selectedAnswer = idx;
+const options = document.querySelectorAll('.option-item');
+options.forEach(function(opt, i) {
+opt.classList.toggle('selected', i === idx);
+});
+document.getElementById('nextBtn').disabled = false;
+}
+function handleNext() {
+if (selectedAnswer === selectedQuestions[currentIdx].c) {
+score++;
+}
+currentIdx++;
+if (currentIdx < 10) {
+renderQuestion();
+} else {
+showResults();
+}
+}
+function showResults() {
+document.getElementById('quiz-screen').style.display = 'none';
+document.getElementById('result-screen').style.display = 'block';
+const percentage = (score / 10) * 100;
+document.getElementById('final-score').innerText = percentage + '%';
+const text = document.getElementById('result-text');
+if (score >= 8) {
+text.innerText = 'فوق‌العاده! شما یک هوشمند نمای واقعی هستید و تسلط کاملی بر امنیت دیجیتال دارید.';
+} else if (score >= 5) {
+text.innerText = 'خوب بود! اطلاعات پایه را دارید، اما برای امنیت بیشتر پیشنهاد می‌کنیم آموزش‌های ما را دوباره مرور کنید.';
+} else {
+text.innerText = 'نیاز به آموزش بیشتر! فضای مجازی چالش‌های زیادی دارد. پیشنهاد می‌کنیم دوره را از ابتدا با دقت ببینید.';
+}
+}
 </script>
-
 </body>
 </html>
+
