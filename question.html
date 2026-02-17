@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="theme-color-meta" name="theme-color" content="#bc6c4d">
     <title>آزمون جامع | هوشمند نما</title>
-    
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    
     <style>
         :root {
             --primary: #bc6c4d;
@@ -35,6 +34,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -188,11 +188,27 @@
             box-shadow: 0 4px 15px rgba(188, 108, 77, 0.3);
         }
 
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
         .btn-primary:disabled {
             background: var(--border);
             color: var(--text-gray);
             cursor: not-allowed;
             box-shadow: none;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--border);
         }
 
         .result-score {
@@ -208,6 +224,8 @@
             border-top: 1px solid var(--border);
             font-size: 0.85rem;
             color: var(--text-gray);
+            background-color: var(--primary-light);
+            transition: background-color 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -252,7 +270,7 @@
         <div class="result-score" id="final-score">۰٪</div>
         <p id="result-text" style="margin-bottom: 30px; font-weight: 500;"></p>
         <div style="display: flex; gap: 10px;">
-            <button onclick="location.reload()" class="btn btn-secondary" style="background: var(--primary-light); color: var(--primary); border: 1px solid var(--border);">تلاش دوباره</button>
+            <button onclick="location.reload()" class="btn btn-secondary">تلاش دوباره</button>
             <a href="index.html" class="btn btn-primary" style="text-align: center; text-decoration: none; line-height: 1.2;">بازگشت به خانه</a>
         </div>
     </div>
@@ -319,21 +337,23 @@
     let score = 0;
     let selectedAnswer = null;
 
-    // Theme Logic
     const toggle = document.getElementById('themeToggle');
     const moon = document.querySelector('.moon-icon');
     const sun = document.querySelector('.sun-icon');
+    const themeMeta = document.getElementById('theme-color-meta');
 
     function updateTheme(isDark) {
         if (isDark) {
             document.body.classList.add('dark-mode');
             moon.style.display = 'none';
             sun.style.display = 'block';
+            themeMeta.setAttribute('content', '#12100f');
             localStorage.setItem('theme', 'dark');
         } else {
             document.body.classList.remove('dark-mode');
             moon.style.display = 'block';
             sun.style.display = 'none';
+            themeMeta.setAttribute('content', '#bc6c4d');
             localStorage.setItem('theme', 'light');
         }
     }
@@ -341,7 +361,6 @@
     if (localStorage.getItem('theme') === 'dark') updateTheme(true);
     toggle.addEventListener('click', () => updateTheme(!document.body.classList.contains('dark-mode')));
 
-    // Quiz Logic
     function startQuiz() {
         selectedQuestions = bank.sort(() => 0.5 - Math.random()).slice(0, 10);
         document.getElementById('intro-screen').style.display = 'none';
