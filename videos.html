@@ -312,16 +312,19 @@
         const themeBtn = document.getElementById('themeToggle');
         const moon = themeBtn.querySelector('.moon-icon');
         const sun = themeBtn.querySelector('.sun-icon');
+        const themeMeta = document.getElementById('theme-color-meta');
         function updateTheme(isDark) {
             if (isDark) {
                 body.classList.add('dark-mode');
                 moon.style.display = 'none';
                 sun.style.display = 'block';
+                themeMeta.setAttribute('content', '#12100f');
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
                 moon.style.display = 'block';
                 sun.style.display = 'none';
+                themeMeta.setAttribute('content', '#bc6c4d');
                 localStorage.setItem('theme', 'light');
             }
         }
@@ -369,4 +372,3 @@
     </script>
 </body>
 </html>
-
